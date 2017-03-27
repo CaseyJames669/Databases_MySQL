@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<dataroot xmlns:od="urn:schemas-microsoft-com:officedata" generated="2012-07-11T13:25:02">
+<Skill>
+<Skill_ID>100</Skill_ID>
+<Skill_Name>Basic Database Management</Skill_Name>
+<Skill_Description>Create and manage database user accounts.</Skill_Description>
+</Skill>
+<Skill>
+<Skill_ID>110</Skill_ID>
+<Skill_Name>Basic Web Design</Skill_Name>
+<Skill_Description>Create and maintain HTML and CSS documents.</Skill_Description>
+</Skill>
+<Skill>
+<Skill_ID>120</Skill_ID>
+<Skill_Name>Advanced Spreadsheets</Skill_Name>
+<Skill_Description>Use of advanced functions, user-defined functions, and macroing.</Skill_Description>
+</Skill>
+<Skill>
+<Skill_ID>130</Skill_ID>
+<Skill_Name>Basic Process Modeling</Skill_Name>
+<Skill_Description>Create core business process models using standard libraries.</Skill_Description>
+</Skill>
+<Skill>
+<Skill_ID>140</Skill_ID>
+<Skill_Name>Basic Database Design</Skill_Name>
+<Skill_Description>Create simple data models.</Skill_Description>
+</Skill>
+<Skill>
+<Skill_ID>150</Skill_ID>
+<Skill_Name>Master Database Programming</Skill_Name>
+<Skill_Description>Create integrated trigger and procedure packages for a distributed environment.</Skill_Description>
+</Skill>
+<Skill>
+<Skill_ID>160</Skill_ID>
+<Skill_Name>Basic Spreadsheets</Skill_Name>
+<Skill_Description>Create single tab worksheets with basic formulas</Skill_Description>
+</Skill>
+<Skill>
+<Skill_ID>170</Skill_ID>
+<Skill_Name>Basic C# Programming</Skill_Name>
+<Skill_Description>Create single-tier data aware modules.</Skill_Description>
+</Skill>
+<Skill>
+<Skill_ID>180</Skill_ID>
+<Skill_Name>Advanced Database Management</Skill_Name>
+<Skill_Description>Manage Database Server Clusters.</Skill_Description>
+</Skill>
+<Skill>
+<Skill_ID>190</Skill_ID>
+<Skill_Name>Advance Process Modeling</Skill_Name>
+<Skill_Description>Evaluate and Redesign cross-functional internal and external business processes.</Skill_Description>
+</Skill>
+<Skill>
+<Skill_ID>200</Skill_ID>
+<Skill_Name>Advanced C# Programming</Skill_Name>
+<Skill_Description>Create multi-tier applications using multi-threading</Skill_Description>
+</Skill>
+<Skill>
+<Skill_ID>210</Skill_ID>
+<Skill_Name>Basic Database Manipulation</Skill_Name>
+<Skill_Description>Create simple data retrieval and manipulation statements in SQL.</Skill_Description>
+</Skill>
+<Skill>
+<Skill_ID>220</Skill_ID>
+<Skill_Name>Advanced Database Manipulation</Skill_Name>
+<Skill_Description>Use of advanced data manipulation methods for multi-table inserts, set operations, and correlated subqueries.</Skill_Description>
+</Skill>
+</dataroot>

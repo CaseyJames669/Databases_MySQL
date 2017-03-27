@@ -1,0 +1,205 @@
+-- PROBLEM 16
+
+SELECT PROJ_NAME, ROUND(PROJ_VALUE, 2) AS PR_VALUE, ROUND(PROJ_BALANCE, 2) AS PR_BALANCE,
+EMPLOYEE.EMP_LNAME, EMP_FNAME, EMP_INITIAL, EMPLOYEE.JOB_CODE,
+JOB_DESCRIPTION, JOB_CHG_HOUR AS JCH
+FROM PROJECT, EMPLOYEE, JOB
+WHERE EMPLOYEE.EMP_NUM = PROJECT.EMP_NUM
+AND JOB.JOB_CODE = EMPLOYEE.JOB_CODE;
+
++--------------+------------+------------+------------+-----------+-------------+----------+---------------------+-------+
+| PROJ_NAME    | PR_VALUE   | PR_BALANCE | EMP_LNAME  | EMP_FNAME | EMP_INITIAL | JOB_CODE | JOB_DESCRIPTION     | JCH   |
++--------------+------------+------------+------------+-----------+-------------+----------+---------------------+-------+
+| Evergreen    | 1453500.00 | 1002350.00 | Arbough    | June      | E           | 503      | Electrical Engineer |  84.5 |
+| Amber Wave   | 3500500.00 | 2110346.00 | Washington | Ralph     | B           | 501      | Systems Analyst     | 96.75 |
+| Rolling Tide |  805000.00 |  500345.19 | Senior     | David     | H           | 501      | Systems Analyst     | 96.75 |
+| Starflight   | 2650500.00 | 2309880.00 | Alonzo     | Maria     | D           | 500      | Programmer          | 35.75 |
++--------------+------------+------------+------------+-----------+-------------+----------+---------------------+-------+
+
+-- PROBLEM 17
+
+CREATE VIEW REP_1 AS
+SELECT PROJ_NAME, ROUND(PROJ_VALUE, 2) AS PR_VALUE, ROUND(PROJ_BALANCE, 2) AS PR_BALANCE,
+EMPLOYEE.EMP_LNAME, EMP_FNAME, EMP_INITIAL, EMPLOYEE.JOB_CODE,
+JOB_DESCRIPTION, JOB_CHG_HOUR AS JCH
+FROM PROJECT, EMPLOYEE, JOB
+WHERE EMPLOYEE.EMP_NUM = PROJECT.EMP_NUM
+AND JOB.JOB_CODE = EMPLOYEE.JOB_CODE;
+
+SELECT * FROM REP_1;
+
++--------------+------------+------------+------------+-----------+-------------+----------+---------------------+-------+
+| PROJ_NAME    | PR_VALUE   | PR_BALANCE | EMP_LNAME  | EMP_FNAME | EMP_INITIAL | JOB_CODE | JOB_DESCRIPTION     | JCH   |
++--------------+------------+------------+------------+-----------+-------------+----------+---------------------+-------+
+| Evergreen    | 1453500.00 | 1002350.00 | Arbough    | June      | E           | 503      | Electrical Engineer |  84.5 |
+| Amber Wave   | 3500500.00 | 2110346.00 | Washington | Ralph     | B           | 501      | Systems Analyst     | 96.75 |
+| Rolling Tide |  805000.00 |  500345.19 | Senior     | David     | H           | 501      | Systems Analyst     | 96.75 |
+| Starflight   | 2650500.00 | 2309880.00 | Alonzo     | Maria     | D           | 500      | Programmer          | 35.75 |
++--------------+------------+------------+------------+-----------+-------------+----------+---------------------+-------+
+
+
+-- PROBLEM 21
+
+UPDATE ASSIGNMENT
+SET ASSIGN_CHARGE = ASSIGN_CHG_HR * ASSIGN_HOURS;
+
+Query OK, 8 rows affected (0.00 sec)
+Rows matched: 25  Changed: 8  Warnings: 0
+
+SELECT * FROM ASSIGNMENT;
+
++------------+-------------+----------+---------+------------+---------------+--------------+---------------+
+| ASSIGN_NUM | ASSIGN_DATE | PROJ_NUM | EMP_NUM | ASSIGN_JOB | ASSIGN_CHG_HR | ASSIGN_HOURS | ASSIGN_CHARGE |
++------------+-------------+----------+---------+------------+---------------+--------------+---------------+
+|       1001 | 2012-03-22  | 18       | 103     | 503        |          84.5 |          3.5 |        295.75 |
+|       1002 | 2012-03-22  | 22       | 117     | 509        |         34.55 |          4.2 |        145.11 |
+|       1003 | 2012-03-22  | 18       | 117     | 509        |         34.55 |            2 |          69.1 |
+|       1004 | 2012-03-22  | 18       | 103     | 503        |          84.5 |          5.9 |        498.55 |
+|       1005 | 2012-03-22  | 25       | 108     | 501        |         96.75 |          2.2 |        212.85 |
+|       1006 | 2012-03-22  | 22       | 104     | 501        |         96.75 |          4.2 |        406.35 |
+|       1007 | 2012-03-22  | 25       | 113     | 508        |         50.75 |          3.8 |        192.85 |
+|       1008 | 2012-03-22  | 18       | 103     | 503        |          84.5 |          0.9 |         76.05 |
+|       1009 | 2012-03-23  | 15       | 115     | 501        |         96.75 |          5.6 |         541.8 |
+|       1010 | 2012-03-23  | 15       | 117     | 509        |         34.55 |          2.4 |         82.92 |
+|       1011 | 2012-03-23  | 25       | 105     | 502        |           105 |          4.3 |         451.5 |
+|       1012 | 2012-03-23  | 18       | 108     | 501        |         96.75 |          3.4 |        328.95 |
+|       1013 | 2012-03-23  | 25       | 115     | 501        |         96.75 |            2 |         193.5 |
+|       1014 | 2012-03-23  | 22       | 104     | 501        |         96.75 |          2.8 |         270.9 |
+|       1015 | 2012-03-23  | 15       | 103     | 503        |          84.5 |          6.1 |        515.45 |
+|       1016 | 2012-03-23  | 22       | 105     | 502        |           105 |          4.7 |         493.5 |
+|       1017 | 2012-03-23  | 18       | 117     | 509        |         34.55 |          3.8 |        131.29 |
+|       1018 | 2012-03-23  | 25       | 117     | 509        |         34.55 |          2.2 |         76.01 |
+|       1019 | 2012-03-24  | 25       | 104     | 501        |         110.5 |          4.9 |        541.45 |
+|       1020 | 2012-03-24  | 15       | 101     | 502        |           125 |          3.1 |         387.5 |
+|       1021 | 2012-03-24  | 22       | 108     | 501        |         110.5 |          2.7 |        298.35 |
+|       1022 | 2012-03-24  | 22       | 115     | 501        |         110.5 |          4.9 |        541.45 |
+|       1023 | 2012-03-24  | 22       | 105     | 502        |           125 |          3.5 |         437.5 |
+|       1024 | 2012-03-24  | 15       | 103     | 503        |          84.5 |          3.3 |        278.85 |
+|       1025 | 2012-03-24  | 18       | 117     | 509        |         34.55 |          4.2 |        145.11 |
++------------+-------------+----------+---------+------------+---------------+--------------+---------------+
+
+-- PROBLEM 22
+
+CREATE VIEW P_22 AS
+SELECT ASSIGNMENT.EMP_NUM, EMPLOYEE.EMP_LNAME,
+	ROUND(SUM(ASSIGNMENT.ASSIGN_HOURS), 1) AS SumOfASSIGN_HOURS,
+	ROUND(SUM(ASSIGNMENT.ASSIGN_CHARGE), 2) AS SumOfASSIGN_CHARGE
+FROM EMPLOYEE, ASSIGNMENT
+WHERE EMPLOYEE.EMP_NUM = ASSIGNMENT.EMP_NUM
+GROUP BY ASSIGNMENT.EMP_NUM, EMPLOYEE.EMP_LNAME;
+
+SELECT * FROM P_22;
+
++---------+------------+-------------------+--------------------+
+| EMP_NUM | EMP_LNAME  | SumOfASSIGN_HOURS | SumOfASSIGN_CHARGE |
++---------+------------+-------------------+--------------------+
+| 101     | News       |               3.1 |             387.50 |
+| 103     | Arbough    |              19.7 |            1664.65 |
+| 104     | Ramoras    |              11.9 |            1218.70 |
+| 105     | Johnson    |              12.5 |            1382.50 |
+| 108     | Washington |               8.3 |             840.15 |
+| 113     | Joenbrood  |               3.8 |             192.85 |
+| 115     | Bawangi    |              12.5 |            1276.75 |
+| 117     | Williamson |              18.8 |             649.54 |
++---------+------------+-------------------+--------------------+
+
+-- PROBLEM 23
+
+CREATE VIEW P_23 AS
+SELECT ASSIGNMENT.PROJ_NUM,
+	ROUND(SUM(ASSIGNMENT.ASSIGN_HOURS), 1) AS SumOfASSIGN_HOURS,
+	ROUND(SUM(ASSIGNMENT.ASSIGN_CHARGE), 2) AS SumOfASSIGN_CHARGE
+FROM ASSIGNMENT
+GROUP BY ASSIGNMENT.PROJ_NUM;
+
+SELECT * FROM P_23;
+
++----------+-------------------+--------------------+
+| PROJ_NUM | SumOfASSIGN_HOURS | SumOfASSIGN_CHARGE |
++----------+-------------------+--------------------+
+| 15       |              20.5 |            1806.52 |
+| 18       |              23.7 |            1544.80 |
+| 22       |              27.0 |            2593.16 |
+| 25       |              19.4 |            1668.16 |
++----------+-------------------+--------------------+
+
+-- PROBLEM 24
+
+SELECT SUM(SumOfASSIGN_HOURS) AS SumOfSumOfASSIGN_HOURS,
+	SUM(SumOfASSIGN_CHARGE) AS SumOfSumOfASSIN_CHARGE
+FROM P_22;
+
++------------------------+------------------------+
+| SumOfSumOfASSIGN_HOURS | SumOfSumOfASSIN_CHARGE |
++------------------------+------------------------+
+|                   90.6 |                7612.64 |
++------------------------+------------------------+
+
+-- PROBLEM 25
+
+SELECT SUM(SumOfASSIGN_HOURS) AS SumOfSumOfASSIGN_HOURS,
+	SUM(SumOfASSIGN_CHARGE) AS SumOfSumOfASSIN_CHARGE
+FROM P_23;
+
++------------------------+------------------------+
+| SumOfSumOfASSIGN_HOURS | SumOfSumOfASSIN_CHARGE |
++------------------------+------------------------+
+|                   90.6 |                7612.64 |
++------------------------+------------------------+
+
+-- USE SaleCo DATABASE
+
+-- PROBLEM 26
+
+SELECT COUNT(*) AS NumberOfInvoices FROM INVOICE;
+
++------------------+
+| NumberOfInvoices |
++------------------+
+|                8 |
++------------------+
+
+-- PROBLEM 27
+
+SELECT COUNT(*) AS CUSTOMER_500
+FROM CUSTOMER
+WHERE CUS_BALANCE > 500;
+
++--------------+
+| CUSTOMER_500 |
++--------------+
+|            2 |
++--------------+
+
+-- PROBLEM 28
+
+SELECT INVOICE.CUS_CODE, INVOICE.INV_NUMBER, INVOICE.INV_DATE,
+	PRODUCT.P_DESCRIPT, LINE.LINE_UNITS, LINE.LINE_PRICE
+FROM CUSTOMER, INVOICE, LINE, PRODUCT
+WHERE CUSTOMER.CUS_CODE = INVOICE.CUS_CODE
+AND INVOICE.INV_NUMBER = LINE.INV_NUMBER
+AND PRODUCT.P_CODE = LINE.P_CODE
+ORDER BY INVOICE.CUS_CODE, INVOICE.INV_NUMBER, PRODUCT.P_DESCRIPT;
+
++----------+------------+------------+-------------------------------------+------------+------------+
+| CUS_CODE | INV_NUMBER | INV_DATE   | P_DESCRIPT                          | LINE_UNITS | LINE_PRICE |
++----------+------------+------------+-------------------------------------+------------+------------+
+|    10011 |       1002 | 2012-01-16 | Rat-tail file, 1/8-in. fine         |       2.00 |       4.99 |
+|    10011 |       1004 | 2012-01-17 | Claw hammer                         |       2.00 |       9.95 |
+|    10011 |       1004 | 2012-01-17 | Rat-tail file, 1/8-in. fine         |       3.00 |       4.99 |
+|    10011 |       1008 | 2012-01-17 | Claw hammer                         |       1.00 |       9.95 |
+|    10011 |       1008 | 2012-01-17 | PVC pipe, 3.5-in., 8-ft             |       5.00 |       5.87 |
+|    10011 |       1008 | 2012-01-17 | Steel matting, 4'x8'x1/6", .5" mesh |       3.00 |     119.95 |
+|    10012 |       1003 | 2012-01-16 | 7.25-in. pwr. saw blade             |       5.00 |      14.99 |
+|    10012 |       1003 | 2012-01-16 | B&D cordless drill, 1/2-in.         |       1.00 |      38.95 |
+|    10012 |       1003 | 2012-01-16 | Hrd. cloth, 1/4-in., 2x50           |       1.00 |      39.95 |
+|    10014 |       1001 | 2012-01-16 | 7.25-in. pwr. saw blade             |       1.00 |      14.99 |
+|    10014 |       1001 | 2012-01-16 | Claw hammer                         |       1.00 |       9.95 |
+|    10014 |       1006 | 2012-01-17 | 1.25-in. metal screw, 25            |       3.00 |       6.99 |
+|    10014 |       1006 | 2012-01-17 | B&D jigsaw, 12-in. blade            |       1.00 |     109.92 |
+|    10014 |       1006 | 2012-01-17 | Claw hammer                         |       1.00 |       9.95 |
+|    10014 |       1006 | 2012-01-17 | Hicut chain saw, 16 in.             |       1.00 |     256.99 |
+|    10015 |       1007 | 2012-01-17 | 7.25-in. pwr. saw blade             |       2.00 |      14.99 |
+|    10015 |       1007 | 2012-01-17 | Rat-tail file, 1/8-in. fine         |       1.00 |       4.99 |
+|    10018 |       1005 | 2012-01-17 | PVC pipe, 3.5-in., 8-ft             |      12.00 |       5.87 |
++----------+------------+------------+-------------------------------------+------------+------------+

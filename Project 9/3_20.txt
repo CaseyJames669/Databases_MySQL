@@ -1,0 +1,1239 @@
+=~=~=~=~=~=~=~=~=~=~=~= PuTTY log 2013.03.20 14:57:31 =~=~=~=~=~=~=~=~=~=~=~=
+login as: bladowca
+Puff.mnstate.edu uses DragonNet (email
+username/password) credentials for logins
+bladowca@puff.mnstate.edu's password: 
+Last login: Sun Mar 10 17:40:39 2013 from 67-7-103-81.frgo.qwest.net
+]0;bladowca@puff:~[bladowca@puff ~]$ mysql -u bladowca -p[7Pshow databasemysql -u bladowca -p
+Enter password: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 7953
+Server version: 5.0.95 Source distribution
+
+Copyright (c) 2000, 2011, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> [Kmysql> [Kmysql> [Kmysql> show dta  atabases
+    -> ;
++--------------------------+
+| Database                 |
++--------------------------+
+| information_schema       | 
+| bladowca_ch7_ConstructCo | 
+| bladowca_ch7_SaleCo      | 
++--------------------------+
+3 rows in set (0.01 sec)
+
+mysql> create bvl  ladowca_ch8_Salec Co;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'bladowca_ch8_SaleCo' at line 1
+mysql> create bladowca_ch8_SaleCo; 
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'bladowca_ch8_SaleCo' at line 1
+mysql> ;create bladowca_ch8_SaleCo[1P[1P[1P[1P[1P[1P[1@u[1@s[1@e
+ERROR 1049 (42000): Unknown database 'bladowca_ch8_SaleCo'
+mysql> use bladowca_ch8_SaleComysql> ;[Kcreate bladowca_ch8_SaleCo; [1@ [1@d[1@a[1@t[1@a[1@b[1@s[1@e[1P[1P[1@a[1@s[1@e
+Query OK, 1 row affected (0.00 sec)
+
+mysql> show databases ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'database' at line 1
+mysql> show database;s;
++--------------------------+
+| Database                 |
++--------------------------+
+| information_schema       | 
+| bladowca_ch7_ConstructCo | 
+| bladowca_ch7_SaleCo      | 
+| bladowca_ch8_SaleCo      | 
++--------------------------+
+4 rows in set (0.01 sec)
+
+mysql> use bladowca_ch8_SaleCo;
+Database changed
+mysql> source ch8_SaleCo o.txt;
+ERROR: 
+Failed to open file 'ch8_SaleCo.txt', error: 2
+mysql> Ctrl-C -- exit!
+Aborted
+]0;bladowca@puff:~[bladowca@puff ~]$ ls
+[00m[00;34mCSIS304[00m  [00;34mpublic_html[00m
+[m]0;bladowca@puff:~[bladowca@puff ~]$ cs CSIS304[1P[1@d
+-bash: ds: command not found
+]0;bladowca@puff:~[bladowca@puff ~]$ ds CSIS304[C[1P CSIS304[1P CSIS304c CSIS304d CSIS304
+]0;bladowca@puff:~/CSIS304[bladowca@puff CSIS304]$ kls[K[K[Kls
+[00m[00;34mch7[00m  [00;34mch8[00m
+[m]0;bladowca@puff:~/CSIS304[bladowca@puff CSIS304]$ cd ch8;
+]0;bladowca@puff:~/CSIS304/ch8[bladowca@puff ch8]$ ls
+[00m[00mch8_SaleCo.txt[00m  [00mch8_SimpleCo.txt[00m
+[m]0;bladowca@puff:~/CSIS304/ch8[bladowca@puff ch8]$ lscd ch8;ls[Kcd CSIS304ds[C[C[C[C[C[C[C[Cls[Kmysql -u bladowca -p
+Enter password: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 7996
+Server version: 5.0.95 Source distribution
+
+Copyright (c) 2000, 2011, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases;
++--------------------------+
+| Database                 |
++--------------------------+
+| information_schema       | 
+| bladowca_ch7_ConstructCo | 
+| bladowca_ch7_SaleCo      | 
+| bladowca_ch8_SaleCo      | 
++--------------------------+
+4 rows in set (0.01 sec)
+
+mysql> use bladowca_ch8_SaleCo;. 
+Database changed
+mysql> use bladowca_ch8_SaleCo;mysql> [9Pshow databases;mysql> s[7@ource ch8_SaleCo.txt;mysql> [2@use bladowca_ch8_SaleCo;mysql> [9Pshow databases;[1P;s;mysql> [9@use bladowca_ch8_SaleCo;mysql> [2Psource ch8_SaleCo.txt;
+ERROR 1051 (42S02): Unknown table 'LINE'
+ERROR 1051 (42S02): Unknown table 'INVOICE'
+ERROR 1051 (42S02): Unknown table 'CUSTOMER'
+ERROR 1051 (42S02): Unknown table 'CUSTOMER_2'
+ERROR 1051 (42S02): Unknown table 'PRODUCT'
+ERROR 1051 (42S02): Unknown table 'VENDOR'
+Query OK, 0 rows affected (0.03 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 0 rows affected (0.04 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.01 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 0 rows affected (0.03 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 0 rows affected (0.03 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 0 rows affected (0.05 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 0 rows affected (0.03 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.01 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+mysql> show full;    tables;
++-------------------------------+------------+
+| Tables_in_bladowca_ch8_SaleCo | Table_type |
++-------------------------------+------------+
+| CUSTOMER                      | BASE TABLE | 
+| CUSTOMER_2                    | BASE TABLE | 
+| INVOICE                       | BASE TABLE | 
+| LINE                          | BASE TABLE | 
+| PRODUCT                       | BASE TABLE | 
+| VENDOR                        | BASE TABLE | 
++-------------------------------+------------+
+6 rows in set (0.00 sec)
+
+mysql> show full tables;mysql> s[5@ource ch8_SaleCo.txt;mysql> [2@use bladowca_ch8_SaleCo;mysql> [9Pshow databases;mysql> s[7@ource ch8_SaleCo.txt;mysql> [2@use bladowca_ch8_SaleCo;mysql> [9Pshow databases;[1P;s;
++--------------------------+
+| Database                 |
++--------------------------+
+| information_schema       | 
+| bladowca_ch7_ConstructCo | 
+| bladowca_ch7_SaleCo      | 
+| bladowca_ch8_SaleCo      | 
++--------------------------+
+4 rows in set (0.01 sec)
+
+mysql> create database bladowca_ch8_SimpleCo;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> show databases;
++--------------------------+
+| Database                 |
++--------------------------+
+| information_schema       | 
+| bladowca_ch7_ConstructCo | 
+| bladowca_ch7_SaleCo      | 
+| bladowca_ch8_SaleCo      | 
+| bladowca_ch8_SimpleCo    | 
++--------------------------+
+5 rows in set (0.01 sec)
+
+mysql> show databases;mysql> [23@create database bladowca_ch8_SimpleCo;mysql> [23Pshow databases;mysql> [23@create database bladowca_ch8_SimpleCo;[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1@u[1@s[1@e
+Database changed
+mysql> source ch8_SimpleCo.txt;
+ERROR 1051 (42S02): Unknown table 'INVOICE'
+ERROR 1051 (42S02): Unknown table 'CUSTOMER'
+ERROR 1051 (42S02): Unknown table 'CUSTOMER_2'
+Query OK, 0 rows affected (0.02 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 0 rows affected (0.03 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 0 rows affected (0.03 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+mysql> show full tables;
++---------------------------------+------------+
+| Tables_in_bladowca_ch8_SimpleCo | Table_type |
++---------------------------------+------------+
+| CUSTOMER                        | BASE TABLE | 
+| CUSTOMER_2                      | BASE TABLE | 
+| INVOICE                         | BASE TABLE | 
++---------------------------------+------------+
+3 rows in set (0.00 sec)
+
+mysql> show full tables;mysql> s[7@ource ch8_SimpleCo.txt;mysql> [2@use bladowca_ch8_SimpleCo;mysql> [11Pshow databases;mysql> [23@create database bladowca_ch8_SimpleCo;mysql> [23Pshow databases;mysql> [23@create database bladowca_ch8_SimpleCo;mysql> [23Pshow databases;mysql> [23@create database bladowca_ch8_SimpleCo;mysql> [23Pshow databases;[2@full tables;mysql> s[5@ource ch8_SaleCo.txt;mysql> [2@use bladowca_ch8_SaleCo;mysql> [9Pshow databases;mysql> s[7@ource ch8_SaleCo.txt;mysql> s[7Phow databases;mysql> [9@use bladowca_ch8_SaleCo;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> show full tables;
++-------------------------------+------------+
+| Tables_in_bladowca_ch8_SaleCo | Table_type |
++-------------------------------+------------+
+| CUSTOMER                      | BASE TABLE | 
+| CUSTOMER_2                    | BASE TABLE | 
+| INVOICE                       | BASE TABLE | 
+| LINE                          | BASE TABLE | 
+| PRODUCT                       | BASE TABLE | 
+| VENDOR                        | BASE TABLE | 
++-------------------------------+------------+
+6 rows in set (0.00 sec)
+
+mysql> SELECT DATEDIFF(DATE('2013/12/25'), DATE('2013-11-25')) 
+    -> FROM DUAL;
++--------------------------------------------------+
+| DATEDIFF(DATE('2013/12/25'), DATE('2013-11-25')) |
++--------------------------------------------------+
+|                                               30 | 
++--------------------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT CUS_CODE, CUS_LNAME, INV_NUMBER, INV_DATE
+    -> FROM CUSTOMER NATURAL JOIN INVOICE;
++----------+-----------+------------+------------+
+| CUS_CODE | CUS_LNAME | INV_NUMBER | INV_DATE   |
++----------+-----------+------------+------------+
+|    10014 | Orlando   |       1001 | 2010-01-16 | 
+|    10011 | Dunne     |       1002 | 2010-01-16 | 
+|    10012 | Smith     |       1003 | 2010-01-16 | 
+|    10011 | Dunne     |       1004 | 2010-01-17 | 
+|    10018 | Farriss   |       1005 | 2010-01-17 | 
+|    10014 | Orlando   |       1006 | 2010-01-17 | 
+|    10015 | O'Brian   |       1007 | 2010-01-17 | 
+|    10011 | Dunne     |       1008 | 2010-01-17 | 
++----------+-----------+------------+------------+
+8 rows in set (0.00 sec)
+
+mysql> SELECT CUSTOMER.CUS_CODE, CUS_LNAME, INV_NUMBER, INV_DATE
+    -> FROM CUSTOMER INNER JOIN INVOICE ON
+    -> CUSTOMER.CUS_CODE=INVOICE.CUS_CODE
+    -> ORDER BY CUSTOMER.CUS_CODE;
++----------+-----------+------------+------------+
+| CUS_CODE | CUS_LNAME | INV_NUMBER | INV_DATE   |
++----------+-----------+------------+------------+
+|    10011 | Dunne     |       1008 | 2010-01-17 | 
+|    10011 | Dunne     |       1002 | 2010-01-16 | 
+|    10011 | Dunne     |       1004 | 2010-01-17 | 
+|    10012 | Smith     |       1003 | 2010-01-16 | 
+|    10014 | Orlando   |       1001 | 2010-01-16 | 
+|    10014 | Orlando   |       1006 | 2010-01-17 | 
+|    10015 | O'Brian   |       1007 | 2010-01-17 | 
+|    10018 | Farriss   |       1005 | 2010-01-17 | 
++----------+-----------+------------+------------+
+8 rows in set (0.00 sec)
+
+mysql> -- CROSS JOINS (PRODUCT)
+mysql> SELECT * FROM INVOICE CROSS JOIN LINE;
++------------+----------+------------+------------+-------------+----------+------------+------------+
+| INV_NUMBER | CUS_CODE | INV_DATE   | INV_NUMBER | LINE_NUMBER | P_CODE   | LINE_UNITS | LINE_PRICE |
++------------+----------+------------+------------+-------------+----------+------------+------------+
+|       1001 |    10014 | 2010-01-16 |       1001 |           1 | 13-Q2/P2 |       1.00 |      14.99 | 
+|       1002 |    10011 | 2010-01-16 |       1001 |           1 | 13-Q2/P2 |       1.00 |      14.99 | 
+|       1003 |    10012 | 2010-01-16 |       1001 |           1 | 13-Q2/P2 |       1.00 |      14.99 | 
+|       1004 |    10011 | 2010-01-17 |       1001 |           1 | 13-Q2/P2 |       1.00 |      14.99 | 
+|       1005 |    10018 | 2010-01-17 |       1001 |           1 | 13-Q2/P2 |       1.00 |      14.99 | 
+|       1006 |    10014 | 2010-01-17 |       1001 |           1 | 13-Q2/P2 |       1.00 |      14.99 | 
+|       1007 |    10015 | 2010-01-17 |       1001 |           1 | 13-Q2/P2 |       1.00 |      14.99 | 
+|       1008 |    10011 | 2010-01-17 |       1001 |           1 | 13-Q2/P2 |       1.00 |      14.99 | 
+|       1001 |    10014 | 2010-01-16 |       1001 |           2 | 23109-HB |       1.00 |       9.95 | 
+|       1002 |    10011 | 2010-01-16 |       1001 |           2 | 23109-HB |       1.00 |       9.95 | 
+|       1003 |    10012 | 2010-01-16 |       1001 |           2 | 23109-HB |       1.00 |       9.95 | 
+|       1004 |    10011 | 2010-01-17 |       1001 |           2 | 23109-HB |       1.00 |       9.95 | 
+|       1005 |    10018 | 2010-01-17 |       1001 |           2 | 23109-HB |       1.00 |       9.95 | 
+|       1006 |    10014 | 2010-01-17 |       1001 |           2 | 23109-HB |       1.00 |       9.95 | 
+|       1007 |    10015 | 2010-01-17 |       1001 |           2 | 23109-HB |       1.00 |       9.95 | 
+|       1008 |    10011 | 2010-01-17 |       1001 |           2 | 23109-HB |       1.00 |       9.95 | 
+|       1001 |    10014 | 2010-01-16 |       1002 |           1 | 54778-2T |       2.00 |       4.99 | 
+|       1002 |    10011 | 2010-01-16 |       1002 |           1 | 54778-2T |       2.00 |       4.99 | 
+|       1003 |    10012 | 2010-01-16 |       1002 |           1 | 54778-2T |       2.00 |       4.99 | 
+|       1004 |    10011 | 2010-01-17 |       1002 |           1 | 54778-2T |       2.00 |       4.99 | 
+|       1005 |    10018 | 2010-01-17 |       1002 |           1 | 54778-2T |       2.00 |       4.99 | 
+|       1006 |    10014 | 2010-01-17 |       1002 |           1 | 54778-2T |       2.00 |       4.99 | 
+|       1007 |    10015 | 2010-01-17 |       1002 |           1 | 54778-2T |       2.00 |       4.99 | 
+|       1008 |    10011 | 2010-01-17 |       1002 |           1 | 54778-2T |       2.00 |       4.99 | 
+|       1001 |    10014 | 2010-01-16 |       1003 |           1 | 2238/QPD |       1.00 |      38.95 | 
+|       1002 |    10011 | 2010-01-16 |       1003 |           1 | 2238/QPD |       1.00 |      38.95 | 
+|       1003 |    10012 | 2010-01-16 |       1003 |           1 | 2238/QPD |       1.00 |      38.95 | 
+|       1004 |    10011 | 2010-01-17 |       1003 |           1 | 2238/QPD |       1.00 |      38.95 | 
+|       1005 |    10018 | 2010-01-17 |       1003 |           1 | 2238/QPD |       1.00 |      38.95 | 
+|       1006 |    10014 | 2010-01-17 |       1003 |           1 | 2238/QPD |       1.00 |      38.95 | 
+|       1007 |    10015 | 2010-01-17 |       1003 |           1 | 2238/QPD |       1.00 |      38.95 | 
+|       1008 |    10011 | 2010-01-17 |       1003 |           1 | 2238/QPD |       1.00 |      38.95 | 
+|       1001 |    10014 | 2010-01-16 |       1003 |           2 | 1546-QQ2 |       1.00 |      39.95 | 
+|       1002 |    10011 | 2010-01-16 |       1003 |           2 | 1546-QQ2 |       1.00 |      39.95 | 
+|       1003 |    10012 | 2010-01-16 |       1003 |           2 | 1546-QQ2 |       1.00 |      39.95 | 
+|       1004 |    10011 | 2010-01-17 |       1003 |           2 | 1546-QQ2 |       1.00 |      39.95 | 
+|       1005 |    10018 | 2010-01-17 |       1003 |           2 | 1546-QQ2 |       1.00 |      39.95 | 
+|       1006 |    10014 | 2010-01-17 |       1003 |           2 | 1546-QQ2 |       1.00 |      39.95 | 
+|       1007 |    10015 | 2010-01-17 |       1003 |           2 | 1546-QQ2 |       1.00 |      39.95 | 
+|       1008 |    10011 | 2010-01-17 |       1003 |           2 | 1546-QQ2 |       1.00 |      39.95 | 
+|       1001 |    10014 | 2010-01-16 |       1003 |           3 | 13-Q2/P2 |       5.00 |      14.99 | 
+|       1002 |    10011 | 2010-01-16 |       1003 |           3 | 13-Q2/P2 |       5.00 |      14.99 | 
+|       1003 |    10012 | 2010-01-16 |       1003 |           3 | 13-Q2/P2 |       5.00 |      14.99 | 
+|       1004 |    10011 | 2010-01-17 |       1003 |           3 | 13-Q2/P2 |       5.00 |      14.99 | 
+|       1005 |    10018 | 2010-01-17 |       1003 |           3 | 13-Q2/P2 |       5.00 |      14.99 | 
+|       1006 |    10014 | 2010-01-17 |       1003 |           3 | 13-Q2/P2 |       5.00 |      14.99 | 
+|       1007 |    10015 | 2010-01-17 |       1003 |           3 | 13-Q2/P2 |       5.00 |      14.99 | 
+|       1008 |    10011 | 2010-01-17 |       1003 |           3 | 13-Q2/P2 |       5.00 |      14.99 | 
+|       1001 |    10014 | 2010-01-16 |       1004 |           1 | 54778-2T |       3.00 |       4.99 | 
+|       1002 |    10011 | 2010-01-16 |       1004 |           1 | 54778-2T |       3.00 |       4.99 | 
+|       1003 |    10012 | 2010-01-16 |       1004 |           1 | 54778-2T |       3.00 |       4.99 | 
+|       1004 |    10011 | 2010-01-17 |       1004 |           1 | 54778-2T |       3.00 |       4.99 | 
+|       1005 |    10018 | 2010-01-17 |       1004 |           1 | 54778-2T |       3.00 |       4.99 | 
+|       1006 |    10014 | 2010-01-17 |       1004 |           1 | 54778-2T |       3.00 |       4.99 | 
+|       1007 |    10015 | 2010-01-17 |       1004 |           1 | 54778-2T |       3.00 |       4.99 | 
+|       1008 |    10011 | 2010-01-17 |       1004 |           1 | 54778-2T |       3.00 |       4.99 | 
+|       1001 |    10014 | 2010-01-16 |       1004 |           2 | 23109-HB |       2.00 |       9.95 | 
+|       1002 |    10011 | 2010-01-16 |       1004 |           2 | 23109-HB |       2.00 |       9.95 | 
+|       1003 |    10012 | 2010-01-16 |       1004 |           2 | 23109-HB |       2.00 |       9.95 | 
+|       1004 |    10011 | 2010-01-17 |       1004 |           2 | 23109-HB |       2.00 |       9.95 | 
+|       1005 |    10018 | 2010-01-17 |       1004 |           2 | 23109-HB |       2.00 |       9.95 | 
+|       1006 |    10014 | 2010-01-17 |       1004 |           2 | 23109-HB |       2.00 |       9.95 | 
+|       1007 |    10015 | 2010-01-17 |       1004 |           2 | 23109-HB |       2.00 |       9.95 | 
+|       1008 |    10011 | 2010-01-17 |       1004 |           2 | 23109-HB |       2.00 |       9.95 | 
+|       1001 |    10014 | 2010-01-16 |       1005 |           1 | PVC23DRT |      12.00 |       5.87 | 
+|       1002 |    10011 | 2010-01-16 |       1005 |           1 | PVC23DRT |      12.00 |       5.87 | 
+|       1003 |    10012 | 2010-01-16 |       1005 |           1 | PVC23DRT |      12.00 |       5.87 | 
+|       1004 |    10011 | 2010-01-17 |       1005 |           1 | PVC23DRT |      12.00 |       5.87 | 
+|       1005 |    10018 | 2010-01-17 |       1005 |           1 | PVC23DRT |      12.00 |       5.87 | 
+|       1006 |    10014 | 2010-01-17 |       1005 |           1 | PVC23DRT |      12.00 |       5.87 | 
+|       1007 |    10015 | 2010-01-17 |       1005 |           1 | PVC23DRT |      12.00 |       5.87 | 
+|       1008 |    10011 | 2010-01-17 |       1005 |           1 | PVC23DRT |      12.00 |       5.87 | 
+|       1001 |    10014 | 2010-01-16 |       1006 |           1 | SM-18277 |       3.00 |       6.99 | 
+|       1002 |    10011 | 2010-01-16 |       1006 |           1 | SM-18277 |       3.00 |       6.99 | 
+|       1003 |    10012 | 2010-01-16 |       1006 |           1 | SM-18277 |       3.00 |       6.99 | 
+|       1004 |    10011 | 2010-01-17 |       1006 |           1 | SM-18277 |       3.00 |       6.99 | 
+|       1005 |    10018 | 2010-01-17 |       1006 |           1 | SM-18277 |       3.00 |       6.99 | 
+|       1006 |    10014 | 2010-01-17 |       1006 |           1 | SM-18277 |       3.00 |       6.99 | 
+|       1007 |    10015 | 2010-01-17 |       1006 |           1 | SM-18277 |       3.00 |       6.99 | 
+|       1008 |    10011 | 2010-01-17 |       1006 |           1 | SM-18277 |       3.00 |       6.99 | 
+|       1001 |    10014 | 2010-01-16 |       1006 |           2 | 2232/QTY |       1.00 |     109.92 | 
+|       1002 |    10011 | 2010-01-16 |       1006 |           2 | 2232/QTY |       1.00 |     109.92 | 
+|       1003 |    10012 | 2010-01-16 |       1006 |           2 | 2232/QTY |       1.00 |     109.92 | 
+|       1004 |    10011 | 2010-01-17 |       1006 |           2 | 2232/QTY |       1.00 |     109.92 | 
+|       1005 |    10018 | 2010-01-17 |       1006 |           2 | 2232/QTY |       1.00 |     109.92 | 
+|       1006 |    10014 | 2010-01-17 |       1006 |           2 | 2232/QTY |       1.00 |     109.92 | 
+|       1007 |    10015 | 2010-01-17 |       1006 |           2 | 2232/QTY |       1.00 |     109.92 | 
+|       1008 |    10011 | 2010-01-17 |       1006 |           2 | 2232/QTY |       1.00 |     109.92 | 
+|       1001 |    10014 | 2010-01-16 |       1006 |           3 | 23109-HB |       1.00 |       9.95 | 
+|       1002 |    10011 | 2010-01-16 |       1006 |           3 | 23109-HB |       1.00 |       9.95 | 
+|       1003 |    10012 | 2010-01-16 |       1006 |           3 | 23109-HB |       1.00 |       9.95 | 
+|       1004 |    10011 | 2010-01-17 |       1006 |           3 | 23109-HB |       1.00 |       9.95 | 
+|       1005 |    10018 | 2010-01-17 |       1006 |           3 | 23109-HB |       1.00 |       9.95 | 
+|       1006 |    10014 | 2010-01-17 |       1006 |           3 | 23109-HB |       1.00 |       9.95 | 
+|       1007 |    10015 | 2010-01-17 |       1006 |           3 | 23109-HB |       1.00 |       9.95 | 
+|       1008 |    10011 | 2010-01-17 |       1006 |           3 | 23109-HB |       1.00 |       9.95 | 
+|       1001 |    10014 | 2010-01-16 |       1006 |           4 | 89-WRE-Q |       1.00 |     256.99 | 
+|       1002 |    10011 | 2010-01-16 |       1006 |           4 | 89-WRE-Q |       1.00 |     256.99 | 
+|       1003 |    10012 | 2010-01-16 |       1006 |           4 | 89-WRE-Q |       1.00 |     256.99 | 
+|       1004 |    10011 | 2010-01-17 |       1006 |           4 | 89-WRE-Q |       1.00 |     256.99 | 
+|       1005 |    10018 | 2010-01-17 |       1006 |           4 | 89-WRE-Q |       1.00 |     256.99 | 
+|       1006 |    10014 | 2010-01-17 |       1006 |           4 | 89-WRE-Q |       1.00 |     256.99 | 
+|       1007 |    10015 | 2010-01-17 |       1006 |           4 | 89-WRE-Q |       1.00 |     256.99 | 
+|       1008 |    10011 | 2010-01-17 |       1006 |           4 | 89-WRE-Q |       1.00 |     256.99 | 
+|       1001 |    10014 | 2010-01-16 |       1007 |           1 | 13-Q2/P2 |       2.00 |      14.99 | 
+|       1002 |    10011 | 2010-01-16 |       1007 |           1 | 13-Q2/P2 |       2.00 |      14.99 | 
+|       1003 |    10012 | 2010-01-16 |       1007 |           1 | 13-Q2/P2 |       2.00 |      14.99 | 
+|       1004 |    10011 | 2010-01-17 |       1007 |           1 | 13-Q2/P2 |       2.00 |      14.99 | 
+|       1005 |    10018 | 2010-01-17 |       1007 |           1 | 13-Q2/P2 |       2.00 |      14.99 | 
+|       1006 |    10014 | 2010-01-17 |       1007 |           1 | 13-Q2/P2 |       2.00 |      14.99 | 
+|       1007 |    10015 | 2010-01-17 |       1007 |           1 | 13-Q2/P2 |       2.00 |      14.99 | 
+|       1008 |    10011 | 2010-01-17 |       1007 |           1 | 13-Q2/P2 |       2.00 |      14.99 | 
+|       1001 |    10014 | 2010-01-16 |       1007 |           2 | 54778-2T |       1.00 |       4.99 | 
+|       1002 |    10011 | 2010-01-16 |       1007 |           2 | 54778-2T |       1.00 |       4.99 | 
+|       1003 |    10012 | 2010-01-16 |       1007 |           2 | 54778-2T |       1.00 |       4.99 | 
+|       1004 |    10011 | 2010-01-17 |       1007 |           2 | 54778-2T |       1.00 |       4.99 | 
+|       1005 |    10018 | 2010-01-17 |       1007 |           2 | 54778-2T |       1.00 |       4.99 | 
+|       1006 |    10014 | 2010-01-17 |       1007 |           2 | 54778-2T |       1.00 |       4.99 | 
+|       1007 |    10015 | 2010-01-17 |       1007 |           2 | 54778-2T |       1.00 |       4.99 | 
+|       1008 |    10011 | 2010-01-17 |       1007 |           2 | 54778-2T |       1.00 |       4.99 | 
+|       1001 |    10014 | 2010-01-16 |       1008 |           1 | PVC23DRT |       5.00 |       5.87 | 
+|       1002 |    10011 | 2010-01-16 |       1008 |           1 | PVC23DRT |       5.00 |       5.87 | 
+|       1003 |    10012 | 2010-01-16 |       1008 |           1 | PVC23DRT |       5.00 |       5.87 | 
+|       1004 |    10011 | 2010-01-17 |       1008 |           1 | PVC23DRT |       5.00 |       5.87 | 
+|       1005 |    10018 | 2010-01-17 |       1008 |           1 | PVC23DRT |       5.00 |       5.87 | 
+|       1006 |    10014 | 2010-01-17 |       1008 |           1 | PVC23DRT |       5.00 |       5.87 | 
+|       1007 |    10015 | 2010-01-17 |       1008 |           1 | PVC23DRT |       5.00 |       5.87 | 
+|       1008 |    10011 | 2010-01-17 |       1008 |           1 | PVC23DRT |       5.00 |       5.87 | 
+|       1001 |    10014 | 2010-01-16 |       1008 |           2 | WR3/TT3  |       3.00 |     119.95 | 
+|       1002 |    10011 | 2010-01-16 |       1008 |           2 | WR3/TT3  |       3.00 |     119.95 | 
+|       1003 |    10012 | 2010-01-16 |       1008 |           2 | WR3/TT3  |       3.00 |     119.95 | 
+|       1004 |    10011 | 2010-01-17 |       1008 |           2 | WR3/TT3  |       3.00 |     119.95 | 
+|       1005 |    10018 | 2010-01-17 |       1008 |           2 | WR3/TT3  |       3.00 |     119.95 | 
+|       1006 |    10014 | 2010-01-17 |       1008 |           2 | WR3/TT3  |       3.00 |     119.95 | 
+|       1007 |    10015 | 2010-01-17 |       1008 |           2 | WR3/TT3  |       3.00 |     119.95 | 
+|       1008 |    10011 | 2010-01-17 |       1008 |           2 | WR3/TT3  |       3.00 |     119.95 | 
+|       1001 |    10014 | 2010-01-16 |       1008 |           3 | 23109-HB |       1.00 |       9.95 | 
+|       1002 |    10011 | 2010-01-16 |       1008 |           3 | 23109-HB |       1.00 |       9.95 | 
+|       1003 |    10012 | 2010-01-16 |       1008 |           3 | 23109-HB |       1.00 |       9.95 | 
+|       1004 |    10011 | 2010-01-17 |       1008 |           3 | 23109-HB |       1.00 |       9.95 | 
+|       1005 |    10018 | 2010-01-17 |       1008 |           3 | 23109-HB |       1.00 |       9.95 | 
+|       1006 |    10014 | 2010-01-17 |       1008 |           3 | 23109-HB |       1.00 |       9.95 | 
+|       1007 |    10015 | 2010-01-17 |       1008 |           3 | 23109-HB |       1.00 |       9.95 | 
+|       1008 |    10011 | 2010-01-17 |       1008 |           3 | 23109-HB |       1.00 |       9.95 | 
++------------+----------+------------+------------+-------------+----------+------------+------------+
+144 rows in set (0.00 sec)
+
+mysql> SELECT INVOICE.INV_NUMBER, CUS_CODE, INV_DATE, P_CODE
+    -> FROM INVOICE CROSS JOIN LINE;
++------------+----------+------------+----------+
+| INV_NUMBER | CUS_CODE | INV_DATE   | P_CODE   |
++------------+----------+------------+----------+
+|       1001 |    10014 | 2010-01-16 | 13-Q2/P2 | 
+|       1002 |    10011 | 2010-01-16 | 13-Q2/P2 | 
+|       1003 |    10012 | 2010-01-16 | 13-Q2/P2 | 
+|       1004 |    10011 | 2010-01-17 | 13-Q2/P2 | 
+|       1005 |    10018 | 2010-01-17 | 13-Q2/P2 | 
+|       1006 |    10014 | 2010-01-17 | 13-Q2/P2 | 
+|       1007 |    10015 | 2010-01-17 | 13-Q2/P2 | 
+|       1008 |    10011 | 2010-01-17 | 13-Q2/P2 | 
+|       1001 |    10014 | 2010-01-16 | 23109-HB | 
+|       1002 |    10011 | 2010-01-16 | 23109-HB | 
+|       1003 |    10012 | 2010-01-16 | 23109-HB | 
+|       1004 |    10011 | 2010-01-17 | 23109-HB | 
+|       1005 |    10018 | 2010-01-17 | 23109-HB | 
+|       1006 |    10014 | 2010-01-17 | 23109-HB | 
+|       1007 |    10015 | 2010-01-17 | 23109-HB | 
+|       1008 |    10011 | 2010-01-17 | 23109-HB | 
+|       1001 |    10014 | 2010-01-16 | 54778-2T | 
+|       1002 |    10011 | 2010-01-16 | 54778-2T | 
+|       1003 |    10012 | 2010-01-16 | 54778-2T | 
+|       1004 |    10011 | 2010-01-17 | 54778-2T | 
+|       1005 |    10018 | 2010-01-17 | 54778-2T | 
+|       1006 |    10014 | 2010-01-17 | 54778-2T | 
+|       1007 |    10015 | 2010-01-17 | 54778-2T | 
+|       1008 |    10011 | 2010-01-17 | 54778-2T | 
+|       1001 |    10014 | 2010-01-16 | 2238/QPD | 
+|       1002 |    10011 | 2010-01-16 | 2238/QPD | 
+|       1003 |    10012 | 2010-01-16 | 2238/QPD | 
+|       1004 |    10011 | 2010-01-17 | 2238/QPD | 
+|       1005 |    10018 | 2010-01-17 | 2238/QPD | 
+|       1006 |    10014 | 2010-01-17 | 2238/QPD | 
+|       1007 |    10015 | 2010-01-17 | 2238/QPD | 
+|       1008 |    10011 | 2010-01-17 | 2238/QPD | 
+|       1001 |    10014 | 2010-01-16 | 1546-QQ2 | 
+|       1002 |    10011 | 2010-01-16 | 1546-QQ2 | 
+|       1003 |    10012 | 2010-01-16 | 1546-QQ2 | 
+|       1004 |    10011 | 2010-01-17 | 1546-QQ2 | 
+|       1005 |    10018 | 2010-01-17 | 1546-QQ2 | 
+|       1006 |    10014 | 2010-01-17 | 1546-QQ2 | 
+|       1007 |    10015 | 2010-01-17 | 1546-QQ2 | 
+|       1008 |    10011 | 2010-01-17 | 1546-QQ2 | 
+|       1001 |    10014 | 2010-01-16 | 13-Q2/P2 | 
+|       1002 |    10011 | 2010-01-16 | 13-Q2/P2 | 
+|       1003 |    10012 | 2010-01-16 | 13-Q2/P2 | 
+|       1004 |    10011 | 2010-01-17 | 13-Q2/P2 | 
+|       1005 |    10018 | 2010-01-17 | 13-Q2/P2 | 
+|       1006 |    10014 | 2010-01-17 | 13-Q2/P2 | 
+|       1007 |    10015 | 2010-01-17 | 13-Q2/P2 | 
+|       1008 |    10011 | 2010-01-17 | 13-Q2/P2 | 
+|       1001 |    10014 | 2010-01-16 | 54778-2T | 
+|       1002 |    10011 | 2010-01-16 | 54778-2T | 
+|       1003 |    10012 | 2010-01-16 | 54778-2T | 
+|       1004 |    10011 | 2010-01-17 | 54778-2T | 
+|       1005 |    10018 | 2010-01-17 | 54778-2T | 
+|       1006 |    10014 | 2010-01-17 | 54778-2T | 
+|       1007 |    10015 | 2010-01-17 | 54778-2T | 
+|       1008 |    10011 | 2010-01-17 | 54778-2T | 
+|       1001 |    10014 | 2010-01-16 | 23109-HB | 
+|       1002 |    10011 | 2010-01-16 | 23109-HB | 
+|       1003 |    10012 | 2010-01-16 | 23109-HB | 
+|       1004 |    10011 | 2010-01-17 | 23109-HB | 
+|       1005 |    10018 | 2010-01-17 | 23109-HB | 
+|       1006 |    10014 | 2010-01-17 | 23109-HB | 
+|       1007 |    10015 | 2010-01-17 | 23109-HB | 
+|       1008 |    10011 | 2010-01-17 | 23109-HB | 
+|       1001 |    10014 | 2010-01-16 | PVC23DRT | 
+|       1002 |    10011 | 2010-01-16 | PVC23DRT | 
+|       1003 |    10012 | 2010-01-16 | PVC23DRT | 
+|       1004 |    10011 | 2010-01-17 | PVC23DRT | 
+|       1005 |    10018 | 2010-01-17 | PVC23DRT | 
+|       1006 |    10014 | 2010-01-17 | PVC23DRT | 
+|       1007 |    10015 | 2010-01-17 | PVC23DRT | 
+|       1008 |    10011 | 2010-01-17 | PVC23DRT | 
+|       1001 |    10014 | 2010-01-16 | SM-18277 | 
+|       1002 |    10011 | 2010-01-16 | SM-18277 | 
+|       1003 |    10012 | 2010-01-16 | SM-18277 | 
+|       1004 |    10011 | 2010-01-17 | SM-18277 | 
+|       1005 |    10018 | 2010-01-17 | SM-18277 | 
+|       1006 |    10014 | 2010-01-17 | SM-18277 | 
+|       1007 |    10015 | 2010-01-17 | SM-18277 | 
+|       1008 |    10011 | 2010-01-17 | SM-18277 | 
+|       1001 |    10014 | 2010-01-16 | 2232/QTY | 
+|       1002 |    10011 | 2010-01-16 | 2232/QTY | 
+|       1003 |    10012 | 2010-01-16 | 2232/QTY | 
+|       1004 |    10011 | 2010-01-17 | 2232/QTY | 
+|       1005 |    10018 | 2010-01-17 | 2232/QTY | 
+|       1006 |    10014 | 2010-01-17 | 2232/QTY | 
+|       1007 |    10015 | 2010-01-17 | 2232/QTY | 
+|       1008 |    10011 | 2010-01-17 | 2232/QTY | 
+|       1001 |    10014 | 2010-01-16 | 23109-HB | 
+|       1002 |    10011 | 2010-01-16 | 23109-HB | 
+|       1003 |    10012 | 2010-01-16 | 23109-HB | 
+|       1004 |    10011 | 2010-01-17 | 23109-HB | 
+|       1005 |    10018 | 2010-01-17 | 23109-HB | 
+|       1006 |    10014 | 2010-01-17 | 23109-HB | 
+|       1007 |    10015 | 2010-01-17 | 23109-HB | 
+|       1008 |    10011 | 2010-01-17 | 23109-HB | 
+|       1001 |    10014 | 2010-01-16 | 89-WRE-Q | 
+|       1002 |    10011 | 2010-01-16 | 89-WRE-Q | 
+|       1003 |    10012 | 2010-01-16 | 89-WRE-Q | 
+|       1004 |    10011 | 2010-01-17 | 89-WRE-Q | 
+|       1005 |    10018 | 2010-01-17 | 89-WRE-Q | 
+|       1006 |    10014 | 2010-01-17 | 89-WRE-Q | 
+|       1007 |    10015 | 2010-01-17 | 89-WRE-Q | 
+|       1008 |    10011 | 2010-01-17 | 89-WRE-Q | 
+|       1001 |    10014 | 2010-01-16 | 13-Q2/P2 | 
+|       1002 |    10011 | 2010-01-16 | 13-Q2/P2 | 
+|       1003 |    10012 | 2010-01-16 | 13-Q2/P2 | 
+|       1004 |    10011 | 2010-01-17 | 13-Q2/P2 | 
+|       1005 |    10018 | 2010-01-17 | 13-Q2/P2 | 
+|       1006 |    10014 | 2010-01-17 | 13-Q2/P2 | 
+|       1007 |    10015 | 2010-01-17 | 13-Q2/P2 | 
+|       1008 |    10011 | 2010-01-17 | 13-Q2/P2 | 
+|       1001 |    10014 | 2010-01-16 | 54778-2T | 
+|       1002 |    10011 | 2010-01-16 | 54778-2T | 
+|       1003 |    10012 | 2010-01-16 | 54778-2T | 
+|       1004 |    10011 | 2010-01-17 | 54778-2T | 
+|       1005 |    10018 | 2010-01-17 | 54778-2T | 
+|       1006 |    10014 | 2010-01-17 | 54778-2T | 
+|       1007 |    10015 | 2010-01-17 | 54778-2T | 
+|       1008 |    10011 | 2010-01-17 | 54778-2T | 
+|       1001 |    10014 | 2010-01-16 | PVC23DRT | 
+|       1002 |    10011 | 2010-01-16 | PVC23DRT | 
+|       1003 |    10012 | 2010-01-16 | PVC23DRT | 
+|       1004 |    10011 | 2010-01-17 | PVC23DRT | 
+|       1005 |    10018 | 2010-01-17 | PVC23DRT | 
+|       1006 |    10014 | 2010-01-17 | PVC23DRT | 
+|       1007 |    10015 | 2010-01-17 | PVC23DRT | 
+|       1008 |    10011 | 2010-01-17 | PVC23DRT | 
+|       1001 |    10014 | 2010-01-16 | WR3/TT3  | 
+|       1002 |    10011 | 2010-01-16 | WR3/TT3  | 
+|       1003 |    10012 | 2010-01-16 | WR3/TT3  | 
+|       1004 |    10011 | 2010-01-17 | WR3/TT3  | 
+|       1005 |    10018 | 2010-01-17 | WR3/TT3  | 
+|       1006 |    10014 | 2010-01-17 | WR3/TT3  | 
+|       1007 |    10015 | 2010-01-17 | WR3/TT3  | 
+|       1008 |    10011 | 2010-01-17 | WR3/TT3  | 
+|       1001 |    10014 | 2010-01-16 | 23109-HB | 
+|       1002 |    10011 | 2010-01-16 | 23109-HB | 
+|       1003 |    10012 | 2010-01-16 | 23109-HB | 
+|       1004 |    10011 | 2010-01-17 | 23109-HB | 
+|       1005 |    10018 | 2010-01-17 | 23109-HB | 
+|       1006 |    10014 | 2010-01-17 | 23109-HB | 
+|       1007 |    10015 | 2010-01-17 | 23109-HB | 
+|       1008 |    10011 | 2010-01-17 | 23109-HB | 
++------------+----------+------------+----------+
+144 rows in set (0.00 sec)
+
+mysql> SELECT INVOICE.INV_NUMBER, CUS_CODE, INV_DATE, P_CODE
+    -> FROM INVOICE, LINE;
++------------+----------+------------+----------+
+| INV_NUMBER | CUS_CODE | INV_DATE   | P_CODE   |
++------------+----------+------------+----------+
+|       1001 |    10014 | 2010-01-16 | 13-Q2/P2 | 
+|       1002 |    10011 | 2010-01-16 | 13-Q2/P2 | 
+|       1003 |    10012 | 2010-01-16 | 13-Q2/P2 | 
+|       1004 |    10011 | 2010-01-17 | 13-Q2/P2 | 
+|       1005 |    10018 | 2010-01-17 | 13-Q2/P2 | 
+|       1006 |    10014 | 2010-01-17 | 13-Q2/P2 | 
+|       1007 |    10015 | 2010-01-17 | 13-Q2/P2 | 
+|       1008 |    10011 | 2010-01-17 | 13-Q2/P2 | 
+|       1001 |    10014 | 2010-01-16 | 23109-HB | 
+|       1002 |    10011 | 2010-01-16 | 23109-HB | 
+|       1003 |    10012 | 2010-01-16 | 23109-HB | 
+|       1004 |    10011 | 2010-01-17 | 23109-HB | 
+|       1005 |    10018 | 2010-01-17 | 23109-HB | 
+|       1006 |    10014 | 2010-01-17 | 23109-HB | 
+|       1007 |    10015 | 2010-01-17 | 23109-HB | 
+|       1008 |    10011 | 2010-01-17 | 23109-HB | 
+|       1001 |    10014 | 2010-01-16 | 54778-2T | 
+|       1002 |    10011 | 2010-01-16 | 54778-2T | 
+|       1003 |    10012 | 2010-01-16 | 54778-2T | 
+|       1004 |    10011 | 2010-01-17 | 54778-2T | 
+|       1005 |    10018 | 2010-01-17 | 54778-2T | 
+|       1006 |    10014 | 2010-01-17 | 54778-2T | 
+|       1007 |    10015 | 2010-01-17 | 54778-2T | 
+|       1008 |    10011 | 2010-01-17 | 54778-2T | 
+|       1001 |    10014 | 2010-01-16 | 2238/QPD | 
+|       1002 |    10011 | 2010-01-16 | 2238/QPD | 
+|       1003 |    10012 | 2010-01-16 | 2238/QPD | 
+|       1004 |    10011 | 2010-01-17 | 2238/QPD | 
+|       1005 |    10018 | 2010-01-17 | 2238/QPD | 
+|       1006 |    10014 | 2010-01-17 | 2238/QPD | 
+|       1007 |    10015 | 2010-01-17 | 2238/QPD | 
+|       1008 |    10011 | 2010-01-17 | 2238/QPD | 
+|       1001 |    10014 | 2010-01-16 | 1546-QQ2 | 
+|       1002 |    10011 | 2010-01-16 | 1546-QQ2 | 
+|       1003 |    10012 | 2010-01-16 | 1546-QQ2 | 
+|       1004 |    10011 | 2010-01-17 | 1546-QQ2 | 
+|       1005 |    10018 | 2010-01-17 | 1546-QQ2 | 
+|       1006 |    10014 | 2010-01-17 | 1546-QQ2 | 
+|       1007 |    10015 | 2010-01-17 | 1546-QQ2 | 
+|       1008 |    10011 | 2010-01-17 | 1546-QQ2 | 
+|       1001 |    10014 | 2010-01-16 | 13-Q2/P2 | 
+|       1002 |    10011 | 2010-01-16 | 13-Q2/P2 | 
+|       1003 |    10012 | 2010-01-16 | 13-Q2/P2 | 
+|       1004 |    10011 | 2010-01-17 | 13-Q2/P2 | 
+|       1005 |    10018 | 2010-01-17 | 13-Q2/P2 | 
+|       1006 |    10014 | 2010-01-17 | 13-Q2/P2 | 
+|       1007 |    10015 | 2010-01-17 | 13-Q2/P2 | 
+|       1008 |    10011 | 2010-01-17 | 13-Q2/P2 | 
+|       1001 |    10014 | 2010-01-16 | 54778-2T | 
+|       1002 |    10011 | 2010-01-16 | 54778-2T | 
+|       1003 |    10012 | 2010-01-16 | 54778-2T | 
+|       1004 |    10011 | 2010-01-17 | 54778-2T | 
+|       1005 |    10018 | 2010-01-17 | 54778-2T | 
+|       1006 |    10014 | 2010-01-17 | 54778-2T | 
+|       1007 |    10015 | 2010-01-17 | 54778-2T | 
+|       1008 |    10011 | 2010-01-17 | 54778-2T | 
+|       1001 |    10014 | 2010-01-16 | 23109-HB | 
+|       1002 |    10011 | 2010-01-16 | 23109-HB | 
+|       1003 |    10012 | 2010-01-16 | 23109-HB | 
+|       1004 |    10011 | 2010-01-17 | 23109-HB | 
+|       1005 |    10018 | 2010-01-17 | 23109-HB | 
+|       1006 |    10014 | 2010-01-17 | 23109-HB | 
+|       1007 |    10015 | 2010-01-17 | 23109-HB | 
+|       1008 |    10011 | 2010-01-17 | 23109-HB | 
+|       1001 |    10014 | 2010-01-16 | PVC23DRT | 
+|       1002 |    10011 | 2010-01-16 | PVC23DRT | 
+|       1003 |    10012 | 2010-01-16 | PVC23DRT | 
+|       1004 |    10011 | 2010-01-17 | PVC23DRT | 
+|       1005 |    10018 | 2010-01-17 | PVC23DRT | 
+|       1006 |    10014 | 2010-01-17 | PVC23DRT | 
+|       1007 |    10015 | 2010-01-17 | PVC23DRT | 
+|       1008 |    10011 | 2010-01-17 | PVC23DRT | 
+|       1001 |    10014 | 2010-01-16 | SM-18277 | 
+|       1002 |    10011 | 2010-01-16 | SM-18277 | 
+|       1003 |    10012 | 2010-01-16 | SM-18277 | 
+|       1004 |    10011 | 2010-01-17 | SM-18277 | 
+|       1005 |    10018 | 2010-01-17 | SM-18277 | 
+|       1006 |    10014 | 2010-01-17 | SM-18277 | 
+|       1007 |    10015 | 2010-01-17 | SM-18277 | 
+|       1008 |    10011 | 2010-01-17 | SM-18277 | 
+|       1001 |    10014 | 2010-01-16 | 2232/QTY | 
+|       1002 |    10011 | 2010-01-16 | 2232/QTY | 
+|       1003 |    10012 | 2010-01-16 | 2232/QTY | 
+|       1004 |    10011 | 2010-01-17 | 2232/QTY | 
+|       1005 |    10018 | 2010-01-17 | 2232/QTY | 
+|       1006 |    10014 | 2010-01-17 | 2232/QTY | 
+|       1007 |    10015 | 2010-01-17 | 2232/QTY | 
+|       1008 |    10011 | 2010-01-17 | 2232/QTY | 
+|       1001 |    10014 | 2010-01-16 | 23109-HB | 
+|       1002 |    10011 | 2010-01-16 | 23109-HB | 
+|       1003 |    10012 | 2010-01-16 | 23109-HB | 
+|       1004 |    10011 | 2010-01-17 | 23109-HB | 
+|       1005 |    10018 | 2010-01-17 | 23109-HB | 
+|       1006 |    10014 | 2010-01-17 | 23109-HB | 
+|       1007 |    10015 | 2010-01-17 | 23109-HB | 
+|       1008 |    10011 | 2010-01-17 | 23109-HB | 
+|       1001 |    10014 | 2010-01-16 | 89-WRE-Q | 
+|       1002 |    10011 | 2010-01-16 | 89-WRE-Q | 
+|       1003 |    10012 | 2010-01-16 | 89-WRE-Q | 
+|       1004 |    10011 | 2010-01-17 | 89-WRE-Q | 
+|       1005 |    10018 | 2010-01-17 | 89-WRE-Q | 
+|       1006 |    10014 | 2010-01-17 | 89-WRE-Q | 
+|       1007 |    10015 | 2010-01-17 | 89-WRE-Q | 
+|       1008 |    10011 | 2010-01-17 | 89-WRE-Q | 
+|       1001 |    10014 | 2010-01-16 | 13-Q2/P2 | 
+|       1002 |    10011 | 2010-01-16 | 13-Q2/P2 | 
+|       1003 |    10012 | 2010-01-16 | 13-Q2/P2 | 
+|       1004 |    10011 | 2010-01-17 | 13-Q2/P2 | 
+|       1005 |    10018 | 2010-01-17 | 13-Q2/P2 | 
+|       1006 |    10014 | 2010-01-17 | 13-Q2/P2 | 
+|       1007 |    10015 | 2010-01-17 | 13-Q2/P2 | 
+|       1008 |    10011 | 2010-01-17 | 13-Q2/P2 | 
+|       1001 |    10014 | 2010-01-16 | 54778-2T | 
+|       1002 |    10011 | 2010-01-16 | 54778-2T | 
+|       1003 |    10012 | 2010-01-16 | 54778-2T | 
+|       1004 |    10011 | 2010-01-17 | 54778-2T | 
+|       1005 |    10018 | 2010-01-17 | 54778-2T | 
+|       1006 |    10014 | 2010-01-17 | 54778-2T | 
+|       1007 |    10015 | 2010-01-17 | 54778-2T | 
+|       1008 |    10011 | 2010-01-17 | 54778-2T | 
+|       1001 |    10014 | 2010-01-16 | PVC23DRT | 
+|       1002 |    10011 | 2010-01-16 | PVC23DRT | 
+|       1003 |    10012 | 2010-01-16 | PVC23DRT | 
+|       1004 |    10011 | 2010-01-17 | PVC23DRT | 
+|       1005 |    10018 | 2010-01-17 | PVC23DRT | 
+|       1006 |    10014 | 2010-01-17 | PVC23DRT | 
+|       1007 |    10015 | 2010-01-17 | PVC23DRT | 
+|       1008 |    10011 | 2010-01-17 | PVC23DRT | 
+|       1001 |    10014 | 2010-01-16 | WR3/TT3  | 
+|       1002 |    10011 | 2010-01-16 | WR3/TT3  | 
+|       1003 |    10012 | 2010-01-16 | WR3/TT3  | 
+|       1004 |    10011 | 2010-01-17 | WR3/TT3  | 
+|       1005 |    10018 | 2010-01-17 | WR3/TT3  | 
+|       1006 |    10014 | 2010-01-17 | WR3/TT3  | 
+|       1007 |    10015 | 2010-01-17 | WR3/TT3  | 
+|       1008 |    10011 | 2010-01-17 | WR3/TT3  | 
+|       1001 |    10014 | 2010-01-16 | 23109-HB | 
+|       1002 |    10011 | 2010-01-16 | 23109-HB | 
+|       1003 |    10012 | 2010-01-16 | 23109-HB | 
+|       1004 |    10011 | 2010-01-17 | 23109-HB | 
+|       1005 |    10018 | 2010-01-17 | 23109-HB | 
+|       1006 |    10014 | 2010-01-17 | 23109-HB | 
+|       1007 |    10015 | 2010-01-17 | 23109-HB | 
+|       1008 |    10011 | 2010-01-17 | 23109-HB | 
++------------+----------+------------+----------+
+144 rows in set (0.00 sec)
+
+mysql> Ctrl-C -- exit!
+Aborted
+]0;bladowca@puff:~/CSIS304/ch8[bladowca@puff ch8]$ mysql -u bladowca -p
+Enter password: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 8007
+Server version: 5.0.95 Source distribution
+
+Copyright (c) 2000, 2011, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases;
++--------------------------+
+| Database                 |
++--------------------------+
+| information_schema       | 
+| bladowca_ch7_ConstructCo | 
+| bladowca_ch7_SaleCo      | 
+| bladowca_ch8_SaleCo      | 
+| bladowca_ch8_SimpleCo    | 
++--------------------------+
+5 rows in set (0.01 sec)
+
+mysql> use bal  ladowca_ch8_SaleCo
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> SELECT CUS_CODE, CUS_LNAME, INV_NUMBER, INV_DATE
+    -> FROM CUSTOMER NATURAL JOIN INVOICE;
++----------+-----------+------------+------------+
+| CUS_CODE | CUS_LNAME | INV_NUMBER | INV_DATE   |
++----------+-----------+------------+------------+
+|    10014 | Orlando   |       1001 | 2010-01-16 | 
+|    10011 | Dunne     |       1002 | 2010-01-16 | 
+|    10012 | Smith     |       1003 | 2010-01-16 | 
+|    10011 | Dunne     |       1004 | 2010-01-17 | 
+|    10018 | Farriss   |       1005 | 2010-01-17 | 
+|    10014 | Orlando   |       1006 | 2010-01-17 | 
+|    10015 | O'Brian   |       1007 | 2010-01-17 | 
+|    10011 | Dunne     |       1008 | 2010-01-17 | 
++----------+-----------+------------+------------+
+8 rows in set (0.00 sec)
+
+mysql> ELECT INV_NUMBER, P_CODE, P_DESCRIPT, LINE_UNITS, LINE_PRICE
+    -> FROM INVOICE NATURAL JOIN LINE NATURAL JOIN PRODUCT;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ELECT INV_NUMBER, P_CODE, P_DESCRIPT, LINE_UNITS, LINE_PRICE
+FROM INVOICE NATURA' at line 1
+mysql> SELECT INV_NUMBER, P_CODE, P_DESCRIPT, LINE_UNITS, LINE_PRICE
+    -> FROM INVOICE NATURAL JOIN LINE NATURAL JOIN PRODUCT;
++------------+----------+-------------------------------------+------------+------------+
+| INV_NUMBER | P_CODE   | P_DESCRIPT                          | LINE_UNITS | LINE_PRICE |
++------------+----------+-------------------------------------+------------+------------+
+|       1001 | 13-Q2/P2 | 7.25-in. pwr. saw blade             |       1.00 |      14.99 | 
+|       1001 | 23109-HB | Claw hammer                         |       1.00 |       9.95 | 
+|       1002 | 54778-2T | Rat-tail file, 1/8-in. fine         |       2.00 |       4.99 | 
+|       1003 | 2238/QPD | B&D cordless drill, 1/2-in.         |       1.00 |      38.95 | 
+|       1003 | 1546-QQ2 | Hrd. cloth, 1/4-in., 2x50           |       1.00 |      39.95 | 
+|       1003 | 13-Q2/P2 | 7.25-in. pwr. saw blade             |       5.00 |      14.99 | 
+|       1004 | 54778-2T | Rat-tail file, 1/8-in. fine         |       3.00 |       4.99 | 
+|       1004 | 23109-HB | Claw hammer                         |       2.00 |       9.95 | 
+|       1005 | PVC23DRT | PVC pipe, 3.5-in., 8-ft             |      12.00 |       5.87 | 
+|       1006 | SM-18277 | 1.25-in. metal screw, 25            |       3.00 |       6.99 | 
+|       1006 | 2232/QTY | B&D jigsaw, 12-in. blade            |       1.00 |     109.92 | 
+|       1006 | 23109-HB | Claw hammer                         |       1.00 |       9.95 | 
+|       1006 | 89-WRE-Q | Hicut chain saw, 16 in.             |       1.00 |     256.99 | 
+|       1007 | 13-Q2/P2 | 7.25-in. pwr. saw blade             |       2.00 |      14.99 | 
+|       1007 | 54778-2T | Rat-tail file, 1/8-in. fine         |       1.00 |       4.99 | 
+|       1008 | PVC23DRT | PVC pipe, 3.5-in., 8-ft             |       5.00 |       5.87 | 
+|       1008 | WR3/TT3  | Steel matting, 4'x8'x1/6", .5" mesh |       3.00 |     119.95 | 
+|       1008 | 23109-HB | Claw hammer                         |       1.00 |       9.95 | 
++------------+----------+-------------------------------------+------------+------------+
+18 rows in set (0.00 sec)
+
+mysql> ELECT INV_NUMBER, P_CODE, P_DESCRIPT, LINE_UNITS, LINE_PRICE
+    -> FROM INVOICE JOIN LINE USING (INV_NUMBER) 
+    -> JOIN PRODUCT USING (P_CODE);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ELECT INV_NUMBER, P_CODE, P_DESCRIPT, LINE_UNITS, LINE_PRICE
+FROM INVOICE JOIN L' at line 1
+mysql> SELECT INV_NUMBER, P_CODE, P_DESCRIPT, LINE_UNITS, LINE_PRICE
+    -> FROM INVOICE JOIN LINE USING (INV_NUMBER) 
+    -> JOIN PRODUCT USING (P_CODE);
++------------+----------+-------------------------------------+------------+------------+
+| INV_NUMBER | P_CODE   | P_DESCRIPT                          | LINE_UNITS | LINE_PRICE |
++------------+----------+-------------------------------------+------------+------------+
+|       1001 | 13-Q2/P2 | 7.25-in. pwr. saw blade             |       1.00 |      14.99 | 
+|       1001 | 23109-HB | Claw hammer                         |       1.00 |       9.95 | 
+|       1002 | 54778-2T | Rat-tail file, 1/8-in. fine         |       2.00 |       4.99 | 
+|       1003 | 2238/QPD | B&D cordless drill, 1/2-in.         |       1.00 |      38.95 | 
+|       1003 | 1546-QQ2 | Hrd. cloth, 1/4-in., 2x50           |       1.00 |      39.95 | 
+|       1003 | 13-Q2/P2 | 7.25-in. pwr. saw blade             |       5.00 |      14.99 | 
+|       1004 | 54778-2T | Rat-tail file, 1/8-in. fine         |       3.00 |       4.99 | 
+|       1004 | 23109-HB | Claw hammer                         |       2.00 |       9.95 | 
+|       1005 | PVC23DRT | PVC pipe, 3.5-in., 8-ft             |      12.00 |       5.87 | 
+|       1006 | SM-18277 | 1.25-in. metal screw, 25            |       3.00 |       6.99 | 
+|       1006 | 2232/QTY | B&D jigsaw, 12-in. blade            |       1.00 |     109.92 | 
+|       1006 | 23109-HB | Claw hammer                         |       1.00 |       9.95 | 
+|       1006 | 89-WRE-Q | Hicut chain saw, 16 in.             |       1.00 |     256.99 | 
+|       1007 | 13-Q2/P2 | 7.25-in. pwr. saw blade             |       2.00 |      14.99 | 
+|       1007 | 54778-2T | Rat-tail file, 1/8-in. fine         |       1.00 |       4.99 | 
+|       1008 | PVC23DRT | PVC pipe, 3.5-in., 8-ft             |       5.00 |       5.87 | 
+|       1008 | WR3/TT3  | Steel matting, 4'x8'x1/6", .5" mesh |       3.00 |     119.95 | 
+|       1008 | 23109-HB | Claw hammer                         |       1.00 |       9.95 | 
++------------+----------+-------------------------------------+------------+------------+
+18 rows in set (0.00 sec)
+
+mysql> ELECT INVOICE.INV_NUMBER, PRODUCT.P_CODE, P_DESCRIPT, LINE_UNITS, LINE_PRICE
+    -> FROM INVOICE JOIN LINE ON INVOICE.INV_NUMBER = LINE.INV_NUMBER
+    ->              JOIN PRODUCT ON LINE.P_CODE = PRODUCT.P_CODE;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ELECT INVOICE.INV_NUMBER, PRODUCT.P_CODE, P_DESCRIPT, LINE_UNITS, LINE_PRICE
+FRO' at line 1
+mysql> SELECT INVOICE.INV_NUMBER, PRODUCT.P_CODE, P_DESCRIPT, LINE_UNITS, LINE_PRICE
+    -> FROM INVOICE JOIN LINE ON INVOICE.INV_NUMBER = LINE.INV_NUMBER
+    ->              JOIN PRODUCT ON LINE.P_CODE = PRODUCT.P_CODE;
++------------+----------+-------------------------------------+------------+------------+
+| INV_NUMBER | P_CODE   | P_DESCRIPT                          | LINE_UNITS | LINE_PRICE |
++------------+----------+-------------------------------------+------------+------------+
+|       1001 | 13-Q2/P2 | 7.25-in. pwr. saw blade             |       1.00 |      14.99 | 
+|       1001 | 23109-HB | Claw hammer                         |       1.00 |       9.95 | 
+|       1002 | 54778-2T | Rat-tail file, 1/8-in. fine         |       2.00 |       4.99 | 
+|       1003 | 2238/QPD | B&D cordless drill, 1/2-in.         |       1.00 |      38.95 | 
+|       1003 | 1546-QQ2 | Hrd. cloth, 1/4-in., 2x50           |       1.00 |      39.95 | 
+|       1003 | 13-Q2/P2 | 7.25-in. pwr. saw blade             |       5.00 |      14.99 | 
+|       1004 | 54778-2T | Rat-tail file, 1/8-in. fine         |       3.00 |       4.99 | 
+|       1004 | 23109-HB | Claw hammer                         |       2.00 |       9.95 | 
+|       1005 | PVC23DRT | PVC pipe, 3.5-in., 8-ft             |      12.00 |       5.87 | 
+|       1006 | SM-18277 | 1.25-in. metal screw, 25            |       3.00 |       6.99 | 
+|       1006 | 2232/QTY | B&D jigsaw, 12-in. blade            |       1.00 |     109.92 | 
+|       1006 | 23109-HB | Claw hammer                         |       1.00 |       9.95 | 
+|       1006 | 89-WRE-Q | Hicut chain saw, 16 in.             |       1.00 |     256.99 | 
+|       1007 | 13-Q2/P2 | 7.25-in. pwr. saw blade             |       2.00 |      14.99 | 
+|       1007 | 54778-2T | Rat-tail file, 1/8-in. fine         |       1.00 |       4.99 | 
+|       1008 | PVC23DRT | PVC pipe, 3.5-in., 8-ft             |       5.00 |       5.87 | 
+|       1008 | WR3/TT3  | Steel matting, 4'x8'x1/6", .5" mesh |       3.00 |     119.95 | 
+|       1008 | 23109-HB | Claw hammer                         |       1.00 |       9.95 | 
++------------+----------+-------------------------------------+------------+------------+
+18 rows in set (0.00 sec)
+
+mysql> ELECT DATEDIFF(DATE('2013/12/25'), DATE('2013-11-25')) 
+    -> FROM DUAL;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ELECT DATEDIFF(DATE('2013/12/25'), DATE('2013-11-25')) 
+FROM DUAL' at line 1
+mysql> SELECT DATEDIFF(DATE('2013/12/25'), DATE('2013-11-25')) 
+    -> FROM DUAL;
++--------------------------------------------------+
+| DATEDIFF(DATE('2013/12/25'), DATE('2013-11-25')) |
++--------------------------------------------------+
+|                                               30 | 
++--------------------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> ELECT DATEDIFF(DATE('2013-12-25'), DATE(NOW()))
+    -> FROM DUAL;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ELECT DATEDIFF(DATE('2013-12-25'), DATE(NOW()))
+FROM DUAL' at line 1
+mysql> SELECT DATEDIFF(DATE('2013-12-25'), DATE(NOW()))
+    -> FROM DUAL;
++-------------------------------------------+
+| DATEDIFF(DATE('2013-12-25'), DATE(NOW())) |
++-------------------------------------------+
+|                                       280 | 
++-------------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> ELECT CUS_LNAME, CUS_FNAME, CUS_INITIAL, CUS_AREACODE, CUS_PHONE FROM CUSTOMER
+    -> UNION
+    -> SELECT CUS_LNAME, CUS_FNAME, CUS_INITIAL, CUS_AREACODE, CUS_PHONE FROM CUSTOMER_2;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ELECT CUS_LNAME, CUS_FNAME, CUS_INITIAL, CUS_AREACODE, CUS_PHONE FROM CUSTOMER
+U' at line 1
+mysql> SELECT CUS_LNAME, CUS_FNAME, CUS_INITIAL, CUS_AREACODE, CUS_PHONE FROM CUSTOMER
+    -> UNION
+    -> SELECT CUS_LNAME, CUS_FNAME, CUS_INITIAL, CUS_AREACODE, CUS_PHONE FROM CUSTOMER_2;
++-----------+-----------+-------------+--------------+-----------+
+| CUS_LNAME | CUS_FNAME | CUS_INITIAL | CUS_AREACODE | CUS_PHONE |
++-----------+-----------+-------------+--------------+-----------+
+| Ramas     | Alfred    | A           | 615          | 844-2573  | 
+| Dunne     | Leona     | K           | 713          | 894-1238  | 
+| Smith     | Kathy     | W           | 615          | 894-2285  | 
+| Olowski   | Paul      | F           | 615          | 894-2180  | 
+| Orlando   | Myron     |             | 615          | 222-1672  | 
+| O'Brian   | Amy       | B           | 713          | 442-3381  | 
+| Brown     | James     | G           | 615          | 297-1228  | 
+| Williams  | George    |             | 615          | 290-2556  | 
+| Farriss   | Anne      | G           | 713          | 382-7185  | 
+| Smith     | Olette    | K           | 615          | 297-3809  | 
+| Terrell   | Justine   | H           | 615          | 322-9870  | 
+| Hernandez | Carlos    | J           | 723          | 123-7654  | 
+| McDowell  | George    | NULL        | 723          | 123-7768  | 
+| Tirpin    | Khaleed   | G           | 723          | 123-9876  | 
+| Lewis     | Marie     | J           | 734          | 332-1789  | 
++-----------+-----------+-------------+--------------+-----------+
+15 rows in set (0.00 sec)
+
+mysql> ELECT CUS_LNAME, CUS_FNAME, CUS_INITIAL, CUS_AREACODE, CUS_PHONE FROM CUSTOMER
+    -> UNION ALL
+    -> SELECT CUS_LNAME, CUS_FNAME, CUS_INITIAL, CUS_AREACODE, CUS_PHONE FROM CUSTOMER_2;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ELECT CUS_LNAME, CUS_FNAME, CUS_INITIAL, CUS_AREACODE, CUS_PHONE FROM CUSTOMER
+U' at line 1
+mysql> SELECT CUS_LNAME, CUS_FNAME, CUS_INITIAL, CUS_AREACODE, CUS_PHONE FROM CUSTOMER
+    -> UNION ALL
+    -> SELECT CUS_LNAME, CUS_FNAME, CUS_INITIAL, CUS_AREACODE, CUS_PHONE FROM CUSTOMER_2;
++-----------+-----------+-------------+--------------+-----------+
+| CUS_LNAME | CUS_FNAME | CUS_INITIAL | CUS_AREACODE | CUS_PHONE |
++-----------+-----------+-------------+--------------+-----------+
+| Ramas     | Alfred    | A           | 615          | 844-2573  | 
+| Dunne     | Leona     | K           | 713          | 894-1238  | 
+| Smith     | Kathy     | W           | 615          | 894-2285  | 
+| Olowski   | Paul      | F           | 615          | 894-2180  | 
+| Orlando   | Myron     |             | 615          | 222-1672  | 
+| O'Brian   | Amy       | B           | 713          | 442-3381  | 
+| Brown     | James     | G           | 615          | 297-1228  | 
+| Williams  | George    |             | 615          | 290-2556  | 
+| Farriss   | Anne      | G           | 713          | 382-7185  | 
+| Smith     | Olette    | K           | 615          | 297-3809  | 
+| Terrell   | Justine   | H           | 615          | 322-9870  | 
+| Olowski   | Paul      | F           | 615          | 894-2180  | 
+| Hernandez | Carlos    | J           | 723          | 123-7654  | 
+| McDowell  | George    | NULL        | 723          | 123-7768  | 
+| Tirpin    | Khaleed   | G           | 723          | 123-9876  | 
+| Lewis     | Marie     | J           | 734          | 332-1789  | 
+| Dunne     | Leona     | K           | 713          | 894-1238  | 
++-----------+-----------+-------------+--------------+-----------+
+17 rows in set (0.00 sec)
+
+mysql> ELECT CUS_CODE FROM CUSTOMER 
+    -> WHERE CUS_AREACODE = '615' AND
+    ->       CUS_CODE IN (SELECT DISTINCT CUS_CODE FROM INVOICE);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ELECT CUS_CODE FROM CUSTOMER 
+WHERE CUS_AREACODE = '615' AND
+      CUS_CODE IN (' at line 1
+mysql> SELECT CUS_CODE FROM CUSTOMER 
+    -> WHERE CUS_AREACODE = '615' AND
+    ->       CUS_CODE IN (SELECT DISTINCT CUS_CODE FROM INVOICE);
++----------+
+| CUS_CODE |
++----------+
+|    10012 | 
+|    10014 | 
++----------+
+2 rows in set (0.00 sec)
+
+mysql> ELECT CUS_CODE FROM CUSTOMER 
+    -> WHERE CUS_AREACODE = '615' AND
+    ->       CUS_CODE NOT IN (SELECT DISTINCT CUS_CODE FROM INVOICE);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ELECT CUS_CODE FROM CUSTOMER 
+WHERE CUS_AREACODE = '615' AND
+      CUS_CODE NOT ' at line 1
+mysql> SELECT CUS_CODE FROM CUSTOMER 
+    -> WHERE CUS_AREACODE = '615' AND
+    ->       CUS_CODE NOT IN (SELECT DISTINCT CUS_CODE FROM INVOICE);
++----------+
+| CUS_CODE |
++----------+
+|    10010 | 
+|    10013 | 
+|    10016 | 
+|    10017 | 
+|    10019 | 
++----------+
+5 rows in set (0.00 sec)
+
+mysql> ROP PROCEDURE PRC_PROD_DISCOUNT;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ROP PROCEDURE PRC_PROD_DISCOUNT' at line 1
+mysql> DELIMITER $$
+mysql> CREATE PROCEDURE PRC_PROD_DISCOUNT()
+    -> BEGIN
+    -> UPDATE PRODUCT
+    -> SET P_DISCOUNT = P_DISCOUNT + .05
+    -> WHERE P_QOH >= P_MIN*2;
+    -> END$$
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> DELIMITER ;
+mysql> 
+mysql> SELECT * FROM PRODUCT;
++----------+-------------------------------------+------------+-------+-------+---------+------------+--------+
+| P_CODE   | P_DESCRIPT                          | P_INDATE   | P_QOH | P_MIN | P_PRICE | P_DISCOUNT | V_CODE |
++----------+-------------------------------------+------------+-------+-------+---------+------------+--------+
+| 11QER/31 | Power painter, 15 psi., 3-nozzle    | 2009-11-03 |     8 |     5 |  109.99 |       0.00 |  25595 | 
+| 13-Q2/P2 | 7.25-in. pwr. saw blade             | 2009-12-13 |    32 |    15 |   14.99 |       0.05 |  21344 | 
+| 14-Q1/L3 | 9.00-in. pwr. saw blade             | 2009-11-13 |    18 |    12 |   17.49 |       0.00 |  21344 | 
+| 1546-QQ2 | Hrd. cloth, 1/4-in., 2x50           | 2010-01-15 |    15 |     8 |   39.95 |       0.00 |  23119 | 
+| 1558-QW1 | Hrd. cloth, 1/2-in., 3x50           | 2010-01-15 |    23 |     5 |   43.99 |       0.00 |  23119 | 
+| 2232/QTY | B&D jigsaw, 12-in. blade            | 2009-12-30 |     8 |     5 |  109.92 |       0.05 |  24288 | 
+| 2232/QWE | B&D jigsaw, 8-in. blade             | 2009-12-30 |     6 |     5 |   99.87 |       0.05 |  24288 | 
+| 2238/QPD | B&D cordless drill, 1/2-in.         | 2010-01-20 |    12 |     5 |   38.95 |       0.05 |  25595 | 
+| 23109-HB | Claw hammer                         | 2010-01-20 |    23 |    10 |    9.95 |       0.10 |  21225 | 
+| 23114-AA | Sledge hammer, 12 lb.               | 2010-01-02 |     8 |     5 |   14.40 |       0.05 |   NULL | 
+| 54778-2T | Rat-tail file, 1/8-in. fine         | 2009-12-15 |    43 |    20 |    4.99 |       0.00 |  21344 | 
+| 89-WRE-Q | Hicut chain saw, 16 in.             | 2010-02-07 |    11 |     5 |  256.99 |       0.05 |  24288 | 
+| PVC23DRT | PVC pipe, 3.5-in., 8-ft             | 2010-02-20 |   188 |    75 |    5.87 |       0.00 |   NULL | 
+| SM-18277 | 1.25-in. metal screw, 25            | 2010-03-01 |   172 |    75 |    6.99 |       0.00 |  21225 | 
+| SW-23116 | 2.5-in. wd. screw, 50               | 2010-02-24 |   237 |   100 |    8.45 |       0.00 |  21231 | 
+| WR3/TT3  | Steel matting, 4'x8'x1/6", .5" mesh | 2010-01-17 |    18 |     5 |  119.95 |       0.10 |  25595 | 
++----------+-------------------------------------+------------+-------+-------+---------+------------+--------+
+16 rows in set (0.00 sec)
+
+mysql> CALL PRC_PROD_DISCOUNT;
+Query OK, 10 rows affected (0.00 sec)
+
+mysql> SELECT * FROM PRODUCT;
++----------+-------------------------------------+------------+-------+-------+---------+------------+--------+
+| P_CODE   | P_DESCRIPT                          | P_INDATE   | P_QOH | P_MIN | P_PRICE | P_DISCOUNT | V_CODE |
++----------+-------------------------------------+------------+-------+-------+---------+------------+--------+
+| 11QER/31 | Power painter, 15 psi., 3-nozzle    | 2009-11-03 |     8 |     5 |  109.99 |       0.00 |  25595 | 
+| 13-Q2/P2 | 7.25-in. pwr. saw blade             | 2009-12-13 |    32 |    15 |   14.99 |       0.10 |  21344 | 
+| 14-Q1/L3 | 9.00-in. pwr. saw blade             | 2009-11-13 |    18 |    12 |   17.49 |       0.00 |  21344 | 
+| 1546-QQ2 | Hrd. cloth, 1/4-in., 2x50           | 2010-01-15 |    15 |     8 |   39.95 |       0.00 |  23119 | 
+| 1558-QW1 | Hrd. cloth, 1/2-in., 3x50           | 2010-01-15 |    23 |     5 |   43.99 |       0.05 |  23119 | 
+| 2232/QTY | B&D jigsaw, 12-in. blade            | 2009-12-30 |     8 |     5 |  109.92 |       0.05 |  24288 | 
+| 2232/QWE | B&D jigsaw, 8-in. blade             | 2009-12-30 |     6 |     5 |   99.87 |       0.05 |  24288 | 
+| 2238/QPD | B&D cordless drill, 1/2-in.         | 2010-01-20 |    12 |     5 |   38.95 |       0.10 |  25595 | 
+| 23109-HB | Claw hammer                         | 2010-01-20 |    23 |    10 |    9.95 |       0.15 |  21225 | 
+| 23114-AA | Sledge hammer, 12 lb.               | 2010-01-02 |     8 |     5 |   14.40 |       0.05 |   NULL | 
+| 54778-2T | Rat-tail file, 1/8-in. fine         | 2009-12-15 |    43 |    20 |    4.99 |       0.05 |  21344 | 
+| 89-WRE-Q | Hicut chain saw, 16 in.             | 2010-02-07 |    11 |     5 |  256.99 |       0.10 |  24288 | 
+| PVC23DRT | PVC pipe, 3.5-in., 8-ft             | 2010-02-20 |   188 |    75 |    5.87 |       0.05 |   NULL | 
+| SM-18277 | 1.25-in. metal screw, 25            | 2010-03-01 |   172 |    75 |    6.99 |       0.05 |  21225 | 
+| SW-23116 | 2.5-in. wd. screw, 50               | 2010-02-24 |   237 |   100 |    8.45 |       0.05 |  21231 | 
+| WR3/TT3  | Steel matting, 4'x8'x1/6", .5" mesh | 2010-01-17 |    18 |     5 |  119.95 |       0.15 |  25595 | 
++----------+-------------------------------------+------------+-------+-------+---------+------------+--------+
+16 rows in set (0.00 sec)
+
+mysql> ROP PROCEDURE PRC_PROD_DISCOUNT2;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ROP PROCEDURE PRC_PROD_DISCOUNT2' at line 1
+mysql> DELIMITER $$
+mysql> CREATE PROCEDURE PRC_PROD_DISCOUNT2(WPI DECIMAL(4,2))
+    -> BEGIN 
+    ->  IF ((WPI >= 0) AND (WPI <= 1)) THEN
+    ->   UPDATE PRODUCT 
+    ->   SET P_DISCOUNT = P_DISCOUNT + WPI  
+    ->   WHERE P_QOH >= P_MIN*2; 
+    ->  END IF;
+    -> END$$
+DELIMITER ;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> DELIMITER ;
+mysql> 
+mysql> CALL PRC_PROD_DISCOUNT2(0.07);
+SELECT * FROM PRODUCT;Query OK, 10 rows affected (0.00 sec)
+
+mysql> SELECT * FROM PRODUCT;
++----------+-------------------------------------+------------+-------+-------+---------+------------+--------+
+| P_CODE   | P_DESCRIPT                          | P_INDATE   | P_QOH | P_MIN | P_PRICE | P_DISCOUNT | V_CODE |
++----------+-------------------------------------+------------+-------+-------+---------+------------+--------+
+| 11QER/31 | Power painter, 15 psi., 3-nozzle    | 2009-11-03 |     8 |     5 |  109.99 |       0.00 |  25595 | 
+| 13-Q2/P2 | 7.25-in. pwr. saw blade             | 2009-12-13 |    32 |    15 |   14.99 |       0.17 |  21344 | 
+| 14-Q1/L3 | 9.00-in. pwr. saw blade             | 2009-11-13 |    18 |    12 |   17.49 |       0.00 |  21344 | 
+| 1546-QQ2 | Hrd. cloth, 1/4-in., 2x50           | 2010-01-15 |    15 |     8 |   39.95 |       0.00 |  23119 | 
+| 1558-QW1 | Hrd. cloth, 1/2-in., 3x50           | 2010-01-15 |    23 |     5 |   43.99 |       0.12 |  23119 | 
+| 2232/QTY | B&D jigsaw, 12-in. blade            | 2009-12-30 |     8 |     5 |  109.92 |       0.05 |  24288 | 
+| 2232/QWE | B&D jigsaw, 8-in. blade             | 2009-12-30 |     6 |     5 |   99.87 |       0.05 |  24288 | 
+| 2238/QPD | B&D cordless drill, 1/2-in.         | 2010-01-20 |    12 |     5 |   38.95 |       0.17 |  25595 | 
+| 23109-HB | Claw hammer                         | 2010-01-20 |    23 |    10 |    9.95 |       0.22 |  21225 | 
+| 23114-AA | Sledge hammer, 12 lb.               | 2010-01-02 |     8 |     5 |   14.40 |       0.05 |   NULL | 
+| 54778-2T | Rat-tail file, 1/8-in. fine         | 2009-12-15 |    43 |    20 |    4.99 |       0.12 |  21344 | 
+| 89-WRE-Q | Hicut chain saw, 16 in.             | 2010-02-07 |    11 |     5 |  256.99 |       0.17 |  24288 | 
+| PVC23DRT | PVC pipe, 3.5-in., 8-ft             | 2010-02-20 |   188 |    75 |    5.87 |       0.12 |   NULL | 
+| SM-18277 | 1.25-in. metal screw, 25            | 2010-03-01 |   172 |    75 |    6.99 |       0.12 |  21225 | 
+| SW-23116 | 2.5-in. wd. screw, 50               | 2010-02-24 |   237 |   100 |    8.45 |       0.12 |  21231 | 
+| WR3/TT3  | Steel matting, 4'x8'x1/6", .5" mesh | 2010-01-17 |    18 |     5 |  119.95 |       0.22 |  25595 | 
++----------+-------------------------------------+------------+-------+-------+---------+------------+--------+
+16 rows in set (0.00 sec)
+
+mysql> CREATE TRIGGER TRG_UPDATECUSTBALANCE
+    ->   AFTER INSERT
+    ->   ON INVOICE
+    ->   FOR EACH ROW
+    ->     UPDATE S_CUSTOMER
+    ->     SET CUST_BALANCE = CUST_BALANCE + NEW.INV_AMOUNT;
+ERROR 1227 (42000): Access denied; you need the SUPER privilege for this operation
+mysql> EXIT
+Bye
+]0;bladowca@puff:~/CSIS304/ch8[bladowca@puff ch8]$ exit
+logout
+[H[2J

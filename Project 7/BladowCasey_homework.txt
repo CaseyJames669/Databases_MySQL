@@ -1,0 +1,186 @@
+-- Casey Bladow
+-- Project 7
+-- CSIS304 Spring 2013
+
+-- Problem 1 (p.283)
+
+create table EMP_1 (
+EMP_NUM char(3) primary key,
+EMP_LNAME varchar(15) not null,
+EMP_FNAME varchar(15) not null,
+EMP_INITIAL char(1),
+EMP_HIREDATE date,
+JOB_CODE char(3),
+foreign key (JOB_CODE) references JOB);
+
+
+DESCRIBE EMP_1;
++--------------+-------------+------+-----+---------+-------+
+| Field        | Type        | Null | Key | Default | Extra |
++--------------+-------------+------+-----+---------+-------+
+| EMP_NUM      | char(3)     | NO   | PRI | NULL    |       |
+| EMP_LNAME    | varchar(15) | NO   |     | NULL    |       |
+| EMP_FNAME    | varchar(15) | NO   |     | NULL    |       |
+| EMP_INITIAL  | char(1)     | YES  |     | NULL    |       |
+| EMP_HIREDATE | date        | YES  |     | NULL    |       |
+| JOB_CODE     | char(3)     | YES  | MUL | NULL    |       |
++--------------+-------------+------+-----+---------+-------+
+
+-- Problem 2 
+
+INSERT INTO EMP_1 VALUES ('101','News','John','G','2000/11/8','502');
+INSERT INTO EMP_1 VALUES ('102','Senior','David','H','1989/7/12','501');
+INSERT INTO EMP_1 VALUES ('103','Arbough','June','E','1996/12/1','500');
+INSERT INTO EMP_1 VALUES ('104','Ramoras','Anne','K','1987/11/15','501');
+INSERT INTO EMP_1 VALUES ('105','Johnson','Alice','K','1993/2/1','502');
+INSERT INTO EMP_1 VALUES ('106','Smithfield','William','','2004/6/22','500');
+INSERT INTO EMP_1 VALUES ('107','Alonzo','Maria','D','1993/10/10','500');
+INSERT INTO EMP_1 VALUES ('108','Washington','Ralph','B','1991/8/22','501');
+INSERT INTO EMP_1 VALUES ('109','Smith','Larry','W','1997/7/18','501');
+
+
+-- Problem 3
+
+SELECT *
+FROM EMP_1
+WHERE JOB_CODE='502';
+
++---------+-----------+-----------+-------------+--------------+----------+
+| EMP_NUM | EMP_LNAME | EMP_FNAME | EMP_INITIAL | EMP_HIREDATE | JOB_CODE |
++---------+-----------+-----------+-------------+--------------+----------+
+| 101     | News      | John      | G           | 2000-11-08   | 502      |
+| 105     | Johnson   | Alice     | K           | 1993-02-01   | 502      |
++---------+-----------+-----------+-------------+--------------+----------+
+
+-- PROBLEM 5
+
+UPDATE EMP_1
+SET JOB_CODE='501'
+WHERE EMP_NUM='107';
+
+SELECT * FROM EMP_1 WHERE EMP_NUM='107';
++---------+-----------+-----------+-------------+--------------+----------+
+| EMP_NUM | EMP_LNAME | EMP_FNAME | EMP_INITIAL | EMP_HIREDATE | JOB_CODE |
++---------+-----------+-----------+-------------+--------------+----------+
+| 107     | Alonzo    | Maria     | D           | 1993-10-10   | 501      |
++---------+-----------+-----------+-------------+--------------+----------+
+
+ROLLBACK;
+
+-- PROBLEM 6
+
+DELETE FROM EMP_1
+WHERE EMP_LNAME='Smithfield'
+AND EMP_FNAME='William'
+AND EMP_HIREDATE='2004/6/22'
+AND JOB_CODE='500';
+
+SELECT * FROM EMP_1;
++---------+------------+-----------+-------------+--------------+----------+
+| EMP_NUM | EMP_LNAME  | EMP_FNAME | EMP_INITIAL | EMP_HIREDATE | JOB_CODE |
++---------+------------+-----------+-------------+--------------+----------+
+| 101     | News       | John      | G           | 2000-11-08   | 502      |
+| 102     | Senior     | David     | H           | 1989-07-12   | 501      |
+| 103     | Arbough    | June      | E           | 1996-12-01   | 500      |
+| 104     | Ramoras    | Anne      | K           | 1987-11-15   | 501      |
+| 105     | Johnson    | Alice     | K           | 1993-02-01   | 502      |
+| 107     | Alonzo     | Maria     | D           | 1993-10-10   | 500      |
+| 108     | Washington | Ralph     | B           | 1991-08-22   | 501      |
+| 109     | Smith      | Larry     | W           | 1997-07-18   | 501      |
++---------+------------+-----------+-------------+--------------+----------+
+
+-- PROBLEM 8
+
+CREATE TABLE EMP_2 (
+EMP_NUM CHAR(3) NOT NULL UNIQUE,
+EMP_LNAME VARCHAR(15) NOT NULL,
+EMP_FNAME VARCHAR(15) NOT NULL,
+EMP_INITIAL CHAR(1),
+EMP_HIREDATE DATE NOT NULL,
+JOB_CODE CHAR(3) NOT NULL,
+PRIMARY KEY (EMP_NUM),
+FOREIGN KEY (JOB_CODE) REFERENCES JOB);
+
+INSERT INTO EMP_2 SELECT * FROM EMP_1; 
+
+ALTER TABLE EMP_2
+ADD (EMP_PCT DECIMAL(4,2)),
+ADD (PROJ_NUM CHAR(3))
+
+-- PROBLEM 9
+
+UPDATE EMP_2 SET EMP_PCT=3.85 WHERE EMP_NUM='103';
+UPDATE EMP_2 SET EMP_PCT=5.00 WHERE EMP_NUM='101';
+UPDATE EMP_2 SET EMP_PCT=8.00 WHERE EMP_NUM='102';
+UPDATE EMP_2 SET EMP_PCT=10.00 WHERE EMP_NUM='104';
+UPDATE EMP_2 SET EMP_PCT=5.00 WHERE EMP_NUM='105';
+UPDATE EMP_2 SET EMP_PCT=6.20 WHERE EMP_NUM='106';
+UPDATE EMP_2 SET EMP_PCT=5.15 WHERE EMP_NUM='107';
+UPDATE EMP_2 SET EMP_PCT=10.00 WHERE EMP_NUM='108';
+UPDATE EMP_2 SET EMP_PCT=2.00 WHERE EMP_NUM='109';
+
+-- PROBLEM 10
+
+UPDATE EMP_2 SET PROJ_NUM='18' WHERE JOB_CODE='500';
+
+-- PROBLEM 11
+
+UPDATE EMP_2 SET PROJ_NUM='25' WHERE JOB_CODE >= '502';
+
+-- PROBLEM 12
+
+UPDATE EMP_2 SET PROJ_NUM='14' WHERE EMP_HIREDATE <='1994-01-01' AND JOB_CODE >='501';
+
+SELECT * FROM EMP_2;
++---------+------------+-----------+-------------+--------------+----------+---------+----------+
+| EMP_NUM | EMP_LNAME  | EMP_FNAME | EMP_INITIAL | EMP_HIREDATE | JOB_CODE | EMP_PCT | PROJ_NUM |
++---------+------------+-----------+-------------+--------------+----------+---------+----------+
+| 101     | News       | John      | G           | 2000-11-08   | 502      |    5.00 | 25       |
+| 102     | Senior     | David     | H           | 1989-07-12   | 501      |    8.00 | 14       |
+| 103     | Arbough    | June      | E           | 1996-12-01   | 500      |    3.85 | 18       |
+| 104     | Ramoras    | Anne      | K           | 1987-11-15   | 501      |   10.00 | 14       |
+| 105     | Johnson    | Alice     | K           | 1993-02-01   | 502      |    5.00 | 14       |
+| 107     | Alonzo     | Maria     | D           | 1993-10-10   | 500      |    5.15 | 18       |
+| 108     | Washington | Ralph     | B           | 1991-08-22   | 501      |   10.00 | 14       |
+| 109     | Smith      | Larry     | W           | 1997-07-18   | 501      |    2.00 | NULL     |
+| 106     | Smithfield | William   |             | 2004-06-22   | 500      |    6.20 | 18       |
++---------+------------+-----------+-------------+--------------+----------+---------+----------+
+
+-- PROBLEM 13
+
+CREATE TABLE TEMP_1 AS SELECT EMP_NUM, EMP_PCT FROM EMP_2;
+
+SELECT * FROM TEMP_1;
++---------+---------+
+| EMP_NUM | EMP_PCT |
++---------+---------+
+| 101     |    5.00 |
+| 102     |    8.00 |
+| 103     |    3.85 |
+| 104     |   10.00 |
+| 105     |    5.00 |
+| 107     |    5.15 |
+| 108     |   10.00 |
+| 109     |    2.00 |
+| 106     |    6.20 |
++---------+---------+
+
+-- PROBLEM 14
+
+DROP TABLE TEMP_1;
+
+-- PROBLEM 15
+
+SELECT * FROM EMP_2 WHERE EMP_LNAME LIKE 'Smith%';
+
+-- PROBLEM 18
+
+SELECT AVG(EMP_PCT) FROM EMP_2;
+
+-- PROBLEM 19
+
+SELECT * FROM EMP_2 ORDER BY EMP_PCT;
+
+-- PROBLEM 20
+
+SELECT DISTINCT PROJ_NUM FROM EMP_2;

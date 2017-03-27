@@ -1,0 +1,340 @@
+-- PROBLEM 5
+
+SELECT C.CUS_LNAME, P.P_DESCRIPT, SUM(SALE_UNITS*SALE_PRICE) AS TOTALSALES
+FROM
+
+DWDAYSALESFACT AS S
+INNER JOIN DWPRODUCT AS P 
+ON S.P_CODE = P.P_CODE
+
+INNER JOIN DWCUSTOMER AS C
+ON S.CUS_CODE = C.CUS_CODE
+
+GROUP BY ROLLUP (CUS_LNAME, P_DESCRIPT);
+
+CUS_LNAME       P_DESCRIPT                          TOTALSALES
+--------------- ----------------------------------- ---------------------------------------
+Brown           7.25-in. pwr. saw blade             104.93
+Brown           Hrd. cloth, 1/4-in., 2x50           39.95
+Brown           PVC pipe, 3.5-in., 8-ft             29.35
+Brown           Rat-tail file, 1/8-in. fine         4.99
+Brown           NULL                                179.22
+Dunne           1.25-in. metal screw, 25            20.97
+Dunne           B\&D jigsaw, 12-in. blade           109.92
+Dunne           NULL                                130.89
+Farriss         B\&D cordless drill, 1/2-in.        38.95
+Farriss         Claw hammer                         9.95
+Farriss         PVC pipe, 3.5-in., 8-ft             70.44
+Farriss         Rat-tail file, 1/8-in. fine         9.98
+Farriss         NULL                                129.32
+O'Brian         B\&D cordless drill, 1/2-in.        38.95
+O'Brian         Claw hammer                         19.90
+O'Brian         Hicut chain saw, 16 in.             256.99
+O'Brian         Rat-tail file, 1/8-in. fine         9.98
+O'Brian         NULL                                325.82
+Olowski         7.25-in. pwr. saw blade             29.98
+Olowski         PVC pipe, 3.5-in., 8-ft             29.35
+Olowski         Rat-tail file, 1/8-in. fine         4.99
+Olowski         NULL                                64.32
+Orlando         7.25-in. pwr. saw blade             14.99
+Orlando         B\&D jigsaw, 12-in. blade           109.92
+Orlando         Claw hammer                         9.95
+Orlando         Steel matting, 4'x8'x1/6", .5" mesh 359.85
+Orlando         NULL                                494.71
+Ramas           7.25-in. pwr. saw blade             74.95
+Ramas           Claw hammer                         19.90
+Ramas           PVC pipe, 3.5-in., 8-ft             70.44
+Ramas           Rat-tail file, 1/8-in. fine         14.97
+Ramas           NULL                                180.26
+Smith           1.25-in. metal screw, 25            20.97
+Smith           Claw hammer                         9.95
+Smith           Hicut chain saw, 16 in.             256.99
+Smith           Hrd. cloth, 1/4-in., 2x50           39.95
+Smith           NULL                                327.86
+Williams        7.25-in. pwr. saw blade             14.99
+Williams        Claw hammer                         29.85
+Williams        Rat-tail file, 1/8-in. fine         14.97
+Williams        Steel matting, 4'x8'x1/6", .5" mesh 359.85
+Williams        NULL                                419.66
+NULL            NULL                                2252.06
+
+(43 row(s) affected)
+
+-- PROBLEM 6
+
+SELECT C.CUS_LNAME, T.TM_MONTH, P.P_DESCRIPT, SUM(SALE_UNITS*SALE_PRICE) AS TOTALSALES
+FROM
+
+DWDAYSALESFACT AS S
+INNER JOIN DWPRODUCT AS P 
+ON S.P_CODE = P.P_CODE
+
+INNER JOIN DWCUSTOMER AS C
+ON S.CUS_CODE = C.CUS_CODE
+
+INNER JOIN DWTIME AS T
+ON T.TM_ID = S.TM_ID
+
+GROUP BY ROLLUP (CUS_LNAME, TM_MONTH, P_DESCRIPT);
+
+CUS_LNAME       TM_MONTH    P_DESCRIPT                          TOTALSALES
+--------------- ----------- ----------------------------------- ---------------------------------------
+Brown           9           7.25-in. pwr. saw blade             104.93
+Brown           9           Hrd. cloth, 1/4-in., 2x50           39.95
+Brown           9           PVC pipe, 3.5-in., 8-ft             29.35
+Brown           9           Rat-tail file, 1/8-in. fine         4.99
+Brown           9           NULL                                179.22
+Brown           NULL        NULL                                179.22
+Dunne           10          1.25-in. metal screw, 25            20.97
+Dunne           10          B\&D jigsaw, 12-in. blade           109.92
+Dunne           10          NULL                                130.89
+Dunne           NULL        NULL                                130.89
+Farriss         9           B\&D cordless drill, 1/2-in.        38.95
+Farriss         9           Claw hammer                         9.95
+Farriss         9           PVC pipe, 3.5-in., 8-ft             70.44
+Farriss         9           Rat-tail file, 1/8-in. fine         9.98
+Farriss         9           NULL                                129.32
+Farriss         NULL        NULL                                129.32
+O'Brian         9           B\&D cordless drill, 1/2-in.        38.95
+O'Brian         9           Claw hammer                         9.95
+O'Brian         9           Hicut chain saw, 16 in.             256.99
+O'Brian         9           Rat-tail file, 1/8-in. fine         9.98
+O'Brian         9           NULL                                315.87
+O'Brian         10          Claw hammer                         9.95
+O'Brian         10          NULL                                9.95
+O'Brian         NULL        NULL                                325.82
+Olowski         10          7.25-in. pwr. saw blade             29.98
+Olowski         10          PVC pipe, 3.5-in., 8-ft             29.35
+Olowski         10          Rat-tail file, 1/8-in. fine         4.99
+Olowski         10          NULL                                64.32
+Olowski         NULL        NULL                                64.32
+Orlando         9           7.25-in. pwr. saw blade             14.99
+Orlando         9           B\&D jigsaw, 12-in. blade           109.92
+Orlando         9           Claw hammer                         9.95
+Orlando         9           NULL                                134.86
+Orlando         10          Steel matting, 4'x8'x1/6", .5" mesh 359.85
+Orlando         10          NULL                                359.85
+Orlando         NULL        NULL                                494.71
+Ramas           10          7.25-in. pwr. saw blade             74.95
+Ramas           10          Claw hammer                         19.90
+Ramas           10          PVC pipe, 3.5-in., 8-ft             70.44
+Ramas           10          Rat-tail file, 1/8-in. fine         14.97
+Ramas           10          NULL                                180.26
+Ramas           NULL        NULL                                180.26
+Smith           9           1.25-in. metal screw, 25            20.97
+Smith           9           Hrd. cloth, 1/4-in., 2x50           39.95
+Smith           9           NULL                                60.92
+Smith           10          Claw hammer                         9.95
+Smith           10          Hicut chain saw, 16 in.             256.99
+Smith           10          NULL                                266.94
+Smith           NULL        NULL                                327.86
+Williams        9           7.25-in. pwr. saw blade             14.99
+Williams        9           Claw hammer                         29.85
+Williams        9           Rat-tail file, 1/8-in. fine         14.97
+Williams        9           Steel matting, 4'x8'x1/6", .5" mesh 359.85
+Williams        9           NULL                                419.66
+Williams        NULL        NULL                                419.66
+NULL            NULL        NULL                                2252.06
+
+(56 row(s) affected)
+
+-- PROBLEM 7
+
+SELECT R.REG_NAME, C.CUS_LNAME, SUM(SALE_UNITS*SALE_PRICE) AS TOTALSALES
+FROM
+
+DWDAYSALESFACT AS S
+
+INNER JOIN DWCUSTOMER AS C
+ON S.CUS_CODE = C.CUS_CODE
+
+INNER JOIN DWREGION AS R
+ON R.REG_ID = C.REG_ID
+
+GROUP BY ROLLUP (REG_NAME, CUS_LNAME);
+
+REG_NAME   CUS_LNAME       TOTALSALES
+---------- --------------- ---------------------------------------
+NE         Olowski         64.32
+NE         Smith           287.91
+NE         NULL            352.23
+NW         Orlando         494.71
+NW         Smith           39.95
+NW         NULL            534.66
+SE         Brown           179.22
+SE         Dunne           130.89
+SE         O'Brian         325.82
+SE         Ramas           180.26
+SE         NULL            816.19
+SW         Farriss         129.32
+SW         Williams        419.66
+SW         NULL            548.98
+NULL       NULL            2252.06
+
+(15 row(s) affected)
+
+-- PROBLEM 8
+
+SELECT T.TM_MONTH, P.P_CATEGORY, SUM(SALE_UNITS*SALE_PRICE) AS TOTALSALES
+FROM
+
+DWDAYSALESFACT AS S
+INNER JOIN DWPRODUCT AS P 
+ON S.P_CODE = P.P_CODE
+
+INNER JOIN DWTIME AS T
+ON T.TM_ID = S.TM_ID
+
+GROUP BY ROLLUP (TM_MONTH, P_CATEGORY);
+
+TM_MONTH    P_CATEGORY TOTALSALES
+----------- ---------- ---------------------------------------
+9           CAT1       174.83
+9           CAT2       446.81
+9           CAT3       537.54
+9           CAT4       80.67
+9           NULL       1239.85
+10          CAT1       124.89
+10          CAT2       366.91
+10          CAT3       459.64
+10          CAT4       60.77
+10          NULL       1012.21
+NULL        NULL       2252.06
+
+(11 row(s) affected)
+
+-- PROBLEM 9
+
+SELECT TM_MONTH, COUNT(S.SALE_UNITS) AS UNITS_SOLD, SUM(SALE_UNITS*SALE_PRICE) AS TOTALSALES
+FROM
+
+DWDAYSALESFACT AS S
+
+INNER JOIN DWTIME AS T
+ON T.TM_ID = S.TM_ID
+
+GROUP BY ROLLUP (TM_MONTH);
+
+TM_MONTH    UNITS_SOLD  TOTALSALES
+----------- ----------- ---------------------------------------
+9           23          1239.85
+10          13          1012.21
+NULL        36          2252.06
+
+(3 row(s) affected)
+
+-- PROBLEM 10
+
+SELECT TM_MONTH, P.P_CATEGORY, COUNT(S.SALE_UNITS) AS UNITS_SOLD, SUM(SALE_UNITS*SALE_PRICE) AS TOTALSALES
+FROM
+
+DWDAYSALESFACT AS S
+
+INNER JOIN DWPRODUCT AS P 
+ON S.P_CODE = P.P_CODE
+
+INNER JOIN DWTIME AS T
+ON T.TM_ID = S.TM_ID
+
+GROUP BY ROLLUP (TM_MONTH, P_CATEGORY);
+
+TM_MONTH    P_CATEGORY UNITS_SOLD  TOTALSALES
+----------- ---------- ----------- ---------------------------------------
+9           CAT1       8           174.83
+9           CAT2       4           446.81
+9           CAT3       5           537.54
+9           CAT4       6           80.67
+9           NULL       23          1239.85
+10          CAT1       4           124.89
+10          CAT2       2           366.91
+10          CAT3       3           459.64
+10          CAT4       4           60.77
+10          NULL       13          1012.21
+NULL        NULL       36          2252.06
+
+(11 row(s) affected)
+
+-- PROBLEM 11
+
+SELECT TM_MONTH, P.P_CATEGORY, P.P_DESCRIPT, COUNT(S.SALE_UNITS) AS UNITS_SOLD, SUM(SALE_UNITS*SALE_PRICE) AS TOTALSALES
+FROM
+
+DWDAYSALESFACT AS S
+
+INNER JOIN DWPRODUCT AS P 
+ON S.P_CODE = P.P_CODE
+
+INNER JOIN DWTIME AS T
+ON T.TM_ID = S.TM_ID
+
+GROUP BY ROLLUP (TM_MONTH, P_CATEGORY, P_DESCRIPT);
+
+TM_MONTH    P_CATEGORY P_DESCRIPT                          UNITS_SOLD  TOTALSALES
+----------- ---------- ----------------------------------- ----------- ---------------------------------------
+9           CAT1       7.25-in. pwr. saw blade             4           134.91
+9           CAT1       Rat-tail file, 1/8-in. fine         4           39.92
+9           CAT1       NULL                                8           174.83
+9           CAT2       B\&D jigsaw, 12-in. blade           1           109.92
+9           CAT2       Hicut chain saw, 16 in.             1           256.99
+9           CAT2       Hrd. cloth, 1/4-in., 2x50           2           79.90
+9           CAT2       NULL                                4           446.81
+9           CAT3       B\&D cordless drill, 1/2-in.        2           77.90
+9           CAT3       PVC pipe, 3.5-in., 8-ft             2           99.79
+9           CAT3       Steel matting, 4'x8'x1/6", .5" mesh 1           359.85
+9           CAT3       NULL                                5           537.54
+9           CAT4       1.25-in. metal screw, 25            1           20.97
+9           CAT4       Claw hammer                         5           59.70
+9           CAT4       NULL                                6           80.67
+9           NULL       NULL                                23          1239.85
+10          CAT1       7.25-in. pwr. saw blade             2           104.93
+10          CAT1       Rat-tail file, 1/8-in. fine         2           19.96
+10          CAT1       NULL                                4           124.89
+10          CAT2       B\&D jigsaw, 12-in. blade           1           109.92
+10          CAT2       Hicut chain saw, 16 in.             1           256.99
+10          CAT2       NULL                                2           366.91
+10          CAT3       PVC pipe, 3.5-in., 8-ft             2           99.79
+10          CAT3       Steel matting, 4'x8'x1/6", .5" mesh 1           359.85
+10          CAT3       NULL                                3           459.64
+10          CAT4       1.25-in. metal screw, 25            1           20.97
+10          CAT4       Claw hammer                         3           39.80
+10          CAT4       NULL                                4           60.77
+10          NULL       NULL                                13          1012.21
+NULL        NULL       NULL                                36          2252.06
+
+(29 row(s) affected)
+
+-- PROBLEM 12
+
+SELECT TM_MONTH, P.P_CATEGORY, COUNT(S.SALE_UNITS) AS UNITS_SOLD, SUM(SALE_UNITS*SALE_PRICE) AS TOTALSALES
+FROM
+
+DWDAYSALESFACT AS S
+
+INNER JOIN DWPRODUCT AS P 
+ON S.P_CODE = P.P_CODE
+
+INNER JOIN DWTIME AS T
+ON T.TM_ID = S.TM_ID
+
+GROUP BY CUBE (P_CATEGORY, TM_MONTH);
+
+TM_MONTH    P_CATEGORY UNITS_SOLD  TOTALSALES
+----------- ---------- ----------- ---------------------------------------
+9           CAT1       8           174.83
+9           CAT2       4           446.81
+9           CAT3       5           537.54
+9           CAT4       6           80.67
+9           NULL       23          1239.85
+10          CAT1       4           124.89
+10          CAT2       2           366.91
+10          CAT3       3           459.64
+10          CAT4       4           60.77
+10          NULL       13          1012.21
+NULL        NULL       36          2252.06
+NULL        CAT1       12          299.72
+NULL        CAT2       6           813.72
+NULL        CAT3       8           997.18
+NULL        CAT4       10          141.44
+
+(15 row(s) affected)
+

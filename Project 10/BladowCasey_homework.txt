@@ -1,0 +1,277 @@
+-- PROBLEM 76
+
+SELECT MOVIE.Movie_Title, MOVIE.Movie_Year, MOVIE.Movie_Cost
+FROM MOVIE
+WHERE (((MOVIE.Movie_Title) Like "*hope*"))
+ORDER BY MOVIE.Movie_Title;
+
+Movie_Title	Movie_Year	Movie_Cost
+Richard Goodhope	2010	$59.95
+Where Hope Dies	2000	$25.49
+
+-- PROBLEM 77
+
+SELECT MOVIE.Movie_Title, MOVIE.Movie_Year, MOVIE.Movie_Genre
+FROM MOVIE
+WHERE (((MOVIE.Movie_Genre)="action"));
+
+Movie_Title	Movie_Year	Movie_Genre
+Smokey Mountain Wildlife	2006	ACTION
+Time to Burn	2008	ACTION
+
+-- PROBLEM 78
+
+SELECT MOVIE.Movie_Num, MOVIE.Movie_Title, MOVIE.Movie_Cost
+FROM MOVIE
+WHERE (((MOVIE.Movie_Cost)>40));
+
+Movie_Num	Movie_Title	Movie_Cost
+1235	Smokey Mountain Wildlife	$59.95
+1236	Richard Goodhope	$59.95
+1238	Constant Companion	$89.95
+1245	Time to Burn	$45.49
+1246	What He Doesn't Know	$58.29
+
+-- PROBLEM 79
+
+SELECT MOVIE.Movie_Num, MOVIE.Movie_Title, MOVIE.Movie_Cost, MOVIE.Movie_Genre
+FROM MOVIE
+WHERE (((MOVIE.Movie_Cost)<50) AND ((MOVIE.Movie_Genre)="ACTION")) OR (((MOVIE.Movie_Cost)<50) AND ((MOVIE.Movie_Genre)="COMEDY"))
+ORDER BY MOVIE.Movie_Genre;
+
+Movie_Num	Movie_Title	Movie_Cost	Movie_Genre
+1245	Time to Burn	$45.49	ACTION
+1237	Beatnik Fever	$29.95	COMEDY
+
+-- PROBLEM 81
+
+SELECT MOVIE.Movie_Genre, Count(MOVIE.Movie_Genre) AS [Number of Movies]
+FROM MOVIE
+GROUP BY MOVIE.Movie_Genre;
+
+Movie_Genre	Number of Movies
+ACTION	2
+COMEDY	2
+DRAMA	3
+FAMILY	1
+
+-- PROBLEM 82
+
+SELECT Avg(MOVIE.Movie_Cost) AS [Average Movie Cost]
+FROM MOVIE;
+
+Average Movie Cost
+$51.13
+
+-- PROBLEM 83
+
+SELECT MOVIE.Movie_Genre, Avg(MOVIE.Movie_Cost) AS [Average Cost]
+FROM MOVIE
+GROUP BY MOVIE.Movie_Genre;
+
+Movie_Genre	Average Cost
+ACTION	$52.72
+COMEDY	$44.12
+DRAMA	$58.46
+FAMILY	$39.95
+
+-- PROBLEM 84
+
+SELECT MOVIE.Movie_Title, MOVIE.Movie_Genre, PRICE.Price_Description, PRICE.Price_RentFee
+FROM PRICE INNER JOIN MOVIE ON PRICE.Price_Code = MOVIE.Price_Code;
+
+Movie_Title	Movie_Genre	Price_Description	Price_RentFee
+What He Doesn't Know	COMEDY	Standard	$2.50
+The Cesar Family Christmas	FAMILY	New Release	$4.00
+Richard Goodhope	DRAMA	New Release	$4.00
+Beatnik Fever	COMEDY	New Release	$4.00
+Smokey Mountain Wildlife	ACTION	Discount	$2.00
+Where Hope Dies	DRAMA	Discount	$2.00
+Time to Burn	ACTION	Discount	$2.00
+
+-- PROBLEM 86
+
+SELECT MOVIE.Movie_Title, MOVIE.Movie_Year, (MOVIE.Movie_Cost/PRICE.Price_RentFee) AS BreakevenRentals
+FROM PRICE INNER JOIN MOVIE ON PRICE.Price_Code = MOVIE.Price_Code;
+
+Movie_Title	Movie_Year	Breakeven Rentals
+What He Doesn't Know	2008	23.32
+The Cesar Family Christmas	2009	9.99
+Richard Goodhope	2010	14.99
+Beatnik Fever	2009	7.49
+Smokey Mountain Wildlife	2006	29.98
+Where Hope Dies	2000	12.75
+Time to Burn	2008	22.75
+
+-- PROBLEM 87
+
+SELECT MOVIE.Movie_Title, MOVIE.Movie_Year
+FROM PRICE INNER JOIN MOVIE ON PRICE.Price_Code = MOVIE.Price_Code;
+
+Movie_Title	Movie_Year
+What He Doesn't Know	2008
+The Cesar Family Christmas	2009
+Richard Goodhope	2010
+Beatnik Fever	2009
+Smokey Mountain Wildlife	2006
+Where Hope Dies	2000
+Time to Burn	2008
+
+-- PROBLEM 88
+
+SELECT MOVIE.Movie_Title, MOVIE.Movie_Year, MOVIE.Movie_Cost
+FROM MOVIE
+WHERE (((MOVIE.Movie_Cost)>44.99 And (MOVIE.Movie_Cost)<49.99));
+
+Movie_Title	Movie_Year	Movie_Cost
+Time to Burn	2008	$45.49
+
+-- PROBLEM 90
+
+SELECT MOVIE.Movie_Num, MOVIE.Movie_Title, MOVIE.Movie_Year
+FROM MOVIE LEFT JOIN VIDEO ON MOVIE.Movie_Num = VIDEO.Movie_Num
+WHERE (((VIDEO.Movie_Num) Is Null));
+
+Movie_Num	Movie_Title	Movie_Year
+1238	Constant Companion	2010
+
+-- PROBLEM 91
+
+SELECT MEMBERSHIP.Mem_Num, MEMBERSHIP.Mem_FName, MEMBERSHIP.Mem_LName, MEMBERSHIP.Mem_Balance
+FROM MEMBERSHIP INNER JOIN RENTAL ON MEMBERSHIP.Mem_Num = RENTAL.Mem_Num
+GROUP BY MEMBERSHIP.Mem_Num, MEMBERSHIP.Mem_FName, MEMBERSHIP.Mem_LName, MEMBERSHIP.Mem_Balance;
+
+Mem_Num	Mem_FName	Mem_LName	Mem_Balance
+102	Tami	Dawson	11
+103	Curt	Knight	6
+104	Jamal	Melendez	0
+105	Iva	McClain	15
+107	Rosario	Elliott	5
+110	Lewis	Rosales	0
+111	Stacy	Mann	8
+
+-- PROBLEM 92 
+
+-- MAKE TABLE 91 USING QUERY 92A
+
+SELECT MEMBERSHIP.Mem_Num, MEMBERSHIP.Mem_FName, MEMBERSHIP.Mem_LName, MEMBERSHIP.Mem_Balance INTO [Table 91]
+FROM MEMBERSHIP INNER JOIN RENTAL ON MEMBERSHIP.Mem_Num = RENTAL.Mem_Num
+GROUP BY MEMBERSHIP.Mem_Num, MEMBERSHIP.Mem_FName, MEMBERSHIP.Mem_LName, MEMBERSHIP.Mem_Balance;
+
+-- RUN QUERY 92B
+
+SELECT Min(MEMBERSHIP.Mem_Balance) AS MinOfMem_Balance, Max(MEMBERSHIP.Mem_Balance) AS MaxOfMem_Balance, Avg([Table 91].Mem_Balance) AS AvgOfMem_Balance1
+FROM MEMBERSHIP INNER JOIN [Table 91] ON MEMBERSHIP.Mem_Num = [Table 91].Mem_Num;
+
+Minimum Balance	Maximum Balance	Average Balance
+$0.00	$15.00	$6.43
+
+-- PROBLEM 93
+
+SELECT [Mem_FName] & " " & [Mem_LName] AS Membership_Name, [Mem_Street] & ", " & [Mem_City] & ", " & [Mem_State] & " " & [Mem_Zip] AS Expr1
+FROM MEMBERSHIP;
+
+Membership Name	Membership Address
+Tami Dawson	2632 Takli Circle, Norene, TN 37136
+Curt Knight	4025 Cornell Court, Flatgap, KY 41219
+Jamal Melendez	788 East 145th Avenue, Quebeck, TN 38579
+Iva McClain	6045 Musket Ball Circle, Summit, KY 42783
+Miranda Parks	4469 Maxwell Place, Germantown, TN 38183
+Rosario Elliott	7578 Danner Avenue, Columbia, TN 38402
+Mattie Guy	4390 Evergreen Street, Lily, KY 40740
+Clint Ochoa	1711 Elm Street, Greenville, TN 37745
+Lewis Rosales	4524 SouthWind Circle, Counce, TN 38326
+Stacy Mann	2789 East Cook Avenue, Murfreesboro, TN 37132
+Luis Trujillo	7267 Melvin Avenue, Heiskell, TN 37754
+Minnie Gonzales	6430 Vasili Drive, Williston, TN 38076
+
+-- PROBLEM 94
+
+SELECT RENTAL.Rent_Num, RENTAL.Rent_Date, VIDEO.Vid_Num, MOVIE.Movie_Title, DETAILRENTAL.Detail_DueDate, DETAILRENTAL.Detail_ReturnDate
+FROM (MOVIE INNER JOIN VIDEO ON MOVIE.Movie_Num = VIDEO.Movie_Num) INNER JOIN (RENTAL INNER JOIN DETAILRENTAL ON RENTAL.Rent_Num = DETAILRENTAL.Rent_Num) ON VIDEO.Vid_Num = DETAILRENTAL.Vid_Num
+WHERE (((DETAILRENTAL.Detail_ReturnDate)>[DETAILRENTAL].[Detail_DueDate]))
+ORDER BY RENTAL.Rent_Num, MOVIE.Movie_Title;
+
+Rent_Num	Rent_Date	Vid_Num	Movie_Title	Detail_DueDate	Detail_ReturnDate
+1003	02-Mar-11	54325	The Cesar Family Christmas	04-Mar-11	09-Mar-11
+1003	02-Mar-11	61369	What He Doesn't Know	06-Mar-11	09-Mar-11
+1003	02-Mar-11	61388	Where Hope Dies	06-Mar-11	09-Mar-11
+1004	02-Mar-11	44392	Beatnik Fever	05-Mar-11	07-Mar-11
+1004	02-Mar-11	34367	Richard Goodhope	05-Mar-11	07-Mar-11
+
+-- PROBLEM 95
+
+SELECT RENTAL.Rent_Num, RENTAL.Rent_Date, VIDEO.Vid_Num, MOVIE.Movie_Title, DETAILRENTAL.Detail_DueDate, DETAILRENTAL.Detail_ReturnDate, DETAILRENTAL.Detail_Fee, DateDiff("d",[Detail_DueDate],[Detail_ReturnDate]) AS Expr1
+FROM (MOVIE INNER JOIN VIDEO ON MOVIE.Movie_Num = VIDEO.Movie_Num) INNER JOIN (RENTAL INNER JOIN DETAILRENTAL ON RENTAL.Rent_Num = DETAILRENTAL.Rent_Num) ON VIDEO.Vid_Num = DETAILRENTAL.Vid_Num
+WHERE (((DETAILRENTAL.Detail_ReturnDate)>[DETAILRENTAL].[Detail_DueDate]))
+ORDER BY RENTAL.Rent_Num, MOVIE.Movie_Title;
+
+Rent_Num	Rent_Date	Vid_Num	Movie_Title	Detail_DueDate	Detail_ReturnDate	Detail_Fee	Days Past Due
+1003	02-Mar-11	54325	The Cesar Family Christmas	04-Mar-11	09-Mar-11	$3.50	5
+1003	02-Mar-11	61369	What He Doesn't Know	06-Mar-11	09-Mar-11	$2.00	3
+1003	02-Mar-11	61388	Where Hope Dies	06-Mar-11	09-Mar-11	$0.00	3
+1004	02-Mar-11	44392	Beatnik Fever	05-Mar-11	07-Mar-11	$3.50	2
+1004	02-Mar-11	34367	Richard Goodhope	05-Mar-11	07-Mar-11	$3.50	2
+
+-- PROBLEM 96
+
+SELECT RENTAL.Rent_Num, RENTAL.Rent_Date, MOVIE.Movie_Title, DETAILRENTAL.Detail_Fee
+FROM (MOVIE INNER JOIN VIDEO ON MOVIE.Movie_Num = VIDEO.Movie_Num) INNER JOIN (RENTAL INNER JOIN DETAILRENTAL ON RENTAL.Rent_Num = DETAILRENTAL.Rent_Num) ON VIDEO.Vid_Num = DETAILRENTAL.Vid_Num
+WHERE (((DETAILRENTAL.Detail_ReturnDate)<=[DETAILRENTAL].[Detail_DueDate]));
+
+Rent_Num	Rent_Date	Movie_Title	Detail_Fee
+1001	01-Mar-11	Smokey Mountain Wildlife	$2.00
+1001	01-Mar-11	Richard Goodhope	$3.50
+1001	01-Mar-11	Time to Burn	$2.00
+1002	01-Mar-11	Beatnik Fever	$3.50
+1004	02-Mar-11	Smokey Mountain Wildlife	$2.00
+1005	02-Mar-11	Smokey Mountain Wildlife	$2.00
+1005	02-Mar-11	Beatnik Fever	$3.50
+1006	02-Mar-11	Richard Goodhope	$3.50
+1008	03-Mar-11	Richard Goodhope	$3.50
+
+-- PROBLEM 97
+
+SELECT MEMBERSHIP.Mem_Num, MEMBERSHIP.Mem_LName, MEMBERSHIP.Mem_FName, Sum(DETAILRENTAL.Detail_Fee) AS SumOfDetail_Fee
+FROM (MEMBERSHIP INNER JOIN RENTAL ON MEMBERSHIP.Mem_Num = RENTAL.Mem_Num) INNER JOIN DETAILRENTAL ON RENTAL.Rent_Num = DETAILRENTAL.Rent_Num
+GROUP BY MEMBERSHIP.Mem_Num, MEMBERSHIP.Mem_LName, MEMBERSHIP.Mem_FName;
+
+Mem_Num	Mem_LName	Mem_FName	Rental Fee Revenue
+102	Dawson	Tami	$5.50
+103	Knight	Curt	$7.50
+104	Melendez	Jamal	$3.50
+105	McClain	Iva	$7.00
+107	Elliott	Rosario	$5.50
+110	Rosales	Lewis	$9.00
+111	Mann	Stacy	$9.00
+
+-- PROBLEM 98 
+
+-- CREATE Table 98A
+
+SELECT MOVIE.Movie_Genre, Avg(MOVIE.Movie_Cost) AS AvgOfMovie_Cost INTO [Table 98A]
+FROM MOVIE
+GROUP BY MOVIE.Movie_Genre;
+
+-- CREATE Table 98B
+
+SELECT MOVIE.Movie_Num, MOVIE.Movie_Genre, MOVIE.Movie_Cost INTO [Table 98B]
+FROM [Table 98A], MOVIE
+GROUP BY MOVIE.Movie_Num, MOVIE.Movie_Genre, MOVIE.Movie_Cost;
+
+-- RUN QUERY 98
+
+SELECT [Table 98B].Movie_Num, [Table 98B].Movie_Genre, [Table 98A].AvgOfMovie_Cost, [Table 98B].Movie_Cost, (([Table 98B]![Movie_Cost]-[Table 98A]![AvgOfMovie_Cost])/[Table 98A]![AvgOfMovie_Cost]) AS Expr1
+FROM [Table 98A], [Table 98B]
+WHERE ((([Table 98A].Movie_Genre)=[Table 98B].[Movie_Genre]))
+GROUP BY [Table 98B].Movie_Num, [Table 98B].Movie_Genre, [Table 98A].AvgOfMovie_Cost, [Table 98B].Movie_Cost;
+
+Movie_Num	Movie_Genre	Average Cost	Movie_Cost	Percent Difference
+1234	FAMILY	$39.95	$39.95	0.00%
+1235	ACTION	$52.72	$59.95	13.71%
+1236	DRAMA	$58.46	$59.95	2.55%
+1237	COMEDY	$44.12	$29.95	-32.12%
+1238	DRAMA	$58.46	$89.95	53.87%
+1239	DRAMA	$58.46	$25.49	-56.40%
+1245	ACTION	$52.72	$45.49	-13.71%
+1246	COMEDY	$44.12	$58.29	32.12%

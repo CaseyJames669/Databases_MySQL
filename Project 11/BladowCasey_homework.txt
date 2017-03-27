@@ -1,0 +1,322 @@
+-- Problem 19
+
+SELECT PROD_SKU, PROD_PRICE, PROD_DESCRIPT
+FROM LGPRODUCT
+WHERE PROD_PRICE > 50;
+
+PROD_SKU        PROD_PRICE                              PROD_DESCRIPT
+--------------- --------------------------------------- ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+1021-MTI        62.99                                   Elastomeric, Exterior, Industrial Grade, Water Based
+1964-OUT        78.49                                   Fire Resistant Top Coat, for Interior Wood
+3694-XFJ        54.89                                   Epoxy-Modified Latex, Interior, Semi-Gloss (MPI Gloss Level 5)
+
+(3 row(s) affected)
+
+-- PROBLEM 20
+
+SELECT LGEMPLOYEE.EMP_NUM, LGEMPLOYEE.EMP_LNAME, LGEMPLOYEE.EMP_FNAME, LGSALARY_HISTORY.SAL_AMOUNT
+FROM LGEMPLOYEE INNER JOIN LGSALARY_HISTORY ON LGEMPLOYEE.EMP_NUM = LGSALARY_HISTORY.EMP_NUM
+WHERE (((LGEMPLOYEE.[DEPT_NUM])=300) AND ((LGSALARY_HISTORY.SAL_END) Is Null))
+ORDER BY LGSALARY_HISTORY.SAL_AMOUNT DESC;
+
+EMP_NUM     EMP_LNAME                 EMP_FNAME            SAL_AMOUNT
+----------- ------------------------- -------------------- ---------------------------------------
+83746       RANKIN                    SEAN                 95550.00
+84328       CARPENTER                 FERN                 94090.00
+83716       RIVERA                    HENRY                85920.00
+84432       JAMISON                   MERLE                85360.00
+83902       VARGAS                    ROCKY                79540.00
+83695       MENDEZ                    CARROLL              79200.00
+84500       WESTON                    CHRISTINE            78690.00
+84594       TIDWELL                   ODELL                77400.00
+83910       AVERY                     LAUREN               76110.00
+83359       WATTS                     MERLE                72240.00
+83790       ACEVEDO                   LAVINA               72000.00
+83433       NORWOOD                   RONNA                68870.00
+84521       JUDD                      DELFINA              66000.00
+83653       HORN                      LEEANN               61920.00
+83738       STACY                     PORTER               58200.00
+83788       DOWDY                     LANA                 56760.00
+83867       KELLY                     TRACIE               56750.00
+84234       MINER                     LUISA                54720.00
+83637       CRANE                     TANIKA               52870.00
+83877       DUNLAP                    STEPHAINE            52650.00
+84035       FISHER                    HAL                  51600.00
+83729       RAMEY                     CORRINA              48500.00
+83732       DIGGS                     SAMMY                44720.00
+83644       MAXWELL                   WILLA                43200.00
+83312       BAKER                     ROSALBA              42400.00
+
+(25 row(s) affected)
+
+-- PROBLEM 21
+
+SELECT LGEMPLOYEE.EMP_NUM, LGEMPLOYEE.EMP_LNAME, LGEMPLOYEE.EMP_FNAME, Min(LGSALARY_HISTORY.SAL_AMOUNT) AS Sal_Amount
+FROM LGEMPLOYEE INNER JOIN LGSALARY_HISTORY ON LGEMPLOYEE.EMP_NUM = LGSALARY_HISTORY.EMP_NUM
+GROUP BY LGEMPLOYEE.EMP_NUM, LGEMPLOYEE.EMP_LNAME, LGEMPLOYEE.EMP_FNAME
+ORDER BY LGEMPLOYEE.EMP_NUM;
+
+EMP_NUM     EMP_LNAME                 EMP_FNAME            Sal_Amount
+----------- ------------------------- -------------------- ---------------------------------------
+83304       MCDONALD                  TAMARA               19770.00
+83308       LOVE                      CONNIE               11230.00
+83312       BAKER                     ROSALBA              39260.00
+83314       DAVID                     CHAROLETTE           15150.00
+83318       PECK                      DARCIE               22330.00
+83321       FARMER                    ANGELINA             18250.00
+83332       LONG                      WILLARD              23380.00
+83341       CORTEZ                    CHRISTINE            14510.00
+83347       WINN                      QUINTIN              17010.00
+83349       SINGH                     JENNIFFER            21220.00
+83359       WATTS                     MERLE                25370.00
+83366       BLEDSOE                   PHOEBE               23200.00
+83371       MATHEWS                   ROXANE               18140.00
+83372       DAHL                      CLAUDINE             25780.00
+83374       TILLEY                    DARRON               16940.00
+83378       DUNHAM                    FELICIA              34050.00
+83382       CONKLIN                   STELLA               12270.00
+83385       COLBERT                   BRODERICK            17350.00
+83398       GILES                     ZACK                 34950.00
+83403       PONCE                     FELICITA             11700.00
+83404       FENTON                    LIZ                  32360.00
+83411       REDMOND                   ROGELIO              8990.00
+83413       MARINO                    KYRA                 19250.00
+83415       WHALEN                    CHASITY              32930.00
+83419       SNEED                     EUGENE               15940.00
+83423       GOOD                      LINDSAY              26890.00
+83428       CRUM                      SHERRILL             10640.00
+83432       BENAVIDES                 SAL                  20530.00
+...
+
+(363 row(s) affected)
+
+-- PROBLEM 22
+
+-- CREATE TEMP22A
+
+SELECT LGLINE.INV_NUM, LGLINE.LINE_NUM, LGLINE.PROD_SKU, LGPRODUCT.PROD_DESCRIPT, LGPRODUCT.BRAND_ID INTO TEMP22A
+FROM LGPRODUCT INNER JOIN LGLINE ON LGPRODUCT.PROD_SKU = LGLINE.PROD_SKU
+WHERE (((LGPRODUCT.PROD_CATEGORY)='TOP COAT'))
+GROUP BY LGLINE.INV_NUM, LGLINE.LINE_NUM, LGLINE.PROD_SKU, LGPRODUCT.PROD_DESCRIPT, LGPRODUCT.BRAND_ID;
+
+-- CREATE TEMP22B
+
+SELECT LGLINE.INV_NUM, LGLINE.LINE_NUM, LGLINE.PROD_SKU, LGPRODUCT.PROD_DESCRIPT, LGPRODUCT.BRAND_ID INTO TEMP22B
+FROM LGPRODUCT INNER JOIN LGLINE ON LGPRODUCT.PROD_SKU = LGLINE.PROD_SKU
+WHERE (((LGPRODUCT.PROD_CATEGORY)='SEALER'))
+GROUP BY LGLINE.INV_NUM, LGLINE.LINE_NUM, LGLINE.PROD_SKU, LGPRODUCT.PROD_DESCRIPT, LGPRODUCT.BRAND_ID;
+
+-- RUN QUERY
+
+SELECT TEMP22A.INV_NUM, TEMP22B.LINE_NUM, TEMP22B.PROD_SKU, TEMP22B.PROD_DESCRIPT, TEMP22A.LINE_NUM, TEMP22A.PROD_SKU, TEMP22A.PROD_DESCRIPT, TEMP22B.BRAND_ID
+FROM TEMP22A INNER JOIN TEMP22B ON TEMP22A.INV_NUM = TEMP22B.INV_NUM
+WHERE (((TEMP22A.BRAND_ID)=[TEMP22B].[BRAND_ID]))
+GROUP BY TEMP22A.INV_NUM, TEMP22B.LINE_NUM, TEMP22B.PROD_SKU, TEMP22B.PROD_DESCRIPT, TEMP22A.LINE_NUM, TEMP22A.PROD_SKU, TEMP22A.PROD_DESCRIPT, TEMP22B.BRAND_ID;
+
+INV_NUM     LINE_NUM    PROD_SKU        PROD_DESCRIPT                                                                                                                                                                                                                                                   LINE_NUM    PROD_SKU        PROD_DESCRIPT                                                                                                                                                                                                                                                   BRAND_ID
+----------- ----------- --------------- --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- ----------- --------------- --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -----------
+115         2           5140-RTG        Fire Resistant Sealer, for Exterior Wood (ULC Approved)                                                                                                                                                                                                         1           1203-AIS        Fire Retardant Coating, Latex, Interior, Flat (ULC Approved)                                                                                                                                                                                                    35
+118         2           5140-RTG        Fire Resistant Sealer, for Exterior Wood (ULC Approved)                                                                                                                                                                                                         5           5046-TTC        Aluminum Paint, Heat Resistant (Up to 427°C - 800°F)                                                                                                                                                                                                            35
+135         5           3036-PCT        Sealer, for Knots                                                                                                                                                                                                                                               2           1074-VVJ        Light Industrial Coating, Exterior, Water Based ('eggshell-like' - MPI Gloss Level 3)                                                                                                                                                                           25
+153         2           3701-YAW        Sealer, Solvent Based, for Concrete Floors                                                                                                                                                                                                                      1           3955-NWD        Water Repellant, Clear (Not Paintable)                                                                                                                                                                                                                          30
+222         1           1336-FVM        Alkyd, Sanding Sealer, Clear                                                                                                                                                                                                                                    3           8199-YRF        Varnish, Exterior, Water Based, (Satin-Like) MPI Gloss Level 4                                                                                                                                                                                                  33
+234         4           5728-ZPO        Shop Coat, Quick Dry, for Interior Steel                                                                                                                                                                                                                        2           9126-PWF        Latex, Recycled (Consolidated), Interior (MPI Gloss Level 3)                                                                                                                                                                                                    27
+234         4           5728-ZPO        Shop Coat, Quick Dry, for Interior Steel                                                                                                                                                                                                                        3           9272-LTP        Varnish, Marine Spar, Exterior, Gloss (MPI Gloss Level 6)                                                                                                                                                                                                       27
+243         1           4072-SWV        Sealer, Solvent Based, for Concrete Floors                                                                                                                                                                                                                      3           5653-RTU        Aluminum Paint                                                                                                                                                                                                                                                  23
+287         1           8894-LUR        Lacquer, Sanding Sealer, Clear                                                                                                                                                                                                                                  5           9838-FUF        Fire Retardant Top-Coat, Clear, Alkyd, Interior (ULC Approved)                                                                                                                                                                                                  27
+333         1           3701-YAW        Sealer, Solvent Based, for Concrete Floors                                                                                                                                                                                                                      5           4784-SLU        Lacquer, Clear, Flat                                                                                                                                                                                                                                            30
+333         1           3701-YAW        Sealer, Solvent Based, for Concrete Floors                                                                                                                                                                                                                      6           2584-CIJ        Stain, for Exterior Wood Decks                                                                                                                                                                                                                                  30
+...
+(130 row(s) affected)
+
+-- PROBLEM 23
+
+SELECT LGEMPLOYEE.EMP_NUM, LGEMPLOYEE.EMP_FNAME, LGEMPLOYEE.EMP_LNAME, LGEMPLOYEE.EMP_EMAIL, Sum(LGLINE.LINE_QTY) AS Total
+FROM (LGBRAND INNER JOIN LGPRODUCT ON LGBRAND.BRAND_ID = LGPRODUCT.BRAND_ID) INNER JOIN ((LGEMPLOYEE INNER JOIN LGINVOICE ON LGEMPLOYEE.EMP_NUM = LGINVOICE.EMPLOYEE_ID) INNER JOIN LGLINE ON LGINVOICE.INV_NUM = LGLINE.INV_NUM) ON LGPRODUCT.PROD_SKU = LGLINE.PROD_SKU
+WHERE (((LGBRAND.BRAND_NAME)='BINDER PRIME') AND ((LGINVOICE.INV_DATE)>='11/1/2011' And (LGINVOICE.INV_DATE)<='12/5/2011'))
+GROUP BY LGEMPLOYEE.EMP_NUM, LGEMPLOYEE.EMP_FNAME, LGEMPLOYEE.EMP_LNAME, LGEMPLOYEE.EMP_EMAIL
+ORDER BY Sum(LGLINE.LINE_QTY) DESC, LGEMPLOYEE.EMP_LNAME;
+
+EMP_NUM     EMP_FNAME            EMP_LNAME                 EMP_EMAIL                 Total
+----------- -------------------- ------------------------- ------------------------- ----------------------
+84134       ROSALIE              GARLAND                   G.ROSALI98@LGCOMPANY.COM  23
+83850       RUSTY                MILES                     M.RUSTY95@LGCOMPANY.COM   23
+83705       JOSE                 BARR                      B.JOSE92@LGCOMPANY.COM    22
+83993       SANG                 CORTES                    C.SANG97@LGCOMPANY.COM    21
+84334       LINNIE               GOLDMAN                   G.LINNIE99@LGCOMPANY.COM  18
+83593       ROSANNE              NASH                      N.ROSANN91@LGCOMPANY.COM  18
+83936       BRADFORD             BRAY                      B.BRADFO96@LGCOMPANY.COM  17
+83565       LOURDES              ABERNATHY                 A.LOURDE90@LGCOMPANY.COM  16
+84163       GWEN                 EASLEY                    E.GWEN98@LGCOMPANY.COM    16
+83763       JAIME                FELTON                    F.JAIME94@LGCOMPANY.COM   16
+83537       CLEO                 ENGLISH                   E.CLEO90@LGCOMPANY.COM    15
+83677       HERB                 MANNING                   M.HERB92@LGCOMPANY.COM    15
+83964       HAILEY               SWEENEY                   S.HAILEY97@LGCOMPANY.COM  14
+84306       ROWENA               MEDINA                    M.ROWENA99@LGCOMPANY.COM  13
+83792       WALLY                ANDERSEN                  A.WALLY94@LGCOMPANY.COM   11
+83734       INEZ                 ROCHA                     R.INEZ93@LGCOMPANY.COM    10
+84191       ROXANA               HOLBROOK                  H.ROXANA98@LGCOMPANY.COM  9
+84248       DANICA               CASTLE                    C.DANICA99@LGCOMPANY.COM  7
+84106       FELICE               SAMUEL                    S.FELICE98@LGCOMPANY.COM  7
+84219       THURMAN              WILKINSON                 W.THURMA99@LGCOMPANY.COM  7
+84049       LANE                 BRANDON                   B.LANE97@LGCOMPANY.COM    5
+84392       ALEJANDRA            WHALEY                    W.ALEJAN0@LGCOMPANY.COM   5
+84364       LESLIE               VARNER                    V.LESLIE0@LGCOMPANY.COM   4
+83621       FONDA                GONZALEZ                  G.FONDA91@LGCOMPANY.COM   3
+83649       DELMA                JACOB                     J.DELMA91@LGCOMPANY.COM   3
+83878       PAT                  MARIN                     M.PAT95@LGCOMPANY.COM     3
+83906       DELLA                SIMONS                    S.DELLA96@LGCOMPANY.COM   3
+84420       DOUG                 CAUDILL                   C.DOUG0@LGCOMPANY.COM     2
+84021       JAROD                DICKINSON                 D.JAROD97@LGCOMPANY.COM   2
+84276       ROSALIND             VILLARREAL                V.ROSALI99@LGCOMPANY.COM  2
+84078       DIEGO                ERWIN                     E.DIEGO98@LGCOMPANY.COM   1
+83820       TOM                  HOBSON                    H.TOM94@LGCOMPANY.COM     1
+
+(32 row(s) affected)
+
+-- PROBLEM 24
+
+-- CREATE Temp24A
+
+SELECT LGCUSTOMER.CUST_CODE, LGCUSTOMER.CUST_FNAME, LGCUSTOMER.CUST_LNAME, LGINVOICE.EMPLOYEE_ID INTO Temp24A
+FROM LGCUSTOMER INNER JOIN LGINVOICE ON LGCUSTOMER.CUST_CODE = LGINVOICE.CUST_CODE
+WHERE (((LGINVOICE.EMPLOYEE_ID)=83649));
+
+-- CREATE Temp24B
+
+SELECT LGCUSTOMER.CUST_CODE, LGCUSTOMER.CUST_FNAME, LGCUSTOMER.CUST_LNAME, LGINVOICE.EMPLOYEE_ID INTO Temp24B
+FROM LGCUSTOMER INNER JOIN LGINVOICE ON LGCUSTOMER.CUST_CODE = LGINVOICE.CUST_CODE
+WHERE (((LGINVOICE.EMPLOYEE_ID)=83677));
+
+-- RUN QUERY
+
+SELECT DISTINCT Temp24A.CUST_CODE, Temp24A.CUST_FNAME, Temp24A.CUST_LNAME
+FROM Temp24A INNER JOIN Temp24B ON Temp24A.CUST_CODE = Temp24B.CUST_CODE
+ORDER BY Temp24A.CUST_LNAME;
+
+CUST_CODE   CUST_FNAME           CUST_LNAME
+----------- -------------------- --------------------
+684         WENDI                BEAN
+340         MARCIA               BURRIS
+211         GERALD               CAUDILL
+292         VALARIE              DILLARD
+293         CLAIR                ERICKSON
+416         TATIANA              HOWE
+996         EZRA                 LYON
+98          VALENTIN             MARINO
+121         PETER                SMALL
+1157        LUCIO                STALEY
+617         CESAR                TALLEY
+457         SHAUNA               WERNER
+131         SAL                  WHALEY
+
+(13 row(s) affected)
+
+-- PROBLEM 25
+
+SELECT DISTINCT LGCUSTOMER.CUST_CODE, LGCUSTOMER.CUST_FNAME, LGCUSTOMER.CUST_LNAME, LGCUSTOMER.CUST_STREET, LGCUSTOMER.CUST_CITY, LGCUSTOMER.CUST_STATE, LGCUSTOMER.CUST_ZIP, max (LGINVOICE.INV_DATE) AS INV_DATE, Max(LGINVOICE.INV_TOTAL) AS [Largest Invoice]
+FROM LGCUSTOMER LEFT JOIN LGINVOICE ON LGCUSTOMER.CUST_CODE = LGINVOICE.CUST_CODE
+GROUP BY LGCUSTOMER.CUST_CODE, LGCUSTOMER.CUST_FNAME, LGCUSTOMER.CUST_LNAME, LGCUSTOMER.CUST_STREET, LGCUSTOMER.CUST_CITY, LGCUSTOMER.CUST_STATE, LGCUSTOMER.CUST_ZIP
+HAVING (((LGCUSTOMER.CUST_STATE)='AL'))
+ORDER BY LGCUSTOMER.CUST_LNAME;
+
+CUST_CODE   CUST_FNAME           CUST_LNAME           CUST_STREET                                                            CUST_CITY                                          CUST_STATE CUST_ZIP INV_DATE                Largest Invoice
+----------- -------------------- -------------------- ---------------------------------------------------------------------- -------------------------------------------------- ---------- -------- ----------------------- ---------------------------------------
+903         ROBIN                ADDISON              323 LORETTA PLACE                                                      Mobile                                             AL         36693    2011-10-24 00:00:00.000 230.63
+643         NINA                 ALLEN                680 RED TALON DRIVE                                                    Robertsdale                                        AL         36574    2011-06-21 00:00:00.000 11.99
+295         DORTHY               AUSTIN               829 BIG BEND LOOP                                                      Diamond Shamrock                                   AL         36614    2011-11-01 00:00:00.000 589.75
+393         FOSTER               BERNAL               1299 EAST 3RD AVENUE                                                   Birmingham                                         AL         35280    NULL                    NULL
+853         GAYLORD              BOLTON               1069 LUGENE LANE                                                       Montgomery                                         AL         36131    2011-11-25 00:00:00.000 372.68
+925         ALANA                BOOKER               1874 I STREET                                                          Mccullough                                         AL         36502    2011-12-12 00:00:00.000 208.85
+1248        LISA                 BRADY                491 LOWLAND AVENUE                                                     Daphne                                             AL         36577    2012-01-08 00:00:00.000 414.47
+538         CHIQUITA             CALDWELL             1501 BRIGGS COURT                                                      Normal                                             AL         35762    2011-05-26 00:00:00.000 143.90
+89          MONICA               CANTRELL             697 ADAK CIRCLE                                                        Loachapoka                                         AL         36865    2012-01-12 00:00:00.000 516.58
+1233        NATHALIE             CHURCH               1802 SNOWY OWL CIRCLE                                                  Napier Field                                       AL         36303    2011-11-24 00:00:00.000 160.96
+304         GERTRUDE             CONNORS              1042 PLEASANT DRIVE                                                    Georgiana                                          AL         36033    2011-12-29 00:00:00.000 376.32
+1131        CARMA                CORNETT              767 CHISANA WAY                                                        Killen                                             AL         35645    2012-01-14 00:00:00.000 265.12
+1407        FELICIA              CRUZ                 643 TURNAGAIN PARKWAY                                                  Coalburg                                           AL         35068    2012-01-06 00:00:00.000 387.93
+1068        ELIZA                CURRIE               778 LOUDERMILK CIRCLE                                                  Panola                                             AL         35477    2011-10-20 00:00:00.000 365.84
+820         MARCELA              DUGAN                1785 DORIS PLACE                                                       Sylacauga                                          AL         35150    2011-08-04 00:00:00.000 195.34
+380         ALBINA               ENGLE                670 UPPER BOWERY LANE                                                  Clanton                                            AL         35045    2011-04-12 00:00:00.000 124.02
+753         CECIL                ESPARZA              1928 VALLEY VISTA CIRCLE                                               Mulga                                              AL         35118    2011-07-19 00:00:00.000 179.60
+855         AUBREY               GLOVER               907 GOLD CLAIM DRIVE                                                   Honoraville                                        AL         36042    2011-08-15 00:00:00.000 300.47
+188         LUANNE               GOODWIN              293 KIANA AVENUE                                                       Pinegrove                                          AL         36507    2011-08-11 00:00:00.000 290.88
+585         LORRAINE             HANNAH               173 LAUREL STREET                                                      Orange Beach                                       AL         36561    2011-12-31 00:00:00.000 403.20
+738         ALIDA                HANSEN               792 FERGY CIRCLE                                                       Furman                                             AL         36741    2011-08-02 00:00:00.000 110.97
+798         LETICIA              HEBERT               1244 DEER PARK DRIVE                                                   Shorterville                                       AL         36373    2011-07-29 00:00:00.000 41.07
+1412        EVALYN               HEWITT               293 TIMOTHY CIRCLE                                                     Tallassee                                          AL         36078    2012-01-07 00:00:00.000 200.87
+416         TATIANA              HOWE                 1650 ALL STAR CIRCLE                                                   Sunny South                                        AL         36769    2011-09-05 00:00:00.000 376.83
+1350        LATONYA              KAY                  61 LOUSSAC DRIVE                                                       Seaboard                                           AL         36529    2011-12-24 00:00:00.000 275.46
+915         CARLOTTA             KNIGHT               335 HESTERBERG ROAD                                                    Winslow                                            AL         36003    2011-11-14 00:00:00.000 212.68
+169         ROSS                 LANG                 1991 EASTWIND COURT                                                    Higdon                                             AL         35979    2011-11-14 00:00:00.000 512.57
+1440        LONNIE               MANNING              644 PARKER PLACE                                                       Big Cove                                           AL         35763    2012-01-15 00:00:00.000 377.51
+931         PANSY                MAYBERRY             728 LYNKERRY CIRCLE                                                    Enterprise                                         AL         36330    2011-09-10 00:00:00.000 294.87
+979         IMOGENE              MAYES                1017 HARCA STREET                                                      Sylacauga                                          AL         35150    2011-09-15 00:00:00.000 245.51
+364         DELLA                MAYO                 543 STELIOS CIRCLE                                                     Birmingham                                         AL         35214    2011-07-08 00:00:00.000 195.10
+881         LIZ                  MCQUEEN              1203 VALLEY STREET                                                     Brewton                                            AL         36426    2011-08-26 00:00:00.000 318.47
+1275        ELEANORE             NEFF                 556 CACHE DRIVE                                                        Saint Stephens                                     AL         36569    2011-12-06 00:00:00.000 428.73
+1172        ADELE                PERKINS              1192 RICHARDSON VISTA ROAD                                             Sylacauga                                          AL         35150    2011-12-19 00:00:00.000 249.91
+780         LARISSA              POOL                 574 ADAK CIRCLE                                                        Decatur                                            AL         35609    2012-01-06 00:00:00.000 243.05
+1253        TRENTON              PRESLEY              1905 ANCHOR PARK CIRCLE                                                Montgomery                                         AL         36131    2011-11-28 00:00:00.000 348.95
+1439        SHANNA               PRITCHARD            1448 ARLENE DRIVE                                                      Lavaca                                             AL         36911    2012-01-14 00:00:00.000 71.98
+487         ROSENDO              REYNA                1009 HAMPSHIRE BOULEVARD                                               Gunter Afs-Eci                                     AL         36118    2011-12-01 00:00:00.000 261.76
+1264        MICHAELA             RICHARD              44 RASMUSSON STREET                                                    Georgetown                                         AL         36521    2011-12-02 00:00:00.000 143.96
+1029        JOHNETTA             ROY                  1163 GIROUX CIRCLE                                                     Dauphin Island                                     AL         36528    2011-09-28 00:00:00.000 224.61
+218         LUPE                 SANTANA              1292 WEST 70TH PLACE                                                   Phenix City                                        AL         36867    2011-10-31 00:00:00.000 357.01
+1100        ELEANORE             SAUNDERS             820 QUARTZ AVENUE                                                      Silver Cross                                       AL         36538    2011-10-18 00:00:00.000 326.03
+1443        ALYSON               SELF                 772 LUPIN DRIVE                                                        Motley                                             AL         36276    2012-01-16 00:00:00.000 114.90
+286         JEANNE               STEINER              1974 SCHUSS DRIVE                                                      Carrollton                                         AL         35447    2011-03-20 00:00:00.000 226.40
+367         HOLLIS               STILES               1493 DOLLY MADISON CIRCLE                                              Snow Hill                                          AL         36778    2011-07-17 00:00:00.000 312.33
+886         ROSARIO              STOKES               959 SUNRISE DRIVE                                                      Hightower                                          AL         36263    2011-08-23 00:00:00.000 120.12
+696         ALISHA               TOMLINSON            1985 EAST 52ND AVENUE                                                  Catherine                                          AL         36728    2011-07-07 00:00:00.000 37.98
+458         ELOISA               VALLE                182 BRANDON STREET                                                     Abel                                               AL         36258    2011-12-19 00:00:00.000 293.83
+219         CATHI                WHITEHEAD            760 WOODCLIFF DRIVE                                                    Huntsville                                         AL         35893    2011-11-19 00:00:00.000 273.23
+152         LISETTE              WHITTAKER            339 NORTHPARK DRIVE                                                    Montgomery                                         AL         36197    2011-11-19 00:00:00.000 418.83
+Warning: Null value is eliminated by an aggregate or other SET operation.
+
+(50 row(s) affected)
+
+-- PROBLEM 26
+
+SELECT LGBRAND.BRAND_NAME, LGBRAND.BRAND_TYPE, CAST(Round(Avg(LGPRODUCT.PROD_PRICE),2)AS NUMERIC(36,2)) AS [Average Price], Sum(LGLINE.LINE_QTY) AS [Units Sold]
+FROM (LGBRAND INNER JOIN LGPRODUCT ON LGBRAND.BRAND_ID = LGPRODUCT.BRAND_ID) INNER JOIN LGLINE ON LGPRODUCT.PROD_SKU = LGLINE.PROD_SKU
+GROUP BY LGBRAND.BRAND_NAME, LGBRAND.BRAND_TYPE;
+
+BRAND_NAME                                                                                           BRAND_TYPE           Average Price                           Units Sold
+---------------------------------------------------------------------------------------------------- -------------------- --------------------------------------- ----------------------
+BINDER PRIME                                                                                         PREMIUM              16.17                                   3753
+BUSTERS                                                                                              VALUE                22.53                                   3727
+LE MODE                                                                                              PREMIUM              18.98                                   5284
+VALU-MATTE                                                                                           VALUE                17.32                                   2485
+STUTTENFURST                                                                                         CONTRACTOR           16.98                                   3671
+FORESTERS BEST                                                                                       VALUE                21.20                                   2086
+OLDE TYME QUALITY                                                                                    CONTRACTOR           18.42                                   3614
+HOME COMFORT                                                                                         CONTRACTOR           21.94                                   4842
+LONG HAUL                                                                                            CONTRACTOR           18.64                                   5728
+
+(9 row(s) affected)
+
+-- PROBLEM 27
+
+-- CREATE TEMP27 TABLE
+
+SELECT LGBRAND.BRAND_TYPE, Max(LGPRODUCT.PROD_PRICE) AS MaxOfPROD_PRICE INTO TEMP27
+FROM LGBRAND INNER JOIN LGPRODUCT ON LGBRAND.BRAND_ID = LGPRODUCT.BRAND_ID
+GROUP BY LGBRAND.BRAND_TYPE
+HAVING (((LGBRAND.BRAND_TYPE)='PREMIUM'))
+ORDER BY Max(LGPRODUCT.PROD_PRICE) DESC;
+
+-- RUN QUERY
+
+SELECT LGBRAND.BRAND_NAME, LGBRAND.BRAND_TYPE, LGPRODUCT.PROD_SKU, LGPRODUCT.PROD_DESCRIPT, LGPRODUCT.PROD_PRICE
+FROM TEMP27, LGBRAND INNER JOIN LGPRODUCT ON LGBRAND.BRAND_ID = LGPRODUCT.BRAND_ID
+WHERE ((LGPRODUCT.PROD_PRICE)>(TEMP27.MaxOfPROD_PRICE))
+GROUP BY LGBRAND.BRAND_NAME, LGBRAND.BRAND_TYPE, LGPRODUCT.PROD_SKU, LGPRODUCT.PROD_DESCRIPT, LGPRODUCT.PROD_PRICE, LGBRAND.BRAND_TYPE
+HAVING ((Not (LGBRAND.BRAND_TYPE)='PREMIUM'));
+
+BRAND_NAME                                                                                           BRAND_TYPE           PROD_SKU        PROD_DESCRIPT                                                                                                                                                                                                                                                   PROD_PRICE
+---------------------------------------------------------------------------------------------------- -------------------- --------------- --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- ---------------------------------------
+LONG HAUL                                                                                            CONTRACTOR           1964-OUT        Fire Resistant Top Coat, for Interior Wood                                                                                                                                                                                                                      78.49
+
+(1 row(s) affected)
+

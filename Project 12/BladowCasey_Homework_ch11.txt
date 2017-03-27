@@ -1,0 +1,77 @@
+-- REVIEW QUESTION 1 (P. 498)
+-- What is SQL performance tuning?
+
+Refers to activities on client side to generate SQL code.
+Returns correct answer in least amount of time.
+Uses minimum amount of resources.
+
+-- REVIEW QUESTION 2
+-- What is database performance tuning?
+
+Refers to activities to ensure query is processed in minimum amount of time.
+
+
+-- REVIEW QUESTION 12
+-- What are some general guidelines for creating and using indexes?
+
+Create indexes for each single attribute in a WHERE, HAVING, ORDER BY, or GROUP BY clause.
+Do not use indexes in small tables or tables with low sparsity.
+Declare primary and foreign keys so the optimizer can use the indexes in join operations.
+Declare indexes in join columns other than PK/FK.
+
+-- REVIEW QUESTION 14
+-- What recommendations would you make for managing the data files in a DBMS with many tables and indexes?
+
+First, create independent data files for the system, indexes and user data table spaces. 
+Put the data files on separate disks or RAID volumes. 
+This ensures that index operations will not conflict with end-user data or data dictionary table access operations.
+
+Second, put high-usage end-user tables in their own table spaces. 
+By doing this, the database minimizes conflicts with other tables and maximizes storage utilization. 
+
+Third, evaluate the creation of indexes based on the access patterns. 
+Identify common search criteria and isolate the most frequently used columns in search conditions. 
+Create indexes on high usage columns with high sparsity. 
+
+Fourth, evaluate the usage of aggregate queries in your database. 
+Identify columns used in aggregate functions and determine if the creation of indexes on such columns will improve response time. 
+
+Finally, identify columns used in ORDER BY statements and make sure there are indexes on such columns.
+
+
+
+
+
+-- PROBLEM 27
+
+SELECT P_CODE, P_DESCRIPT, P_QOH, P_PRICE, V_CODE
+FROM PRODUCT
+WHERE P_REORDER = 50
+AND P_MIN = 50
+AND P_QOH < 50
+ORDER BY P_QOH;
+
+-- PROBLEM 28
+
+CREATE INDEX PROD_NDX1 ON PRODUCT(P_REORDER);
+CREATE INDEX PROD_NXD2 ON PRODUCT(P_MIN);
+CREATE INDEX PROD_NXD3 ON PRODUCT(P_QOH);
+
+-- PROBLEM 29
+
+One way to speed up the query would be to store the derived attribute LINE_TOTAL in the LINE_TABLE and create an index on LINE_TOTAL.
+This way, the query would benefit by using the index to execute the query.
+
+-- PROBLEM 30
+
+SELECT CUS_CODE, MAX(LINE_TOTAL)
+FROM CUSTOMER NATURAL JOIN INVOICE NATURAL JOIN LINE
+WHERE CUS_AREACODE='615'
+GROUP BY CUS_CODE;
+
+-- PROBLEM 31
+
+I would recommend the query use an index on CUS_AREACODE and CUS_CODE.
+Because CUS_CODE is a foreign key on invoice, it's very likely to already have an index.
+
+CREATE INDEX CUS_NDX1 ON CUSTOMER(CUS_AERACODE);

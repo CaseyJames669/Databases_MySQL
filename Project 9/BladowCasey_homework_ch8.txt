@@ -1,0 +1,290 @@
+Homework: 
+•	Solve Problems 3-8, 10-18
+•	Test all queries with MS SQL Server 2008 R2.
+•	Submit the folder with all queries (.sql format), and the text files 
+	(LastNameFirstName_classwork_ch8.txt and LastNameFirstName_homework_ch8.txt) 
+	that contains all requested queries and the results.
+
+-- PROBLEM 3
+
+SELECT CUST_LNAME, CUST_FNAME FROM S_CUSTOMER
+UNION 
+SELECT CUST_LNAME, CUST_FNAME FROM S_CUSTOMER_2;
+
+CUST_LNAME           CUST_FNAME
+-------------------- --------------------
+Chen                 George
+Kowalski             Jan
+McPherson            Anne
+Ortega               Juan
+Smith                Jeanne
+
+(5 row(s) affected)
+
+-- PROBLEM 4
+
+SELECT CUST_LNAME, CUST_FNAME FROM S_CUSTOMER
+UNION ALL
+SELECT CUST_LNAME, CUST_FNAME FROM S_CUSTOMER_2;
+
+CUST_LNAME           CUST_FNAME
+-------------------- --------------------
+Smith                Jeanne
+Ortega               Juan
+McPherson            Anne
+Ortega               Juan
+Kowalski             Jan
+Chen                 George
+
+(6 row(s) affected)
+
+
+-- PROBLEM 5
+
+SELECT C.CUST_LNAME, C.CUST_FNAME
+FROM S_CUSTOMER AS C, S_CUSTOMER_2 AS C2
+WHERE C.CUST_LNAME=C2.CUST_LNAME AND C.CUST_FNAME=C2.CUST_FNAME;
+
+CUST_LNAME           CUST_FNAME
+-------------------- --------------------
+Ortega               Juan
+
+(1 row(s) affected)
+
+
+-- PROBLEM 6
+
+SELECT C2.CUST_LNAME, C2.CUST_FNAME
+FROM S_CUSTOMER_2 AS C2
+WHERE C2.CUST_LNAME + C2.CUST_FNAME NOT IN (SELECT C1.CUST_LNAME + C1.CUST_FNAME FROM S_CUSTOMER C1);
+
+CUST_LNAME           CUST_FNAME
+-------------------- --------------------
+McPherson            Anne
+Kowalski             Jan
+Chen                 George
+
+(3 row(s) affected)
+
+
+-- PROBLEM 7
+
+SELECT INV_NUM, S_CUSTOMER.CUST_NUM, CUST_LNAME, CUST_FNAME, INV_DATE, INV_AMOUNT
+FROM S_INVOICE INNER JOIN S_CUSTOMER ON S_INVOICE.CUST_NUM=S_CUSTOMER.CUST_NUM
+WHERE CUST_BALANCE>=1000;
+
+INV_NUM     CUST_NUM    CUST_LNAME           CUST_FNAME           INV_DATE   INV_AMOUNT
+----------- ----------- -------------------- -------------------- ---------- ---------------------------------------
+8000        1000        Smith                Jeanne               2012-04-23 235.89
+8003        1000        Smith                Jeanne               2012-04-12 194.78
+8004        1000        Smith                Jeanne               2012-04-23 619.44
+
+(3 row(s) affected)
+
+
+
+-- PROBLEM 8 
+
+SELECT	INV_NUM, INV_AMOUNT, 
+	CAST(ROUND((SELECT AVG(INV_AMOUNT) FROM S_INVOICE),2)AS NUMERIC(36,2)) AS AVG_INV, 
+	CAST(ROUND((INV_AMOUNT-(SELECT AVG(INV_AMOUNT) FROM S_INVOICE)),2)AS NUMERIC(36,2)) AS DIFF
+FROM	S_INVOICE
+GROUP BY	INV_NUM, INV_AMOUNT;
+
+INV_NUM     INV_AMOUNT                              AVG_INV                                 DIFF
+----------- --------------------------------------- --------------------------------------- ---------------------------------------
+8000        235.89                                  378.21                                  -142.32
+8001        312.82                                  378.21                                  -65.39
+8002        528.10                                  378.21                                  149.89
+8003        194.78                                  378.21                                  -183.43
+8004        619.44                                  378.21                                  241.23
+
+(5 row(s) affected)
+
+
+
+-- PROBLEM 10
+
+ALTER TABLE S_CUSTOMER
+ADD CUST_DOB DATE;
+
+ALTER TABLE S_CUSTOMER
+ADD CUST_AGE DECIMAL;
+
+UPDATE S_CUSTOMER
+SET CUST_DOB = '1979/03/15'
+WHERE CUST_NUM = 1000;
+
+UPDATE S_CUSTOMER
+SET CUST_DOB = '1988/12/22'
+WHERE CUST_NUM = 1001;
+
+
+-- PROBLEM 11
+
+SELECT CUST_LNAME, CUST_FNAME, DATEDIFF(DAY, CUST_DOB, GETDATE())/365 AS 'AGE'
+FROM S_CUSTOMER;
+
+-------------------- -------------------- -----------
+Smith                Jeanne               34
+Ortega               Juan                 24
+
+(2 row(s) affected)
+
+-- PROBLEM 12
+
+UPDATE S_CUSTOMER
+SET CUST_AGE = DATEDIFF(DAY, CUST_DOB, GETDATE())/365;
+
+
+(2 row(s) affected)
+
+
+-- PROBLEM 13
+
+SELECT CAST(AVG(CUST_AGE)as numeric (36,0)) FROM S_CUSTOMER;
+
+
+---------------------------------------
+29
+
+(1 row(s) affected)
+
+-- PROBLEM 14 
+
+create trigger trg_updatecustbalance
+on S_INVOICE
+after insert as
+begin
+	declare @custnum_int;
+	declare @new decimal(7,2);
+	set @custnum = (seleect s_invoice.cust_num from s_invoice, inserted
+	where s_invoice.inv_num = inserted.inv_num);
+	set @new = (seleect s)invoice.inv_amount from s_invoice, inserted
+	where s_invoice.inv_num = inserteed.inv_num);
+	update s_customer
+	set cust_balance = cust_balance + @new
+	where cust_num = @custnum;
+end
+
+-- PROBLEM 15
+
+CREATE PROCEDURE PRC_CUST_ADD
+(@W_CN AS INT, @W_CLN AS VARCHAR(20), @W_CFN AS VARCHAR(20), @W_CBAL AS NUMERIC(8,2)) AS
+BEGIN
+	INSERT INTO S_CUSTOMER (CUST_NUM, CUST_LNAME, CUST_FNAME, CUST_BALANCE)
+	VALUES (@W_CN, @W_CLN, @W_CFN, @W_CBAL);
+END;
+
+USE [CSIS304bladowca]
+GO
+
+DECLARE	@return_value int
+
+EXEC	@return_value = [MNSTATE\bladowca].[PRC_CUST_ADD]
+		@W_CN = 1002,
+		@W_CLN = N'Rauthor',
+		@W_CFN = N'Peter',
+		@W_CBAL = 0.00
+
+SELECT	'Return Value' = @return_value
+
+GO
+
+SELECT * FROM S_CUSTOMER;
+
+CUST_NUM    CUST_LNAME           CUST_FNAME           CUST_BALANCE                            CUST_DOB   CUST_AGE
+----------- -------------------- -------------------- --------------------------------------- ---------- ---------------------------------------
+1000        Smith                Jeanne               1050.11                                 1979-03-15 34
+1001        Ortega               Juan                 840.92                                  1988-12-22 24
+1002        Rauthor              Peter                0.00                                    NULL       NULL
+
+(3 row(s) affected)
+
+-- PROBLEM 16
+
+CREATE PROCEDURE PRC_INVOICE_ADD
+(@W_IN AS INT, @W_CN AS INT, @W_ID AS DATE, @W_IA AS NUMERIC(8,2)) AS
+BEGIN
+	INSERT INTO S_INVOICE(INV_NUM, CUST_NUM, INV_DATE, INV_AMOUNT)
+	VALUES (@W_IN, @W_CN, @W_ID, @W_IA);
+END;
+
+USE [CSIS304bladowca]
+GO
+
+DECLARE	@return_value int
+
+EXEC	@return_value = [MNSTATE\bladowca].[PRC_INVOICE_ADD]
+		@W_IN = 8006,
+		@W_CN = 1000,
+		@W_ID = '2012-04-30',
+		@W_IA = 301.72
+
+SELECT	'Return Value' = @return_value
+
+GO
+
+SELECT * FROM S_INVOICE;
+
+INV_NUM     CUST_NUM    INV_DATE   INV_AMOUNT
+----------- ----------- ---------- ---------------------------------------
+8000        1000        2012-04-23 235.89
+8001        1001        2012-03-23 312.82
+8002        1001        2012-03-30 528.10
+8003        1000        2012-04-12 194.78
+8004        1000        2012-04-23 619.44
+8005        1001        2004-04-27 225.40
+8006        1000        2012-04-30 301.72
+
+(7 row(s) affected)
+
+-- PROBLEM 17 (MySQL VERSION)
+
+CREATE TRIGGER TRG_UPDATECUSTBALANCE2
+  AFTER DELETE
+  ON INVOICE
+  FOR EACH ROW
+    UPDATE CUSTOMER
+    SET CUST_BALANCE = CUST_BALANCE - OLD.INV_AMOUNT;
+
+CALL PRC_INV_DELETE(8005);
+CALL PRC_INV_DELETE(8006);
+SELECT * FROM CUSTOMER;
+
+-- PROBLEM 18 
+
+CREATE PROCEDURE PRC_INV_DELETE (@W_IN AS INT) AS
+BEGIN
+	DELETE FROM S_INVOICE WHERE INV_NUM=@W_IN;
+END;
+
+
+CREATE PROCEDURE PRC_INV_DELETE (@W_IN AS INT) AS
+BEGIN
+	DELETE FROM S_INVOICE WHERE INV_NUM=@W_IN;
+END;
+
+USE [CSIS304bladowca]
+GO
+
+DECLARE	@return_value int
+
+EXEC	@return_value = [MNSTATE\bladowca].[PRC_INV_DELETE]
+		@W_IN = 8006
+
+SELECT	'Return Value' = @return_value
+
+GO
+
+SELECT * FROM S_INVOICE;
+
+INV_NUM     CUST_NUM    INV_DATE   INV_AMOUNT
+----------- ----------- ---------- ---------------------------------------
+8000        1000        2012-04-23 235.89
+8001        1001        2012-03-23 312.82
+8002        1001        2012-03-30 528.10
+8003        1000        2012-04-12 194.78
+8004        1000        2012-04-23 619.44
+
+(5 row(s) affected)

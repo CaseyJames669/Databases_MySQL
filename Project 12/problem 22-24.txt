@@ -1,0 +1,14 @@
+--problem 22-24
+
+select p_code, p_descript, p_price, p.v_code, v_state
+from PRODUCT p, vender v
+where p.V_CODE=V.V_code
+and V_CODE_state='fl'
+and v_areacode='904'
+order by P_PRICE;
+
+create index vend_NDX1 on vender(v_state);
+create index vend_NDX2 on vender(v_areacode);
+
+drop index vend_NDX1
+drop index vend_NDX2

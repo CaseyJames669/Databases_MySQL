@@ -1,0 +1,81 @@
+/* DW-OLAP-SQL.TXT                                    	*/
+/* DATA WAREHOUSE OLAP SQL 				*/
+
+/* ROLLUP EXAMPLE Figure 13.21 */
+SELECT   V.V_CODE, P.P_CODE, 
+SUM(SALE_UNITS*SALE_PRICE) AS TOTSALES
+FROM     DWDAYSALESFACT AS S INNER JOIN DWPRODUCT AS P 
+ON S.P_CODE = P.P_CODE
+INNER JOIN DWVENDOR AS V ON P.V_CODE = V.V_CODE
+GROUP BY ROLLUP (V.V_CODE, P.P_CODE)
+ORDER BY V.V_CODE, P.P_CODE;
+
+
+V_CODE      P_CODE     TOTSALES
+----------- ---------- ---------------------------------------
+NULL        NULL       2252.06
+21225       NULL       341.02
+21225       23109-HB   99.50
+21225       PVC23DRT   199.58
+21225       SM-18277   41.94
+21344       NULL       299.72
+21344       13-Q2/P2   239.84
+21344       54778-2T   59.88
+23119       NULL       79.90
+23119       1546-QQ2   79.90
+24288       NULL       733.82
+24288       2232/QTY   219.84
+24288       89-WRE-Q   513.98
+25595       NULL       797.60
+25595       2238/QPD   77.90
+25595       WR3/TT3    719.70
+
+(16 row(s) affected)
+
+
+
+/* CUBE EXAMPLE Figure 13.22 */
+SELECT   TM_MONTH, P.P_CODE, 
+SUM(SALE_UNITS*SALE_PRICE) AS TOTSALES
+FROM     DWDAYSALESFACT AS S INNER JOIN DWPRODUCT AS P
+ON S.P_CODE = P.P_CODE
+INNER JOIN DWTIME AS T 
+ON S.TM_ID = T.TM_ID
+GROUP BY CUBE (TM_MONTH, P.P_CODE)
+ORDER BY TM_MONTH, P.P_CODE;
+
+TM_MONTH    P_CODE     TOTSALES
+----------- ---------- ---------------------------------------
+NULL        NULL       2252.06
+NULL        13-Q2/P2   239.84
+NULL        1546-QQ2   79.90
+NULL        2232/QTY   219.84
+NULL        2238/QPD   77.90
+NULL        23109-HB   99.50
+NULL        54778-2T   59.88
+NULL        89-WRE-Q   513.98
+NULL        PVC23DRT   199.58
+NULL        SM-18277   41.94
+NULL        WR3/TT3    719.70
+9           NULL       1239.85
+9           13-Q2/P2   134.91
+9           1546-QQ2   79.90
+9           2232/QTY   109.92
+9           2238/QPD   77.90
+9           23109-HB   59.70
+9           54778-2T   39.92
+9           89-WRE-Q   256.99
+9           PVC23DRT   99.79
+9           SM-18277   20.97
+9           WR3/TT3    359.85
+10          NULL       1012.21
+10          13-Q2/P2   104.93
+10          2232/QTY   109.92
+10          23109-HB   39.80
+10          54778-2T   19.96
+10          89-WRE-Q   256.99
+10          PVC23DRT   99.79
+10          SM-18277   20.97
+10          WR3/TT3    359.85
+
+(31 row(s) affected)

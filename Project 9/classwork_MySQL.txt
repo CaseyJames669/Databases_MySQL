@@ -1,0 +1,384 @@
+-- JOINS
+
+-- CROSS JOINS (PRODUCT)
+SELECT * FROM INVOICE CROSS JOIN LINE;
+
++------------+----------+------------+------------+-------------+----------+------------+------------+
+| INV_NUMBER | CUS_CODE | INV_DATE   | INV_NUMBER | LINE_NUMBER | P_CODE   | LINE_UNITS | LINE_PRICE |
++------------+----------+------------+------------+-------------+----------+------------+------------+
+|       1001 |    10014 | 2010-01-16 |       1001 |           1 | 13-Q2/P2 |       1.00 |      14.99 |
+|       1002 |    10011 | 2010-01-16 |       1001 |           1 | 13-Q2/P2 |       1.00 |      14.99 |
+|       1003 |    10012 | 2010-01-16 |       1001 |           1 | 13-Q2/P2 |       1.00 |      14.99 |
+|       1004 |    10011 | 2010-01-17 |       1001 |           1 | 13-Q2/P2 |       1.00 |      14.99 |
+|       1005 |    10018 | 2010-01-17 |       1001 |           1 | 13-Q2/P2 |       1.00 |      14.99 |
+|       1006 |    10014 | 2010-01-17 |       1001 |           1 | 13-Q2/P2 |       1.00 |      14.99 |
+|       1007 |    10015 | 2010-01-17 |       1001 |           1 | 13-Q2/P2 |       1.00 |      14.99 |
+|       1008 |    10011 | 2010-01-17 |       1001 |           1 | 13-Q2/P2 |       1.00 |      14.99 |
+|       1001 |    10014 | 2010-01-16 |       1001 |           2 | 23109-HB |       1.00 |       9.95 |
+|       1002 |    10011 | 2010-01-16 |       1001 |           2 | 23109-HB |       1.00 |       9.95 |
+144 rows in set (0.00 sec)
+
+SELECT INVOICE.INV_NUMBER, CUS_CODE, INV_DATE, P_CODE
+	FROM INVOICE CROSS JOIN LINE;
++------------+----------+------------+----------+
+| INV_NUMBER | CUS_CODE | INV_DATE   | P_CODE   |
++------------+----------+------------+----------+
+|       1001 |    10014 | 2010-01-16 | 13-Q2/P2 |
+|       1002 |    10011 | 2010-01-16 | 13-Q2/P2 |
+|       1003 |    10012 | 2010-01-16 | 13-Q2/P2 |
+|       1004 |    10011 | 2010-01-17 | 13-Q2/P2 |
+|       1005 |    10018 | 2010-01-17 | 13-Q2/P2 |
+|       1006 |    10014 | 2010-01-17 | 13-Q2/P2 |
+|       1007 |    10015 | 2010-01-17 | 13-Q2/P2 |
+|       1008 |    10011 | 2010-01-17 | 13-Q2/P2 |
+|       1001 |    10014 | 2010-01-16 | 23109-HB |
+|       1002 |    10011 | 2010-01-16 | 23109-HB |
+144 rows in set (0.00 sec)
+
+SELECT INVOICE.INV_NUMBER, CUS_CODE, INV_DATE, P_CODE
+	FROM INVOICE, LINE;
+
++------------+----------+------------+----------+
+| INV_NUMBER | CUS_CODE | INV_DATE   | P_CODE   |
++------------+----------+------------+----------+
+|       1001 |    10014 | 2010-01-16 | 13-Q2/P2 |
+|       1002 |    10011 | 2010-01-16 | 13-Q2/P2 |
+|       1003 |    10012 | 2010-01-16 | 13-Q2/P2 |
+|       1004 |    10011 | 2010-01-17 | 13-Q2/P2 |
+|       1005 |    10018 | 2010-01-17 | 13-Q2/P2 |
+|       1006 |    10014 | 2010-01-17 | 13-Q2/P2 |
+|       1007 |    10015 | 2010-01-17 | 13-Q2/P2 |
+|       1008 |    10011 | 2010-01-17 | 13-Q2/P2 |
+|       1001 |    10014 | 2010-01-16 | 23109-HB |
+|       1002 |    10011 | 2010-01-16 | 23109-HB |
+144 rows in set (0.00 sec)
+
+-- NATURAL JOIN 
+-- DOES NOT REQUIRE TABLE QUALIFIER
+
+SELECT CUS_CODE, CUS_LNAME, INV_NUMBER, INV_DATE
+FROM CUSTOMER NATURAL JOIN INVOICE;
+
++----------+-----------+------------+------------+
+| CUS_CODE | CUS_LNAME | INV_NUMBER | INV_DATE   |
++----------+-----------+------------+------------+
+|    10014 | Orlando   |       1001 | 2010-01-16 |
+|    10011 | Dunne     |       1002 | 2010-01-16 |
+|    10012 | Smith     |       1003 | 2010-01-16 |
+|    10011 | Dunne     |       1004 | 2010-01-17 |
+|    10018 | Farriss   |       1005 | 2010-01-17 |
+|    10014 | Orlando   |       1006 | 2010-01-17 |
+|    10015 | O'Brian   |       1007 | 2010-01-17 |
+|    10011 | Dunne     |       1008 | 2010-01-17 |
++----------+-----------+------------+------------+
+8 rows in set (0.00 sec)
+
+SELECT INV_NUMBER, P_CODE, P_DESCRIPT, LINE_UNITS, LINE_PRICE
+FROM INVOICE NATURAL JOIN LINE NATURAL JOIN PRODUCT;
+
++------------+----------+-------------------------------------+------------+------------+
+| INV_NUMBER | P_CODE   | P_DESCRIPT                          | LINE_UNITS | LINE_PRICE |
++------------+----------+-------------------------------------+------------+------------+
+|       1001 | 13-Q2/P2 | 7.25-in. pwr. saw blade             |       1.00 |      14.99 |
+|       1001 | 23109-HB | Claw hammer                         |       1.00 |       9.95 |
+|       1002 | 54778-2T | Rat-tail file, 1/8-in. fine         |       2.00 |       4.99 |
+|       1003 | 2238/QPD | B&D cordless drill, 1/2-in.         |       1.00 |      38.95 |
+|       1003 | 1546-QQ2 | Hrd. cloth, 1/4-in., 2x50           |       1.00 |      39.95 |
+|       1003 | 13-Q2/P2 | 7.25-in. pwr. saw blade             |       5.00 |      14.99 |
+|       1004 | 54778-2T | Rat-tail file, 1/8-in. fine         |       3.00 |       4.99 |
+|       1004 | 23109-HB | Claw hammer                         |       2.00 |       9.95 |
+|       1005 | PVC23DRT | PVC pipe, 3.5-in., 8-ft             |      12.00 |       5.87 |
+|       1006 | SM-18277 | 1.25-in. metal screw, 25            |       3.00 |       6.99 |
+|       1006 | 2232/QTY | B&D jigsaw, 12-in. blade            |       1.00 |     109.92 |
+|       1006 | 23109-HB | Claw hammer                         |       1.00 |       9.95 |
+|       1006 | 89-WRE-Q | Hicut chain saw, 16 in.             |       1.00 |     256.99 |
+|       1007 | 13-Q2/P2 | 7.25-in. pwr. saw blade             |       2.00 |      14.99 |
+|       1007 | 54778-2T | Rat-tail file, 1/8-in. fine         |       1.00 |       4.99 |
+|       1008 | PVC23DRT | PVC pipe, 3.5-in., 8-ft             |       5.00 |       5.87 |
+|       1008 | WR3/TT3  | Steel matting, 4'x8'x1/6", .5" mesh |       3.00 |     119.95 |
+|       1008 | 23109-HB | Claw hammer                         |       1.00 |       9.95 |
++------------+----------+-------------------------------------+------------+------------+
+18 rows in set (0.00 sec)
+
+-- JOIN USING 
+SELECT INV_NUMBER, P_CODE, P_DESCRIPT, LINE_UNITS, LINE_PRICE
+FROM INVOICE JOIN LINE USING (INV_NUMBER) 
+	JOIN PRODUCT USING (P_CODE);
+
++------------+----------+-------------------------------------+------------+------------+
+| INV_NUMBER | P_CODE   | P_DESCRIPT                          | LINE_UNITS | LINE_PRICE |
++------------+----------+-------------------------------------+------------+------------+
+|       1001 | 13-Q2/P2 | 7.25-in. pwr. saw blade             |       1.00 |      14.99 |
+|       1001 | 23109-HB | Claw hammer                         |       1.00 |       9.95 |
+|       1002 | 54778-2T | Rat-tail file, 1/8-in. fine         |       2.00 |       4.99 |
+|       1003 | 2238/QPD | B&D cordless drill, 1/2-in.         |       1.00 |      38.95 |
+|       1003 | 1546-QQ2 | Hrd. cloth, 1/4-in., 2x50           |       1.00 |      39.95 |
+|       1003 | 13-Q2/P2 | 7.25-in. pwr. saw blade             |       5.00 |      14.99 |
+|       1004 | 54778-2T | Rat-tail file, 1/8-in. fine         |       3.00 |       4.99 |
+|       1004 | 23109-HB | Claw hammer                         |       2.00 |       9.95 |
+|       1005 | PVC23DRT | PVC pipe, 3.5-in., 8-ft             |      12.00 |       5.87 |
+|       1006 | SM-18277 | 1.25-in. metal screw, 25            |       3.00 |       6.99 |
+|       1006 | 2232/QTY | B&D jigsaw, 12-in. blade            |       1.00 |     109.92 |
+|       1006 | 23109-HB | Claw hammer                         |       1.00 |       9.95 |
+|       1006 | 89-WRE-Q | Hicut chain saw, 16 in.             |       1.00 |     256.99 |
+|       1007 | 13-Q2/P2 | 7.25-in. pwr. saw blade             |       2.00 |      14.99 |
+|       1007 | 54778-2T | Rat-tail file, 1/8-in. fine         |       1.00 |       4.99 |
+|       1008 | PVC23DRT | PVC pipe, 3.5-in., 8-ft             |       5.00 |       5.87 |
+|       1008 | WR3/TT3  | Steel matting, 4'x8'x1/6", .5" mesh |       3.00 |     119.95 |
+|       1008 | 23109-HB | Claw hammer                         |       1.00 |       9.95 |
++------------+----------+-------------------------------------+------------+------------+
+18 rows in set (0.00 sec)
+
+-- JOIN ON 
+SELECT INVOICE.INV_NUMBER, PRODUCT.P_CODE, P_DESCRIPT, LINE_UNITS, LINE_PRICE
+FROM INVOICE JOIN LINE ON INVOICE.INV_NUMBER = LINE.INV_NUMBER
+             JOIN PRODUCT ON LINE.P_CODE = PRODUCT.P_CODE;
+
++------------+----------+-------------------------------------+------------+------------+
+| INV_NUMBER | P_CODE   | P_DESCRIPT                          | LINE_UNITS | LINE_PRICE |
++------------+----------+-------------------------------------+------------+------------+
+|       1001 | 13-Q2/P2 | 7.25-in. pwr. saw blade             |       1.00 |      14.99 |
+|       1001 | 23109-HB | Claw hammer                         |       1.00 |       9.95 |
+|       1002 | 54778-2T | Rat-tail file, 1/8-in. fine         |       2.00 |       4.99 |
+|       1003 | 2238/QPD | B&D cordless drill, 1/2-in.         |       1.00 |      38.95 |
+|       1003 | 1546-QQ2 | Hrd. cloth, 1/4-in., 2x50           |       1.00 |      39.95 |
+|       1003 | 13-Q2/P2 | 7.25-in. pwr. saw blade             |       5.00 |      14.99 |
+|       1004 | 54778-2T | Rat-tail file, 1/8-in. fine         |       3.00 |       4.99 |
+|       1004 | 23109-HB | Claw hammer                         |       2.00 |       9.95 |
+|       1005 | PVC23DRT | PVC pipe, 3.5-in., 8-ft             |      12.00 |       5.87 |
+|       1006 | SM-18277 | 1.25-in. metal screw, 25            |       3.00 |       6.99 |
+|       1006 | 2232/QTY | B&D jigsaw, 12-in. blade            |       1.00 |     109.92 |
+|       1006 | 23109-HB | Claw hammer                         |       1.00 |       9.95 |
+|       1006 | 89-WRE-Q | Hicut chain saw, 16 in.             |       1.00 |     256.99 |
+|       1007 | 13-Q2/P2 | 7.25-in. pwr. saw blade             |       2.00 |      14.99 |
+|       1007 | 54778-2T | Rat-tail file, 1/8-in. fine         |       1.00 |       4.99 |
+|       1008 | PVC23DRT | PVC pipe, 3.5-in., 8-ft             |       5.00 |       5.87 |
+|       1008 | WR3/TT3  | Steel matting, 4'x8'x1/6", .5" mesh |       3.00 |     119.95 |
+|       1008 | 23109-HB | Claw hammer                         |       1.00 |       9.95 |
++------------+----------+-------------------------------------+------------+------------+
+18 rows in set (0.00 sec)
+
+
+
+-- SQL FUNCTIONS
+
+-- How many days between thanksgiving and Christmas 2013?
+SELECT DATEDIFF(DATE('2013/12/25'), DATE('2013-11-25')) 
+FROM DUAL;
+
++--------------------------------------------------+
+| DATEDIFF(DATE('2013/12/25'), DATE('2013-11-25')) |
++--------------------------------------------------+
+|                                               30 |
++--------------------------------------------------+
+1 row in set (0.00 sec)
+
+
+-- How many days are left to Christmas 2013?--
+SELECT DATEDIFF(DATE('2013-12-25'), DATE(NOW()))
+FROM DUAL;
+
++-------------------------------------------+
+| DATEDIFF(DATE('2013-12-25'), DATE(NOW())) |
++-------------------------------------------+
+|                                       280 |
++-------------------------------------------+
+1 row in set (0.00 sec)
+
+
+
+-- UNION
+SELECT CUS_LNAME, CUS_FNAME, CUS_INITIAL, CUS_AREACODE, CUS_PHONE FROM CUSTOMER
+UNION
+SELECT CUS_LNAME, CUS_FNAME, CUS_INITIAL, CUS_AREACODE, CUS_PHONE FROM CUSTOMER_2;
+
++-----------+-----------+-------------+--------------+-----------+
+| CUS_LNAME | CUS_FNAME | CUS_INITIAL | CUS_AREACODE | CUS_PHONE |
++-----------+-----------+-------------+--------------+-----------+
+| Ramas     | Alfred    | A           | 615          | 844-2573  |
+| Dunne     | Leona     | K           | 713          | 894-1238  |
+| Smith     | Kathy     | W           | 615          | 894-2285  |
+| Olowski   | Paul      | F           | 615          | 894-2180  |
+| Orlando   | Myron     |             | 615          | 222-1672  |
+| O'Brian   | Amy       | B           | 713          | 442-3381  |
+| Brown     | James     | G           | 615          | 297-1228  |
+| Williams  | George    |             | 615          | 290-2556  |
+| Farriss   | Anne      | G           | 713          | 382-7185  |
+| Smith     | Olette    | K           | 615          | 297-3809  |
+| Terrell   | Justine   | H           | 615          | 322-9870  |
+| Hernandez | Carlos    | J           | 723          | 123-7654  |
+| McDowell  | George    | NULL        | 723          | 123-7768  |
+| Tirpin    | Khaleed   | G           | 723          | 123-9876  |
+| Lewis     | Marie     | J           | 734          | 332-1789  |
++-----------+-----------+-------------+--------------+-----------+
+15 rows in set (0.00 sec)
+
+
+-- UNION ALL
+SELECT CUS_LNAME, CUS_FNAME, CUS_INITIAL, CUS_AREACODE, CUS_PHONE FROM CUSTOMER
+UNION ALL
+SELECT CUS_LNAME, CUS_FNAME, CUS_INITIAL, CUS_AREACODE, CUS_PHONE FROM CUSTOMER_2;
+
++-----------+-----------+-------------+--------------+-----------+
+| CUS_LNAME | CUS_FNAME | CUS_INITIAL | CUS_AREACODE | CUS_PHONE |
++-----------+-----------+-------------+--------------+-----------+
+| Ramas     | Alfred    | A           | 615          | 844-2573  |
+| Dunne     | Leona     | K           | 713          | 894-1238  |
+| Smith     | Kathy     | W           | 615          | 894-2285  |
+| Olowski   | Paul      | F           | 615          | 894-2180  |
+| Orlando   | Myron     |             | 615          | 222-1672  |
+| O'Brian   | Amy       | B           | 713          | 442-3381  |
+| Brown     | James     | G           | 615          | 297-1228  |
+| Williams  | George    |             | 615          | 290-2556  |
+| Farriss   | Anne      | G           | 713          | 382-7185  |
+| Smith     | Olette    | K           | 615          | 297-3809  |
+| Terrell   | Justine   | H           | 615          | 322-9870  |
+| Olowski   | Paul      | F           | 615          | 894-2180  |
+| Hernandez | Carlos    | J           | 723          | 123-7654  |
+| McDowell  | George    | NULL        | 723          | 123-7768  |
+| Tirpin    | Khaleed   | G           | 723          | 123-9876  |
+| Lewis     | Marie     | J           | 734          | 332-1789  |
+| Dunne     | Leona     | K           | 713          | 894-1238  |
++-----------+-----------+-------------+--------------+-----------+
+17 rows in set (0.00 sec)
+
+
+-- ALTERNATIVE SYNTAX FOR INTERSECT
+SELECT CUS_CODE FROM CUSTOMER 
+WHERE CUS_AREACODE = '615' AND
+      CUS_CODE IN (SELECT DISTINCT CUS_CODE FROM INVOICE);
+
++----------+
+| CUS_CODE |
++----------+
+|    10012 |
+|    10014 |
++----------+
+2 rows in set (0.00 sec)
+
+
+-- ALTERNATIVE SYNTAX FOR MINUS
+SELECT CUS_CODE FROM CUSTOMER 
+WHERE CUS_AREACODE = '615' AND
+      CUS_CODE NOT IN (SELECT DISTINCT CUS_CODE FROM INVOICE);
+
++----------+
+| CUS_CODE |
++----------+
+|    10010 |
+|    10013 |
+|    10016 |
+|    10017 |
+|    10019 |
++----------+
+5 rows in set (0.00 sec)
+
+
+-- STORED PROCEDURES
+
+-- FIGURE 8.42
+
+DROP PROCEDURE PRC_PROD_DISCOUNT;
+DELIMITER $$
+CREATE PROCEDURE PRC_PROD_DISCOUNT()
+BEGIN
+	UPDATE PRODUCT
+	SET P_DISCOUNT = P_DISCOUNT + .05
+	WHERE P_QOH >= P_MIN*2;
+END$$
+DELIMITER ;
+
+SELECT * FROM PRODUCT;
+CALL PRC_PROD_DISCOUNT;
+SELECT * FROM PRODUCT;
+
++----------+-------------------------------------+------------+-------+-------+---------+------------+--------+
+| P_CODE   | P_DESCRIPT                          | P_INDATE   | P_QOH | P_MIN | P_PRICE | P_DISCOUNT | V_CODE |
++----------+-------------------------------------+------------+-------+-------+---------+------------+--------+
+| 11QER/31 | Power painter, 15 psi., 3-nozzle    | 2009-11-03 |     8 |     5 |  109.99 |       0.00 |  25595 |
+| 13-Q2/P2 | 7.25-in. pwr. saw blade             | 2009-12-13 |    32 |    15 |   14.99 |       0.10 |  21344 |
+| 14-Q1/L3 | 9.00-in. pwr. saw blade             | 2009-11-13 |    18 |    12 |   17.49 |       0.00 |  21344 |
+| 1546-QQ2 | Hrd. cloth, 1/4-in., 2x50           | 2010-01-15 |    15 |     8 |   39.95 |       0.00 |  23119 |
+| 1558-QW1 | Hrd. cloth, 1/2-in., 3x50           | 2010-01-15 |    23 |     5 |   43.99 |       0.05 |  23119 |
+| 2232/QTY | B&D jigsaw, 12-in. blade            | 2009-12-30 |     8 |     5 |  109.92 |       0.05 |  24288 |
+| 2232/QWE | B&D jigsaw, 8-in. blade             | 2009-12-30 |     6 |     5 |   99.87 |       0.05 |  24288 |
+| 2238/QPD | B&D cordless drill, 1/2-in.         | 2010-01-20 |    12 |     5 |   38.95 |       0.10 |  25595 |
+| 23109-HB | Claw hammer                         | 2010-01-20 |    23 |    10 |    9.95 |       0.15 |  21225 |
+| 23114-AA | Sledge hammer, 12 lb.               | 2010-01-02 |     8 |     5 |   14.40 |       0.05 |   NULL |
+| 54778-2T | Rat-tail file, 1/8-in. fine         | 2009-12-15 |    43 |    20 |    4.99 |       0.05 |  21344 |
+| 89-WRE-Q | Hicut chain saw, 16 in.             | 2010-02-07 |    11 |     5 |  256.99 |       0.10 |  24288 |
+| PVC23DRT | PVC pipe, 3.5-in., 8-ft             | 2010-02-20 |   188 |    75 |    5.87 |       0.05 |   NULL |
+| SM-18277 | 1.25-in. metal screw, 25            | 2010-03-01 |   172 |    75 |    6.99 |       0.05 |  21225 |
+| SW-23116 | 2.5-in. wd. screw, 50               | 2010-02-24 |   237 |   100 |    8.45 |       0.05 |  21231 |
+| WR3/TT3  | Steel matting, 4'x8'x1/6", .5" mesh | 2010-01-17 |    18 |     5 |  119.95 |       0.15 |  25595 |
++----------+-------------------------------------+------------+-------+-------+---------+------------+--------+
+16 rows in set (0.00 sec)
+
+
+
+-- FIGURE 8.44
+
+DROP PROCEDURE PRC_PROD_DISCOUNT2;
+DELIMITER $$
+CREATE PROCEDURE PRC_PROD_DISCOUNT2(WPI DECIMAL(4,2))
+BEGIN 
+ IF ((WPI >= 0) AND (WPI <= 1)) THEN
+  UPDATE PRODUCT 
+  SET P_DISCOUNT = P_DISCOUNT + WPI  
+  WHERE P_QOH >= P_MIN*2; 
+ END IF;
+END$$
+DELIMITER ;
+
+CALL PRC_PROD_DISCOUNT2(0.07);
+SELECT * FROM PRODUCT;
+
++----------+-------------------------------------+------------+-------+-------+---------+------------+--------+
+| P_CODE   | P_DESCRIPT                          | P_INDATE   | P_QOH | P_MIN | P_PRICE | P_DISCOUNT | V_CODE |
++----------+-------------------------------------+------------+-------+-------+---------+------------+--------+
+| 11QER/31 | Power painter, 15 psi., 3-nozzle    | 2009-11-03 |     8 |     5 |  109.99 |       0.00 |  25595 |
+| 13-Q2/P2 | 7.25-in. pwr. saw blade             | 2009-12-13 |    32 |    15 |   14.99 |       0.17 |  21344 |
+| 14-Q1/L3 | 9.00-in. pwr. saw blade             | 2009-11-13 |    18 |    12 |   17.49 |       0.00 |  21344 |
+| 1546-QQ2 | Hrd. cloth, 1/4-in., 2x50           | 2010-01-15 |    15 |     8 |   39.95 |       0.00 |  23119 |
+| 1558-QW1 | Hrd. cloth, 1/2-in., 3x50           | 2010-01-15 |    23 |     5 |   43.99 |       0.12 |  23119 |
+| 2232/QTY | B&D jigsaw, 12-in. blade            | 2009-12-30 |     8 |     5 |  109.92 |       0.05 |  24288 |
+| 2232/QWE | B&D jigsaw, 8-in. blade             | 2009-12-30 |     6 |     5 |   99.87 |       0.05 |  24288 |
+| 2238/QPD | B&D cordless drill, 1/2-in.         | 2010-01-20 |    12 |     5 |   38.95 |       0.17 |  25595 |
+| 23109-HB | Claw hammer                         | 2010-01-20 |    23 |    10 |    9.95 |       0.22 |  21225 |
+| 23114-AA | Sledge hammer, 12 lb.               | 2010-01-02 |     8 |     5 |   14.40 |       0.05 |   NULL |
+| 54778-2T | Rat-tail file, 1/8-in. fine         | 2009-12-15 |    43 |    20 |    4.99 |       0.12 |  21344 |
+| 89-WRE-Q | Hicut chain saw, 16 in.             | 2010-02-07 |    11 |     5 |  256.99 |       0.17 |  24288 |
+| PVC23DRT | PVC pipe, 3.5-in., 8-ft             | 2010-02-20 |   188 |    75 |    5.87 |       0.12 |   NULL |
+| SM-18277 | 1.25-in. metal screw, 25            | 2010-03-01 |   172 |    75 |    6.99 |       0.12 |  21225 |
+| SW-23116 | 2.5-in. wd. screw, 50               | 2010-02-24 |   237 |   100 |    8.45 |       0.12 |  21231 |
+| WR3/TT3  | Steel matting, 4'x8'x1/6", .5" mesh | 2010-01-17 |    18 |     5 |  119.95 |       0.22 |  25595 |
++----------+-------------------------------------+------------+-------+-------+---------+------------+--------+
+16 rows in set (0.00 sec)
+
+
+-- TRIGGERS (SUPER privilage is required) (PROBLEMS 14 & 17 HOMEWORK)
+
+ 
+CREATE TRIGGER TRG_UPDATECUSTBALANCE
+  AFTER INSERT
+  ON INVOICE
+  FOR EACH ROW
+    UPDATE S_CUSTOMER
+    SET CUST_BALANCE = CUST_BALANCE + NEW.INV_AMOUNT;
+
+CALL PRC_INVOICE_ADD(8005,1001,'2012-04-27',225.40);
+
+SELECT * FROM CUSTOMER;
+
+
+
+CREATE TRIGGER TRG_UPDATECUSTBALANCE2
+  AFTER DELETE
+  ON INVOICE
+  FOR EACH ROW
+    UPDATE CUSTOMER
+    SET CUST_BALANCE = CUST_BALANCE - OLD.INV_AMOUNT;
+
+CALL PRC_INV_DELETE(8005);
+CALL PRC_INV_DELETE(8006);
+SELECT * FROM CUSTOMER;

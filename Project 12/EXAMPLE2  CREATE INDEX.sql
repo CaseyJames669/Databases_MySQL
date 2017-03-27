@@ -1,0 +1,1 @@
+CREATE INDEX Country2_NDX1 on Country2(Country2Name);

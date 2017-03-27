@@ -1,0 +1,81 @@
+-- PROBLEM 68
+
+UPDATE MOVIE SET MOVIE.Movie_Year = 2008
+WHERE (((MOVIE.Movie_Num)=1245));
+
+Movie_Year
+2008
+
+-- PROBLEM 69
+
+UPDATE MOVIE SET MOVIE.Price_Code = 3
+WHERE (((MOVIE.Movie_Genre)="Action"));
+
+Price_Code
+3
+3
+
+-- PROBLEM 70
+
+UPDATE PRICE SET PRICE.Price_RentFee = [Price_RentFee]+0.5;
+
+Price_RentFee
+2.5
+4
+2
+1.5
+
+-- PROBLEM 75
+
+SELECT MOVIE.Movie_Num, MOVIE.Movie_Title, MOVIE.Price_Code
+FROM MOVIE
+WHERE (((MOVIE.Movie_Title) Like "R*"));
+
+SELECT MOVIE.Movie_Num, MOVIE.Movie_Title, MOVIE.Price_Code
+FROM MOVIE
+WHERE (((lcase(MOVIE.Movie_Title)) Like "r*"));
+
+Movie_Num	Movie_Title	Price_Code
+1236	Richard Goodhope	2
+
+-- PROBLEM 80
+
+SELECT MOVIE.Movie_Num, [Movie_Title] & " (" & [Movie_Year] & ") " & [Movie_Genre] AS Movie_Description
+FROM MOVIE;
+
+Movie_Num	Movie_Description
+1234	The Cesar Family Christmas (2009) FAMILY
+1235	Smokey Mountain Wildlife (2006) ACTION
+1236	Richard Goodhope (2010) DRAMA
+1237	Beatnik Fever (2009) COMEDY
+1238	Constant Companion (2010) DRAMA
+1239	Where Hope Dies (2000) DRAMA
+1245	Time to Burn (2008) ACTION
+1246	What He Doesn't Know (2008) COMEDY
+
+-- PROBLEM 85
+
+SELECT MOVIE.Movie_Genre, Avg(PRICE.Price_RentFee) AS AvgOfPrice_RentFee
+FROM PRICE INNER JOIN MOVIE ON PRICE.Price_Code = MOVIE.Price_Code
+GROUP BY MOVIE.Movie_Genre;
+
+Movie_Genre	Average Rental Fee
+ACTION	$2.00
+COMEDY	$3.25
+DRAMA	$3.00
+FAMILY	$4.00
+
+-- PROBLEM 89
+
+SELECT MOVIE.Movie_Title, MOVIE.Movie_Year, PRICE.Price_Description, PRICE.Price_RentFee, MOVIE.Movie_Genre
+FROM PRICE INNER JOIN MOVIE ON PRICE.Price_Code = MOVIE.Price_Code
+WHERE (((MOVIE.Movie_Genre) In ('FAMILY','COMEDY','DRAMA')));
+
+Movie_Title	Movie_Year	Price_Description	Price_RentFee	Movie_Genre
+The Cesar Family Christmas	2009	New Release	4	FAMILY
+Richard Goodhope	2010	New Release	4	DRAMA
+Beatnik Fever	2009	New Release	4	COMEDY
+Where Hope Dies	2000	Discount	2	DRAMA
+What He Doesn't Know	2008	Standard	2.5	COMEDY
+
+-- END OF CLASSWORK

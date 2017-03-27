@@ -1,0 +1,657 @@
+-- INNER JOIN 
+
+SELECT CUSTOMER.CUS_CODE, CUS_LNAME, INV_NUMBER, INV_DATE
+FROM CUSTOMER INNER JOIN INVOICE ON
+CUSTOMER.CUS_CODE=INVOICE.CUS_CODE
+ORDER BY CUSTOMER.CUS_CODE;
+
+CUS_CODE    CUS_LNAME       INV_NUMBER  INV_DATE
+----------- --------------- ----------- ----------
+10011       Dunne           1002        2012-01-16
+10011       Dunne           1004        2012-01-17
+10011       Dunne           1008        2012-01-17
+10012       Smith           1003        2012-01-16
+10014       Orlando         1001        2012-01-16
+10014       Orlando         1006        2012-01-17
+10015       O'Brian         1007        2012-01-17
+10018       Farriss         1005        2012-01-17
+
+(8 row(s) affected)
+
+
+SELECT INVOICE.INV_NUMBER, PRODUCT.P_CODE, P_DESCRIPT, LINE_UNITS, LINE_PRICE
+FROM INVOICE INNER JOIN LINE ON
+INVOICE.INV_NUMBER = LINE.INV_NUMBER 
+INNER JOIN PRODUCT ON
+PRODUCT.P_CODE = LINE.P_CODE;
+
+INV_NUMBER  P_CODE     P_DESCRIPT                          LINE_UNITS                              LINE_PRICE
+----------- ---------- ----------------------------------- --------------------------------------- ---------------------------------------
+1001        13-Q2/P2   7.25-in. pwr. saw blade             1.00                                    14.99
+1001        23109-HB   Claw hammer                         1.00                                    9.95
+1002        54778-2T   Rat-tail file, 1/8-in. fine         2.00                                    4.99
+1003        2238/QPD   B\&D cordless drill, 1/2-in.        1.00                                    38.95
+1003        1546-QQ2   Hrd. cloth, 1/4-in., 2x50           1.00                                    39.95
+1003        13-Q2/P2   7.25-in. pwr. saw blade             5.00                                    14.99
+1004        54778-2T   Rat-tail file, 1/8-in. fine         3.00                                    4.99
+1004        23109-HB   Claw hammer                         2.00                                    9.95
+1005        PVC23DRT   PVC pipe, 3.5-in., 8-ft             12.00                                   5.87
+1006        SM-18277   1.25-in. metal screw, 25            3.00                                    6.99
+1006        2232/QTY   B\&D jigsaw, 12-in. blade           1.00                                    109.92
+1006        23109-HB   Claw hammer                         1.00                                    9.95
+1006        89-WRE-Q   Hicut chain saw, 16 in.             1.00                                    256.99
+1007        13-Q2/P2   7.25-in. pwr. saw blade             2.00                                    14.99
+1007        54778-2T   Rat-tail file, 1/8-in. fine         1.00                                    4.99
+1008        PVC23DRT   PVC pipe, 3.5-in., 8-ft             5.00                                    5.87
+1008        WR3/TT3    Steel matting, 4'x8'x1/6", .5" mesh 3.00                                    119.95
+1008        23109-HB   Claw hammer                         1.00                                    9.95
+
+(18 row(s) affected)
+
+
+-- LEFT OUTER JOIN
+
+SELECT P_CODE, VENDOR.V_CODE, V_NAME
+FROM VENDOR LEFT JOIN PRODUCT ON VENDOR.V_CODE = PRODUCT.V_CODE
+ORDER BY P_CODE, V_CODE;
+
+P_CODE     V_CODE      V_NAME
+---------- ----------- -----------------------------------
+NULL       21226       SuperLoo, Inc.
+NULL       22567       Dome Supply
+NULL       24004       Brackman Bros.
+NULL       25443       B\&K, Inc.
+NULL       25501       Damal Supplies
+11QER/31   25595       Rubicon Systems
+13-Q2/P2   21344       Gomez Bros.
+14-Q1/L3   21344       Gomez Bros.
+1546-QQ2   23119       Randsets Ltd.
+1558-QW1   23119       Randsets Ltd.
+2232/QTY   24288       ORDVA, Inc.
+2232/QWE   24288       ORDVA, Inc.
+2238/QPD   25595       Rubicon Systems
+23109-HB   21225       Bryson, Inc.
+54778-2T   21344       Gomez Bros.
+89-WRE-Q   24288       ORDVA, Inc.
+SM-18277   21225       Bryson, Inc.
+SW-23116   21231       D\&E Supply
+WR3/TT3    25595       Rubicon Systems
+
+(19 row(s) affected)
+
+
+-- RIGHT OUTER JOIN
+
+SELECT P_CODE, VENDOR.V_CODE, V_NAME
+FROM VENDOR RIGHT JOIN PRODUCT ON VENDOR.V_CODE = PRODUCT.V_CODE
+ORDER BY V_CODE, P_CODE;
+
+P_CODE     V_CODE      V_NAME
+---------- ----------- -----------------------------------
+23114-AA   NULL        NULL
+PVC23DRT   NULL        NULL
+23109-HB   21225       Bryson, Inc.
+SM-18277   21225       Bryson, Inc.
+SW-23116   21231       D\&E Supply
+13-Q2/P2   21344       Gomez Bros.
+14-Q1/L3   21344       Gomez Bros.
+54778-2T   21344       Gomez Bros.
+1546-QQ2   23119       Randsets Ltd.
+1558-QW1   23119       Randsets Ltd.
+2232/QTY   24288       ORDVA, Inc.
+2232/QWE   24288       ORDVA, Inc.
+89-WRE-Q   24288       ORDVA, Inc.
+11QER/31   25595       Rubicon Systems
+2238/QPD   25595       Rubicon Systems
+WR3/TT3    25595       Rubicon Systems
+
+(16 row(s) affected)
+
+
+-- SUB-QUERIES
+
+-- LIST ALL VENDORS THAT PROVIDE PRODUCTS?
+SELECT V_CODE, V_NAME 
+FROM VENDOR
+WHERE V_CODE IN (SELECT V_CODE FROM PRODUCT);
+
+V_CODE      V_NAME
+----------- -----------------------------------
+21225       Bryson, Inc.
+21231       D\&E Supply
+21344       Gomez Bros.
+23119       Randsets Ltd.
+24288       ORDVA, Inc.
+25595       Rubicon Systems
+
+(6 row(s) affected)
+
+
+
+-- Alternative solution
+
+CREATE 	VIEW V1 AS
+SELECT 	DISTINCT V_CODE 
+FROM PRODUCT;
+
+
+SELECT VENDOR.V_CODE, V_NAME 
+FROM VENDOR, V1
+WHERE VENDOR.V_CODE = V1.V_CODE;
+
+V_CODE      V_NAME
+----------- -----------------------------------
+21225       Bryson, Inc.
+21231       D\&E Supply
+21344       Gomez Bros.
+23119       Randsets Ltd.
+24288       ORDVA, Inc.
+25595       Rubicon Systems
+
+(6 row(s) affected)
+
+
+
+-- LIST OF PRODUCTS WITH PRICE >= AVERAGE PRODUCT PRICE?
+SELECT P_CODE, P_PRICE FROM PRODUCT
+WHERE P_PRICE >= (SELECT AVG(P_PRICE) FROM PRODUCT);
+
+P_CODE     P_PRICE
+---------- ---------------------------------------
+11QER/31   109.99
+2232/QTY   109.92
+2232/QWE   99.87
+89-WRE-Q   256.99
+WR3/TT3    119.95
+
+(5 row(s) affected)
+
+
+
+-- Alternative solution
+
+CREATE 	VIEW V2 AS
+SELECT AVG(P_PRICE) As Average 
+FROM PRODUCT;
+
+
+SELECT P_CODE, P_PRICE 
+FROM PRODUCT, V2
+WHERE P_PRICE >= V2.Average;
+
+P_CODE     P_PRICE
+---------- ---------------------------------------
+11QER/31   109.99
+2232/QTY   109.92
+2232/QWE   99.87
+89-WRE-Q   256.99
+WR3/TT3    119.95
+
+(5 row(s) affected)
+
+
+
+-- WHERE SUB-QUERIES
+
+-- LIST ALL CUSTOMERS WHO ORDERED THE PRODUCT "CLAW HAMMER"?
+SELECT DISTINCT CUSTOMER.CUS_CODE, CUS_LNAME, CUS_FNAME
+FROM CUSTOMER INNER JOIN INVOICE ON CUSTOMER.CUS_CODE = INVOICE.CUS_CODE
+              INNER JOIN LINE ON LINE.INV_NUMBER = INVOICE.INV_NUMBER
+              INNER JOIN PRODUCT ON PRODUCT.P_CODE = LINE.P_CODE
+WHERE PRODUCT.P_CODE = (SELECT P_CODE FROM PRODUCT WHERE P_DESCRIPT = 'Claw hammer');
+
+CUS_CODE    CUS_LNAME       CUS_FNAME
+----------- --------------- ---------------
+10011       Dunne           Leona
+10014       Orlando         Myron
+
+(2 row(s) affected)
+
+
+
+-- Alternative solution
+
+SELECT DISTINCT CUSTOMER.CUS_CODE, CUS_LNAME, CUS_FNAME 
+FROM CUSTOMER INNER JOIN INVOICE ON CUSTOMER.CUS_CODE = INVOICE.CUS_CODE
+	INNER JOIN LINE ON LINE.INV_NUMBER = INVOICE.INV_NUMBER  
+	INNER JOIN PRODUCT ON PRODUCT.P_CODE = LINE.P_CODE
+WHERE P_DESCRIPT = 'Claw hammer';
+
+CUS_CODE    CUS_LNAME       CUS_FNAME
+----------- --------------- ---------------
+10011       Dunne           Leona
+10014       Orlando         Myron
+
+(2 row(s) affected)
+
+
+
+-- IN SUB-QUERIES
+
+-- LIST ALL CUSTOMERS THAT PURCHASED ANY TYPE OF HAMMER OR ANY KIND OF SAW OR SAW BLADE?
+
+SELECT DISTINCT CUSTOMER.CUS_CODE, CUS_LNAME, CUS_FNAME 
+FROM CUSTOMER INNER JOIN INVOICE ON CUSTOMER.CUS_CODE = INVOICE.CUS_CODE
+	INNER JOIN LINE ON LINE.INV_NUMBER = INVOICE.INV_NUMBER
+	INNER JOIN PRODUCT ON PRODUCT.P_CODE = LINE.P_CODE
+WHERE PRODUCT.P_CODE IN (SELECT P_CODE FROM PRODUCT 
+	WHERE P_DESCRIPT LIKE '%hammer%' OR P_DESCRIPT LIKE '%saw%');
+
+CUS_CODE    CUS_LNAME       CUS_FNAME
+----------- --------------- ---------------
+10011       Dunne           Leona
+10015       O'Brian         Amy
+10014       Orlando         Myron
+10012       Smith           Kathy
+
+(4 row(s) affected)
+
+
+
+-- HAVING SUB-QUERIES
+
+-- LIST ALL PRODUCTS WITH A TOTAL QTY SOLD GREATER THAN THE AVERAGE QTY SOLD?
+
+SELECT P_CODE, SUM(LINE_UNITS) AS SUM 
+FROM LINE 
+GROUP BY P_CODE 
+HAVING SUM(LINE_UNITS) > (SELECT AVG(LINE_UNITS) FROM LINE);
+
+P_CODE     SUM
+---------- ---------------------------------------
+13-Q2/P2   8.00
+23109-HB   5.00
+54778-2T   6.00
+PVC23DRT   17.00
+SM-18277   3.00
+WR3/TT3    3.00
+
+(6 row(s) affected)
+
+
+
+-- ALL MULTI-ROW OPERAND SUB-QUERIES
+
+-- LIST ALL PRODUCTS WITH A PRODUCT COST GREATER THAN ALL INDIVIDUAL PRODUCT COSTS OF 
+-- PRODUCTS PROVIDED BY VENDORS IN FLORIDA?
+
+SELECT P_CODE, P_QOH*P_PRICE 
+FROM PRODUCT 
+WHERE P_QOH*P_PRICE > ALL  
+(SELECT P_QOH*P_PRICE FROM PRODUCT 
+	WHERE V_CODE IN (SELECT V_CODE FROM VENDOR WHERE V_STATE = 'FL'));
+
+P_CODE     
+---------- ---------------------------------------
+89-WRE-Q   2826.89
+
+(1 row(s) affected)
+
+
+
+-- FROM SUB-QUERIES
+
+-- LIST ALL CUSTOMER WHO PURCHASED PRODUCTS 13-Q2/P2 AND 23109-HB?
+
+SELECT DISTINCT CUSTOMER.CUS_CODE, CUSTOMER.CUS_LNAME  
+FROM CUSTOMER, 
+(SELECT INVOICE.CUS_CODE  
+FROM INVOICE INNER JOIN LINE ON INVOICE.INV_NUMBER = LINE.INV_NUMBER
+WHERE P_CODE = '13-Q2/P2') CP1, 
+(SELECT INVOICE.CUS_CODE 
+FROM INVOICE INNER JOIN LINE ON INVOICE.INV_NUMBER = LINE.INV_NUMBER
+WHERE P_CODE = '23109-HB') CP2 
+WHERE CUSTOMER.CUS_CODE = CP1.CUS_CODE AND 
+	CP1.CUS_CODE = CP2.CUS_CODE;
+
+CUS_CODE    CUS_LNAME
+----------- ---------------
+10014       Orlando
+
+(1 row(s) affected)
+
+
+
+-- Alternative solution
+
+CREATE VIEW CP1 AS 
+SELECT INVOICE.CUS_CODE FROM INVOICE INNER JOIN LINE 
+ON INVOICE.INV_NUMBER = LINE.INV_NUMBER
+WHERE P_CODE = '13-Q2/P2';
+
+
+CREATE VIEW CP2 AS
+SELECT INVOICE.CUS_CODE FROM INVOICE INNER JOIN LINE 
+ON INVOICE.INV_NUMBER = LINE.INV_NUMBER
+WHERE P_CODE = '23109-HB';
+
+
+SELECT DISTINCT CUSTOMER.CUS_CODE, CUS_LNAME 
+FROM CUSTOMER INNER JOIN CP1 ON CUSTOMER.CUS_CODE = CP1.CUS_CODE
+INNER JOIN CP2 ON CP2.CUS_CODE = CP1.CUS_CODE;
+
+CUS_CODE    CUS_LNAME
+----------- ---------------
+10014       Orlando
+
+(1 row(s) affected)
+
+
+
+-- ATTRIBUTE LIST SUB-QUERIES
+
+-- List the the difference between each product’s price and the average product price
+
+SELECT P_CODE, P_PRICE, (SELECT AVG(P_PRICE) FROM PRODUCT) AS AVGPRICE,
+       P_PRICE-(SELECT AVG(P_PRICE) FROM PRODUCT) AS DIFF 
+FROM PRODUCT;
+
+P_CODE     P_PRICE                                 AVGPRICE                                DIFF
+---------- --------------------------------------- --------------------------------------- ---------------------------------------
+11QER/31   109.99                                  56.421250                               53.568750
+13-Q2/P2   14.99                                   56.421250                               -41.431250
+14-Q1/L3   17.49                                   56.421250                               -38.931250
+1546-QQ2   39.95                                   56.421250                               -16.471250
+1558-QW1   43.99                                   56.421250                               -12.431250
+2232/QTY   109.92                                  56.421250                               53.498750
+2232/QWE   99.87                                   56.421250                               43.448750
+2238/QPD   38.95                                   56.421250                               -17.471250
+23109-HB   9.95                                    56.421250                               -46.471250
+23114-AA   14.40                                   56.421250                               -42.021250
+54778-2T   4.99                                    56.421250                               -51.431250
+89-WRE-Q   256.99                                  56.421250                               200.568750
+PVC23DRT   5.87                                    56.421250                               -50.551250
+SM-18277   6.99                                    56.421250                               -49.431250
+SW-23116   8.45                                    56.421250                               -47.971250
+WR3/TT3    119.95                                  56.421250                               63.528750
+
+(16 row(s) affected)
+
+
+-- CORRELATED QUERIES
+
+-- List all product sales for which the units sold is greater than the average units sold for that product
+
+SELECT INV_NUMBER, P_CODE, LINE_UNITS 
+FROM LINE LS 
+WHERE LS.LINE_UNITS > 
+(SELECT AVG(LINE_UNITS) 
+ 	FROM LINE LA 
+	WHERE LA.P_CODE = LS.P_CODE);
+
+INV_NUMBER  P_CODE     LINE_UNITS
+----------- ---------- ---------------------------------------
+1003        13-Q2/P2   5.00
+1004        23109-HB   2.00
+1004        54778-2T   3.00
+1005        PVC23DRT   12.00
+
+(4 row(s) affected)
+
+
+
+-- Add a correlated in-line sub-query to list the average units sold per product
+
+SELECT INV_NUMBER, P_CODE, LINE_UNITS, 
+	(SELECT AVG(LINE_UNITS) FROM LINE LX WHERE LX.P_CODE = LS.P_CODE) AS AVG 
+FROM LINE LS 
+WHERE LS.LINE_UNITS > 
+( SELECT AVG(LINE_UNITS) 
+	FROM LINE LA 
+	WHERE LA.P_CODE = LS.P_CODE);
+
+INV_NUMBER  P_CODE     LINE_UNITS                              AVG
+----------- ---------- --------------------------------------- ---------------------------------------
+1003        13-Q2/P2   5.00                                    2.666666
+1004        23109-HB   2.00                                    1.250000
+1004        54778-2T   3.00                                    2.000000
+1005        PVC23DRT   12.00                                   8.500000
+
+(4 row(s) affected)
+
+
+
+-- CORRELATED QUERY WITH EXISTS
+
+-- List all customers who has made purchases
+
+SELECT CUS_CODE, CUS_LNAME, CUS_FNAME 
+FROM CUSTOMER 
+WHERE EXISTS (SELECT CUS_CODE FROM INVOICE 
+	WHERE INVOICE.CUS_CODE = CUSTOMER.CUS_CODE);
+
+CUS_CODE    CUS_LNAME       CUS_FNAME
+----------- --------------- ---------------
+10011       Dunne           Leona
+10012       Smith           Kathy
+10014       Orlando         Myron
+10015       O'Brian         Amy
+10018       Farriss         Anne
+
+(5 row(s) affected)
+
+
+-- List all vendors to contact for products with a qty on hand <= double P_MIN
+
+SELECT V_CODE, V_NAME FROM VENDOR 
+WHERE EXISTS (SELECT * FROM PRODUCT 
+	WHERE P_QOH<P_MIN*2 
+	AND VENDOR.V_CODE = PRODUCT.V_CODE);
+
+V_CODE      V_NAME
+----------- -----------------------------------
+21344       Gomez Bros.
+23119       Randsets Ltd.
+24288       ORDVA, Inc.
+25595       Rubicon Systems
+
+(4 row(s) affected)
+
+
+
+-- SQL FUNCTIONS
+
+-- How many days are left to Christmas 2013?
+SELECT DATEDIFF(day, GETDATE(), '2013-12-25') AS DAYS_LEFT
+
+DAYS_LEFT
+-----------
+280
+
+(1 row(s) affected)
+
+
+-- NUMERIC FUNCTIONS
+
+-- ABS
+-- List absolute values
+SELECT 1.95, -1.93, ABS(1.95), ABS(-1.93);
+
+                                                                                                                        
+--------------------------------------- --------------------------------------- --------------------------------------- ---------------------------------------
+1.95                                    -1.93                                   1.95                                    1.93
+
+(1 row(s) affected)
+
+
+-- ROUND
+-- List the product prices rounded to one and zero decimal places
+SELECT P_CODE, P_PRICE, ROUND(P_PRICE,1) AS PRICE1, ROUND(P_PRICE,0) AS PRICE0
+FROM PRODUCT;
+
+P_CODE     P_PRICE                                 PRICE1                                  PRICE0
+---------- --------------------------------------- --------------------------------------- ---------------------------------------
+11QER/31   109.99                                  110.00                                  110.00
+13-Q2/P2   14.99                                   15.00                                   15.00
+14-Q1/L3   17.49                                   17.50                                   17.00
+1546-QQ2   39.95                                   40.00                                   40.00
+1558-QW1   43.99                                   44.00                                   44.00
+2232/QTY   109.92                                  109.90                                  110.00
+2232/QWE   99.87                                   99.90                                   100.00
+2238/QPD   38.95                                   39.00                                   39.00
+23109-HB   9.95                                    10.00                                   10.00
+23114-AA   14.40                                   14.40                                   14.00
+54778-2T   4.99                                    5.00                                    5.00
+89-WRE-Q   256.99                                  257.00                                  257.00
+PVC23DRT   5.87                                    5.90                                    6.00
+SM-18277   6.99                                    7.00                                    7.00
+SW-23116   8.45                                    8.50                                    8.00
+WR3/TT3    119.95                                  120.00                                  120.00
+
+(16 row(s) affected)
+
+
+-- CEILING AND FLOOR
+-- List the product price, smallest integer greater than or equal to the product price, and the largest integer equal or less than the product price.
+SELECT P_PRICE, CEILING(P_PRICE), FLOOR(P_PRICE) 
+FROM PRODUCT;
+
+P_PRICE                                                                         
+--------------------------------------- --------------------------------------- ---------------------------------------
+109.99                                  110                                     109
+14.99                                   15                                      14
+17.49                                   18                                      17
+39.95                                   40                                      39
+43.99                                   44                                      43
+109.92                                  110                                     109
+99.87                                   100                                     99
+38.95                                   39                                      38
+9.95                                    10                                      9
+14.40                                   15                                      14
+4.99                                    5                                       4
+256.99                                  257                                     256
+5.87                                    6                                       5
+6.99                                    7                                       6
+8.45                                    9                                       8
+119.95                                  120                                     119
+
+(16 row(s) affected)
+
+
+-- STORED PROCEDURES
+
+CREATE PROCEDURE PRC_PROD_DISCOUNT
+AS
+BEGIN
+ UPDATE PRODUCT 
+  SET P_DISCOUNT = P_DISCOUNT + .05
+  WHERE P_QOH >= P_MIN * 2;
+
+  PRINT '** Update finished **';
+END 
+
+
+EXEC PRC_PROD_DISCOUNT;
+
+SELECT * FROM PRODUCT;
+
+P_CODE     P_DESCRIPT                          P_INDATE   P_QOH       P_MIN       P_PRICE                                 P_DISCOUNT                              V_CODE
+---------- ----------------------------------- ---------- ----------- ----------- --------------------------------------- --------------------------------------- -----------
+11QER/31   Power painter, 15 psi., 3-nozzle    2011-11-03 8           5           109.99                                  0.00                                    25595
+13-Q2/P2   7.25-in. pwr. saw blade             2011-12-13 32          15          14.99                                   0.10                                    21344
+14-Q1/L3   9.00-in. pwr. saw blade             2011-11-13 18          12          17.49                                   0.00                                    21344
+1546-QQ2   Hrd. cloth, 1/4-in., 2x50           2012-01-15 15          8           39.95                                   0.00                                    23119
+1558-QW1   Hrd. cloth, 1/2-in., 3x50           2012-01-15 23          5           43.99                                   0.05                                    23119
+2232/QTY   B\&D jigsaw, 12-in. blade           2011-12-30 8           5           109.92                                  0.05                                    24288
+2232/QWE   B\&D jigsaw, 8-in. blade            2011-12-24 6           5           99.87                                   0.05                                    24288
+2238/QPD   B\&D cordless drill, 1/2-in.        2012-01-20 12          5           38.95                                   0.10                                    25595
+23109-HB   Claw hammer                         2012-01-20 23          10          9.95                                    0.15                                    21225
+23114-AA   Sledge hammer, 12 lb.               2012-01-02 8           5           14.40                                   0.05                                    NULL
+54778-2T   Rat-tail file, 1/8-in. fine         2011-12-15 43          20          4.99                                    0.05                                    21344
+89-WRE-Q   Hicut chain saw, 16 in.             2012-02-07 11          5           256.99                                  0.10                                    24288
+PVC23DRT   PVC pipe, 3.5-in., 8-ft             2011-02-20 188         75          5.87                                    0.05                                    NULL
+SM-18277   1.25-in. metal screw, 25            2012-03-01 172         75          6.99                                    0.05                                    21225
+SW-23116   2.5-in. wd. screw, 50               2012-02-24 237         100         8.45                                    0.05                                    21231
+WR3/TT3    Steel matting, 4'x8'x1/6", .5" mesh 2012-01-17 18          5           119.95                                  0.15                                    25595
+
+(16 row(s) affected)
+
+
+
+DROP PROCEDURE PRC_PROD_DISCOUNT;
+
+
+CREATE PROCEDURE PRC_PROD_DISCOUNT2
+ @WPI DECIMAL(4,2) = 0
+AS
+BEGIN
+ IF (@WPI >= 0 AND @WPI <= 1)
+ BEGIN
+  UPDATE PRODUCT 
+   SET P_DISCOUNT = P_DISCOUNT + @WPI
+   WHERE P_QOH >= P_MIN * 2;
+
+  PRINT '** Update finished **';
+ END;
+END 
+
+
+EXEC PRC_PROD_DISCOUNT2 .05;
+
+SELECT * FROM PRODUCT;
+
+P_CODE     P_DESCRIPT                          P_INDATE   P_QOH       P_MIN       P_PRICE                                 P_DISCOUNT                              V_CODE
+---------- ----------------------------------- ---------- ----------- ----------- --------------------------------------- --------------------------------------- -----------
+11QER/31   Power painter, 15 psi., 3-nozzle    2011-11-03 8           5           109.99                                  0.00                                    25595
+13-Q2/P2   7.25-in. pwr. saw blade             2011-12-13 32          15          14.99                                   3.35                                    21344
+14-Q1/L3   9.00-in. pwr. saw blade             2011-11-13 18          12          17.49                                   0.00                                    21344
+1546-QQ2   Hrd. cloth, 1/4-in., 2x50           2012-01-15 15          8           39.95                                   0.00                                    23119
+1558-QW1   Hrd. cloth, 1/2-in., 3x50           2012-01-15 23          5           43.99                                   3.30                                    23119
+2232/QTY   B\&D jigsaw, 12-in. blade           2011-12-30 8           5           109.92                                  0.05                                    24288
+2232/QWE   B\&D jigsaw, 8-in. blade            2011-12-24 6           5           99.87                                   0.05                                    24288
+2238/QPD   B\&D cordless drill, 1/2-in.        2012-01-20 12          5           38.95                                   3.35                                    25595
+23109-HB   Claw hammer                         2012-01-20 23          10          9.95                                    3.40                                    21225
+23114-AA   Sledge hammer, 12 lb.               2012-01-02 8           5           14.40                                   0.05                                    NULL
+54778-2T   Rat-tail file, 1/8-in. fine         2011-12-15 43          20          4.99                                    3.30                                    21344
+89-WRE-Q   Hicut chain saw, 16 in.             2012-02-07 11          5           256.99                                  3.35                                    24288
+PVC23DRT   PVC pipe, 3.5-in., 8-ft             2011-02-20 188         75          5.87                                    3.30                                    NULL
+SM-18277   1.25-in. metal screw, 25            2012-03-01 172         75          6.99                                    3.30                                    21225
+SW-23116   2.5-in. wd. screw, 50               2012-02-24 237         100         8.45                                    3.30                                    21231
+WR3/TT3    Steel matting, 4'x8'x1/6", .5" mesh 2012-01-17 18          5           119.95                                  3.40                                    25595
+
+(16 row(s) affected)
+
+
+DROP PROCEDURE PRC_PROD_DISCOUNT2;
+
+
+-- TRIGGERS
+
+CREATE TRIGGER TRG_PRODUCT_UPDATE
+ON PRODUCT
+FOR INSERT, UPDATE AS
+RAISERROR ('Hi, Yuri, %d rows have been modified', 0, 1, @@rowcount)
+RETURN
+
+EXEC PRC_PROD_DISCOUNT2 .05;
+
+Hi, Yuri, 10 rows have been modified
+
+(10 row(s) affected)
+** Update finished **
+
+DROP TRIGGER TRG_PRODUCT_UPDATE;
+
+
+CREATE TRIGGER TRG_PRODUCT_UPDATE2
+ON PRODUCT
+FOR INSERT, UPDATE AS
+IF (SELECT COUNT(*) FROM PRODUCT, inserted
+WHERE PRODUCT.P_CODE = inserted.P_CODE) > 0
+BEGIN
+PRINT '** Records were inserted **'
+END
+
+EXEC PRC_PROD_DISCOUNT2 .05;
+
+** Records were inserted **
+
+(10 row(s) affected)
+** Update finished **
+
+DROP TRIGGER TRG_PRODUCT_UPDATE2;
+
+
+
+
+
